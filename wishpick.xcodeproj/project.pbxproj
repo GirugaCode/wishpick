@@ -1,0 +1,591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		281609B422C32D340045D352 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281609B322C32D340045D352 /* AppDelegate.swift */; };
+		281609B622C32D340045D352 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281609B522C32D340045D352 /* ViewController.swift */; };
+		281609B922C32D340045D352 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281609B722C32D340045D352 /* Main.storyboard */; };
+		281609BB22C32D350045D352 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 281609BA22C32D350045D352 /* Assets.xcassets */; };
+		281609BE22C32D350045D352 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281609BC22C32D350045D352 /* LaunchScreen.storyboard */; };
+		281609C922C32D350045D352 /* wishpickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281609C822C32D350045D352 /* wishpickTests.swift */; };
+		281609D422C32D350045D352 /* wishpickUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281609D322C32D350045D352 /* wishpickUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		281609C522C32D350045D352 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 281609A822C32D330045D352 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 281609AF22C32D330045D352;
+			remoteInfo = wishpick;
+		};
+		281609D022C32D350045D352 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 281609A822C32D330045D352 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 281609AF22C32D330045D352;
+			remoteInfo = wishpick;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		281609B022C32D340045D352 /* wishpick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wishpick.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		281609B322C32D340045D352 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		281609B522C32D340045D352 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		281609B822C32D340045D352 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		281609BA22C32D350045D352 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		281609BD22C32D350045D352 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		281609BF22C32D350045D352 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		281609C422C32D350045D352 /* wishpickTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wishpickTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		281609C822C32D350045D352 /* wishpickTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wishpickTests.swift; sourceTree = "<group>"; };
+		281609CA22C32D350045D352 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		281609CF22C32D350045D352 /* wishpickUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wishpickUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		281609D322C32D350045D352 /* wishpickUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wishpickUITests.swift; sourceTree = "<group>"; };
+		281609D522C32D350045D352 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		281609AD22C32D330045D352 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		281609C122C32D350045D352 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		281609CC22C32D350045D352 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		281609A722C32D330045D352 = {
+			isa = PBXGroup;
+			children = (
+				281609B222C32D340045D352 /* wishpick */,
+				281609C722C32D350045D352 /* wishpickTests */,
+				281609D222C32D350045D352 /* wishpickUITests */,
+				281609B122C32D340045D352 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		281609B122C32D340045D352 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				281609B022C32D340045D352 /* wishpick.app */,
+				281609C422C32D350045D352 /* wishpickTests.xctest */,
+				281609CF22C32D350045D352 /* wishpickUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		281609B222C32D340045D352 /* wishpick */ = {
+			isa = PBXGroup;
+			children = (
+				281609B322C32D340045D352 /* AppDelegate.swift */,
+				281609B522C32D340045D352 /* ViewController.swift */,
+				281609B722C32D340045D352 /* Main.storyboard */,
+				281609BA22C32D350045D352 /* Assets.xcassets */,
+				281609BC22C32D350045D352 /* LaunchScreen.storyboard */,
+				281609BF22C32D350045D352 /* Info.plist */,
+			);
+			path = wishpick;
+			sourceTree = "<group>";
+		};
+		281609C722C32D350045D352 /* wishpickTests */ = {
+			isa = PBXGroup;
+			children = (
+				281609C822C32D350045D352 /* wishpickTests.swift */,
+				281609CA22C32D350045D352 /* Info.plist */,
+			);
+			path = wishpickTests;
+			sourceTree = "<group>";
+		};
+		281609D222C32D350045D352 /* wishpickUITests */ = {
+			isa = PBXGroup;
+			children = (
+				281609D322C32D350045D352 /* wishpickUITests.swift */,
+				281609D522C32D350045D352 /* Info.plist */,
+			);
+			path = wishpickUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		281609AF22C32D330045D352 /* wishpick */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 281609D822C32D350045D352 /* Build configuration list for PBXNativeTarget "wishpick" */;
+			buildPhases = (
+				281609AC22C32D330045D352 /* Sources */,
+				281609AD22C32D330045D352 /* Frameworks */,
+				281609AE22C32D330045D352 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = wishpick;
+			productName = wishpick;
+			productReference = 281609B022C32D340045D352 /* wishpick.app */;
+			productType = "com.apple.product-type.application";
+		};
+		281609C322C32D350045D352 /* wishpickTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 281609DB22C32D350045D352 /* Build configuration list for PBXNativeTarget "wishpickTests" */;
+			buildPhases = (
+				281609C022C32D350045D352 /* Sources */,
+				281609C122C32D350045D352 /* Frameworks */,
+				281609C222C32D350045D352 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				281609C622C32D350045D352 /* PBXTargetDependency */,
+			);
+			name = wishpickTests;
+			productName = wishpickTests;
+			productReference = 281609C422C32D350045D352 /* wishpickTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		281609CE22C32D350045D352 /* wishpickUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 281609DE22C32D350045D352 /* Build configuration list for PBXNativeTarget "wishpickUITests" */;
+			buildPhases = (
+				281609CB22C32D350045D352 /* Sources */,
+				281609CC22C32D350045D352 /* Frameworks */,
+				281609CD22C32D350045D352 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				281609D122C32D350045D352 /* PBXTargetDependency */,
+			);
+			name = wishpickUITests;
+			productName = wishpickUITests;
+			productReference = 281609CF22C32D350045D352 /* wishpickUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		281609A822C32D330045D352 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Danh Phu Nguyen";
+				TargetAttributes = {
+					281609AF22C32D330045D352 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					281609C322C32D350045D352 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 281609AF22C32D330045D352;
+					};
+					281609CE22C32D350045D352 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 281609AF22C32D330045D352;
+					};
+				};
+			};
+			buildConfigurationList = 281609AB22C32D330045D352 /* Build configuration list for PBXProject "wishpick" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 281609A722C32D330045D352;
+			productRefGroup = 281609B122C32D340045D352 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				281609AF22C32D330045D352 /* wishpick */,
+				281609C322C32D350045D352 /* wishpickTests */,
+				281609CE22C32D350045D352 /* wishpickUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		281609AE22C32D330045D352 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				281609BE22C32D350045D352 /* LaunchScreen.storyboard in Resources */,
+				281609BB22C32D350045D352 /* Assets.xcassets in Resources */,
+				281609B922C32D340045D352 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		281609C222C32D350045D352 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		281609CD22C32D350045D352 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		281609AC22C32D330045D352 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				281609B622C32D340045D352 /* ViewController.swift in Sources */,
+				281609B422C32D340045D352 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		281609C022C32D350045D352 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				281609C922C32D350045D352 /* wishpickTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		281609CB22C32D350045D352 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				281609D422C32D350045D352 /* wishpickUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		281609C622C32D350045D352 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 281609AF22C32D330045D352 /* wishpick */;
+			targetProxy = 281609C522C32D350045D352 /* PBXContainerItemProxy */;
+		};
+		281609D122C32D350045D352 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 281609AF22C32D330045D352 /* wishpick */;
+			targetProxy = 281609D022C32D350045D352 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		281609B722C32D340045D352 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				281609B822C32D340045D352 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		281609BC22C32D350045D352 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				281609BD22C32D350045D352 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		281609D622C32D350045D352 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		281609D722C32D350045D352 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		281609D922C32D350045D352 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FBPU586293;
+				INFOPLIST_FILE = wishpick/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.RyanNguyen.wishpick;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		281609DA22C32D350045D352 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FBPU586293;
+				INFOPLIST_FILE = wishpick/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.RyanNguyen.wishpick;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		281609DC22C32D350045D352 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FBPU586293;
+				INFOPLIST_FILE = wishpickTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.RyanNguyen.wishpickTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wishpick.app/wishpick";
+			};
+			name = Debug;
+		};
+		281609DD22C32D350045D352 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FBPU586293;
+				INFOPLIST_FILE = wishpickTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.RyanNguyen.wishpickTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wishpick.app/wishpick";
+			};
+			name = Release;
+		};
+		281609DF22C32D350045D352 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FBPU586293;
+				INFOPLIST_FILE = wishpickUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.RyanNguyen.wishpickUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = wishpick;
+			};
+			name = Debug;
+		};
+		281609E022C32D350045D352 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FBPU586293;
+				INFOPLIST_FILE = wishpickUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.RyanNguyen.wishpickUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = wishpick;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		281609AB22C32D330045D352 /* Build configuration list for PBXProject "wishpick" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				281609D622C32D350045D352 /* Debug */,
+				281609D722C32D350045D352 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		281609D822C32D350045D352 /* Build configuration list for PBXNativeTarget "wishpick" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				281609D922C32D350045D352 /* Debug */,
+				281609DA22C32D350045D352 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		281609DB22C32D350045D352 /* Build configuration list for PBXNativeTarget "wishpickTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				281609DC22C32D350045D352 /* Debug */,
+				281609DD22C32D350045D352 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		281609DE22C32D350045D352 /* Build configuration list for PBXNativeTarget "wishpickUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				281609DF22C32D350045D352 /* Debug */,
+				281609E022C32D350045D352 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 281609A822C32D330045D352 /* Project object */;
+}

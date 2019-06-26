@@ -6,6 +6,7 @@
 //  Copyright © 2019 Danh Phu Nguyen. All rights reserved.
 //
 
+import Firebase
 import UIKit
 
 class ViewController: UIViewController {
@@ -39,8 +40,23 @@ class ViewController: UIViewController {
         textField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         textField.leftView = paddingView
         textField.leftViewMode = .always
+        
+        textField.addTarget(self, action: #selector(handleTextInput), for: .editingChanged)
+        
         return textField
     }()
+    
+    @objc func handleTextInput() {
+        let isFormValid = emailTextField.text?.count ?? 0 > 0 && usernameTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
+        
+        if isFormValid {
+            signupButton.isEnabled = true
+            signupButton.backgroundColor = #colorLiteral(red: 0.9999071956, green: 1, blue: 0.999881804, alpha: 1)
+        } else {
+            signupButton.isEnabled = false
+            signupButton.backgroundColor = #colorLiteral(red: 0.9679592252, green: 0.9208878279, blue: 0.8556233644, alpha: 1)
+        }
+    }
     
     let usernameLabel: UILabel = {
         let label = UILabel()
@@ -63,6 +79,9 @@ class ViewController: UIViewController {
         textField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         textField.leftView = paddingView
         textField.leftViewMode = .always
+        
+        textField.addTarget(self, action: #selector(handleTextInput), for: .editingChanged)
+        
         return textField
     }()
     
@@ -87,24 +106,49 @@ class ViewController: UIViewController {
         textField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         textField.leftView = paddingView
         textField.leftViewMode = .always
+        
+        textField.addTarget(self, action: #selector(handleTextInput), for: .editingChanged)
+        
         return textField
     }()
     
     let signupButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Sign Up", for: .normal)
+        button.setTitle("Sign up", for: .normal)
         button.titleLabel?.font = UIFont(name: Fonts.proximaRegular, size: 18)
         button.setTitleColor(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.9999071956, green: 1, blue: 0.999881804, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 0.9679592252, green: 0.9208878279, blue: 0.8556233644, alpha: 1)
         button.layer.cornerRadius = 8
         button.layer.shadowOpacity = 0.8
         button.layer.shadowRadius = 2
         button.layer.shadowOffset = CGSize(width: 0, height: 3)
         button.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        
+        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        
+        button.isEnabled = false
+        
         return button
     }()
     
+    @objc func handleSignUp() {
+        guard let email = emailTextField.text else { return }
+        guard let username = usernameTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        Auth.auth().createUser(withEmail: email, password: password) { user, error in
+            // Check to see if user is created
+            if let err = error {
+                print("Failed to create user:", err)
+                return
+            }
+            // Sign the user in if no error occured
+            if error == nil {
+                Auth.auth().signIn(withEmail: email,
+                                   password: password)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

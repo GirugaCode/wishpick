@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Create an account"
-        label.font = UIFont.systemFont(ofSize: 35.0)
+        label.font = UIFont(name: Fonts.proximaThin, size: 38)
         return label
     }()
     
@@ -22,15 +22,23 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Email"
-        label.font = UIFont.systemFont(ofSize: 15.0)
+        label.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        label.font = UIFont(name: Fonts.proximaRegular, size: 18)
         return label
     }()
     
     let emailTextField: UITextField = {
         let textField = UITextField()
+        let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = #colorLiteral(red: 0.9999071956, green: 1, blue: 0.999881804, alpha: 1)
-        textField.borderStyle = .roundedRect
+        textField.layer.cornerRadius = 8
+        textField.layer.shadowOpacity = 0.8
+        textField.layer.shadowRadius = 2
+        textField.layer.shadowOffset = CGSize(width: 0, height: 3)
+        textField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        textField.leftView = paddingView
+        textField.leftViewMode = .always
         return textField
     }()
     
@@ -38,15 +46,23 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Username"
-        label.font = UIFont.systemFont(ofSize: 15.0)
+        label.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        label.font = UIFont(name: Fonts.proximaRegular, size: 18)
         return label
     }()
     
     let usernameTextField: UITextField = {
         let textField = UITextField()
+        let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = #colorLiteral(red: 0.9999071956, green: 1, blue: 0.999881804, alpha: 1)
-        textField.borderStyle = .roundedRect
+        textField.layer.cornerRadius = 8
+        textField.layer.shadowOpacity = 0.8
+        textField.layer.shadowRadius = 2
+        textField.layer.shadowOffset = CGSize(width: 0, height: 3)
+        textField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        textField.leftView = paddingView
+        textField.leftViewMode = .always
         return textField
     }()
     
@@ -54,15 +70,23 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Password"
-        label.font = UIFont.systemFont(ofSize: 15.0)
+        label.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        label.font = UIFont(name: Fonts.proximaRegular, size: 18)
         return label
     }()
     
     let passwordTextField: UITextField = {
         let textField = UITextField()
+        let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = #colorLiteral(red: 0.9999071956, green: 1, blue: 0.999881804, alpha: 1)
-        textField.borderStyle = .roundedRect
+        textField.layer.cornerRadius = 8
+        textField.layer.shadowOpacity = 0.8
+        textField.layer.shadowRadius = 2
+        textField.layer.shadowOffset = CGSize(width: 0, height: 3)
+        textField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        textField.leftView = paddingView
+        textField.leftViewMode = .always
         return textField
     }()
     
@@ -70,7 +94,14 @@ class ViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Sign Up", for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.9758192897, green: 0.5812135339, blue: 0.02668368816, alpha: 1)
+        button.titleLabel?.font = UIFont(name: Fonts.proximaRegular, size: 18)
+        button.setTitleColor(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.9999071956, green: 1, blue: 0.999881804, alpha: 1)
+        button.layer.cornerRadius = 8
+        button.layer.shadowOpacity = 0.8
+        button.layer.shadowRadius = 2
+        button.layer.shadowOffset = CGSize(width: 0, height: 3)
+        button.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         return button
     }()
     
@@ -114,8 +145,8 @@ class ViewController: UIViewController {
         view.addSubview(signupButton)
 
         NSLayoutConstraint.activate([
-            createAccLabel.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 17),
-            createAccLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 3.5),
+            createAccLabel.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 15),
+            createAccLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2.5),
             createAccLabel.trailingAnchor.constraint(equalToSystemSpacingAfter: view.trailingAnchor, multiplier: -2),
             createAccLabel.heightAnchor.constraint(equalToConstant: 40),
             

@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>420871139154-0pskmr9io595ncorn1dbo53k1bigd0dl.apps.googleusercontent.com</string>
+	<string>466259545804-7b8pt964424vsm2bnkej87js8h2jivbd.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.420871139154-0pskmr9io595ncorn1dbo53k1bigd0dl</string>
+	<string>com.googleusercontent.apps.466259545804-7b8pt964424vsm2bnkej87js8h2jivbd</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCDk3q4lJg1d4u8gIBzj7DHea0sKNq0UwA</string>
+	<string>AIzaSyARn3IKw0fRrwXQUp9EzbIUk62xHaZJJ2w</string>
 	<key>GCM_SENDER_ID</key>
-	<string>420871139154</string>
+	<string>466259545804</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.RyanNguyen.wishpick</string>
 	<key>PROJECT_ID</key>
-	<string>wishpick-6dd03</string>
+	<string>wishpick-fc629</string>
 	<key>STORAGE_BUCKET</key>
-	<string>wishpick-6dd03.appspot.com</string>
+	<string>wishpick-fc629.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:420871139154:ios:fd910787e9d7cc1a</string>
+	<string>1:466259545804:ios:fd910787e9d7cc1a</string>
 	<key>DATABASE_URL</key>
-	<string>https://wishpick-6dd03.firebaseio.com</string>
+	<string>https://wishpick-fc629.firebaseio.com</string>
 </dict>
 </plist>

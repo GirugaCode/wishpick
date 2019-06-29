@@ -11,6 +11,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
     let createAccLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -146,7 +147,22 @@ class ViewController: UIViewController {
             if error == nil {
                 Auth.auth().signIn(withEmail: email,
                                    password: password)
+                
+                print("Sucessfully created user:", Auth.auth().currentUser?.uid ?? "")
             }
+            
+            guard let userID = Auth.auth().currentUser?.uid else { return }
+            let usernameValues = ["username":username]
+            let values = [userID:usernameValues]
+            Database.database().reference().child("users").setValue(values, withCompletionBlock: { (err, ref) in
+                
+                if let err = err {
+                    print("Failed to save user info:", err)
+                    return
+                }
+                
+                print("Successfully saved user info!")
+            })
         }
     }
 

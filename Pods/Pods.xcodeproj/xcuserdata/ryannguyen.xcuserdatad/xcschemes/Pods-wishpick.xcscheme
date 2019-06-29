@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0A7E076FDD84608E32D60524996F7EE7"
+               BlueprintIdentifier = "490686D94ADA0FEE0AD0B4CF04CCB90B"
                BuildableName = "Pods_wishpick.framework"
                BlueprintName = "Pods-wishpick"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0A7E076FDD84608E32D60524996F7EE7"
+            BlueprintIdentifier = "490686D94ADA0FEE0AD0B4CF04CCB90B"
             BuildableName = "Pods_wishpick.framework"
             BlueprintName = "Pods-wishpick"
             ReferencedContainer = "container:Pods.xcodeproj">

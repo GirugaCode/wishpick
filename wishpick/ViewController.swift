@@ -100,6 +100,7 @@ class ViewController: UIViewController {
         let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = #colorLiteral(red: 0.9999071956, green: 1, blue: 0.999881804, alpha: 1)
+        textField.isSecureTextEntry = true
         textField.layer.cornerRadius = 8
         textField.layer.shadowOpacity = 0.8
         textField.layer.shadowRadius = 2
@@ -154,14 +155,14 @@ class ViewController: UIViewController {
             guard let userID = Auth.auth().currentUser?.uid else { return }
             let usernameValues = ["username":username]
             let values = [userID:usernameValues]
-            Database.database().reference().child("users").setValue(values, withCompletionBlock: { (err, ref) in
-                
+            
+            Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
                 if let err = err {
                     print("Failed to save user info:", err)
                     return
                 }
                 
-                print("Successfully saved user info!")
+                print("Successfully saved user info!", userID)
             })
         }
     }

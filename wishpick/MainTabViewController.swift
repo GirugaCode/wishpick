@@ -6,6 +6,7 @@
 //  Copyright © 2019 Danh Phu Nguyen. All rights reserved.
 //
 
+import Firebase
 import UIKit
 
 class MainTabViewController: UITabBarController {

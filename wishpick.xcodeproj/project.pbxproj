@@ -25,6 +25,7 @@
 		281609F422C345D20045D352 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281609F322C345D20045D352 /* Constants.swift */; };
 		28259FF122C82CD100A6E4D2 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28259FF022C82CD100A6E4D2 /* MainTabViewController.swift */; };
 		28259FF322C82DE600A6E4D2 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28259FF222C82DE600A6E4D2 /* UserProfileController.swift */; };
+		28259FF522C87ED400A6E4D2 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28259FF422C87ED400A6E4D2 /* HeaderView.swift */; };
 		2829067422C81D7800D9AB0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2829067322C81D7700D9AB0E /* GoogleService-Info.plist */; };
 		518F1FA4738CB652183100F6 /* Pods_wishpickTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FB82CAE1299E9A7778F127 /* Pods_wishpickTests.framework */; };
 		D11001378F18E825A9E81456 /* Pods_wishpick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A79FDE7DDDB7F08EA66EF6 /* Pods_wishpick.framework */; };
@@ -75,6 +76,7 @@
 		281609F322C345D20045D352 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		28259FF022C82CD100A6E4D2 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		28259FF222C82DE600A6E4D2 /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
+		28259FF422C87ED400A6E4D2 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		2829067322C81D7700D9AB0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B74F70AB765165683C9AABA /* Pods-wishpickTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpickTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wishpickTests/Pods-wishpickTests.debug.xcconfig"; sourceTree = "<group>"; };
 		70A79FDE7DDDB7F08EA66EF6 /* Pods_wishpick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wishpick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +143,7 @@
 				281609E122C341EC0045D352 /* Custom Fonts */,
 				281609B322C32D340045D352 /* AppDelegate.swift */,
 				28259FF222C82DE600A6E4D2 /* UserProfileController.swift */,
+				28259FF422C87ED400A6E4D2 /* HeaderView.swift */,
 				28259FF022C82CD100A6E4D2 /* MainTabViewController.swift */,
 				281609B522C32D340045D352 /* ViewController.swift */,
 				281609F322C345D20045D352 /* Constants.swift */,
@@ -459,6 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				281609B622C32D340045D352 /* ViewController.swift in Sources */,
+				28259FF522C87ED400A6E4D2 /* HeaderView.swift in Sources */,
 				28259FF122C82CD100A6E4D2 /* MainTabViewController.swift in Sources */,
 				281609B422C32D340045D352 /* AppDelegate.swift in Sources */,
 				28259FF322C82DE600A6E4D2 /* UserProfileController.swift in Sources */,

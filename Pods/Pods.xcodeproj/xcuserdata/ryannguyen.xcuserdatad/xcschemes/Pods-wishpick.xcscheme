@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1030"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "490686D94ADA0FEE0AD0B4CF04CCB90B"
+               BlueprintIdentifier = "51581255BDB9B72D92A5276F859472C2"
                BuildableName = "Pods_wishpick.framework"
                BlueprintName = "Pods-wishpick"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "490686D94ADA0FEE0AD0B4CF04CCB90B"
+            BlueprintIdentifier = "51581255BDB9B72D92A5276F859472C2"
             BuildableName = "Pods_wishpick.framework"
             BlueprintName = "Pods-wishpick"
             ReferencedContainer = "container:Pods.xcodeproj">

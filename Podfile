@@ -5,11 +5,15 @@ target 'wishpick' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for wishpick
+  # Pods for Firebase
     pod 'Firebase/Auth'
     pod 'Firebase/Core'
     pod 'Firebase/Database'
     pod 'Firebase/Storage'
+
+  # Pods for Facebook
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
 
   target 'wishpickTests' do
     inherit! :search_paths

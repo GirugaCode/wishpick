@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKCoreKit
 import Firebase
 
 @UIApplicationMain
@@ -16,13 +17,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Handles Firebase
         FirebaseApp.configure()
         
-        window = UIWindow()
-        window?.rootViewController = MainTabViewController()
+        // Handle Facebook Authentication
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        window = UIWindow()
+//        window?.rootViewController = MainTabViewController()
+        window?.rootViewController = LoginViewController()
         return true
+    }
+    
+    // Handles URL Redirect for Facebook Authentication
+    func application(_ app: UIApplication, open url: URL, options:[UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        let handled: Bool = ApplicationDelegate.shared.application(app, open: url, sourceApplication: options[.sourceApplication] as? String, annotation: options[.annotation])
+        return handled
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

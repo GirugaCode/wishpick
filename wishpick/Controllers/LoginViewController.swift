@@ -47,12 +47,12 @@ class LoginViewController: UIViewController {
         button.setImage(#imageLiteral(resourceName: "facebook_icon"), for: .normal)
         button.titleLabel?.font = UIFont(name: Fonts.proximaBold, size: 20)
         button.backgroundColor = #colorLiteral(red: 0.3333333333, green: 0.4745098039, blue: 0.7882352941, alpha: 1)
-        button.layer.cornerRadius = 40
         button.addTarget(self, action: #selector(facebookSignIn), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
+    //MARK: Auth
     @objc func facebookSignIn() {
         let loginManager = LoginManager()
         loginManager.logIn(permissions: ["public_profile", "email"], from: self) { (result, error) in
@@ -76,6 +76,8 @@ class LoginViewController: UIViewController {
                     self.present(alertController, animated: true, completion: nil)
                     return
                 }
+                
+                // TODO: Embed the view in a navation controller
                 let svc = MainTabViewController()
                 svc.modalTransitionStyle = .crossDissolve
                 self.present(svc, animated: true, completion: nil)
@@ -111,22 +113,30 @@ class LoginViewController: UIViewController {
         return label
     }()
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setButtonCornerRadius()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        view.setGradientBackground(colorOne: #colorLiteral(red: 0.5019607843, green: 0.3647058824, blue: 0.1725490196, alpha: 1), colorTwo: #colorLiteral(red: 1, green: 0.6561305523, blue: 0.171354413, alpha: 1))
         
         setupLoginView()
-        
         if (AccessToken.current != nil) {
             // User is logged in, do work such as go to next view controller.
         }
     }
     
+  
+    //MARK: UI setup
     fileprivate func setupLoginView() {
+        
+        // Set up background gradient
+        view.setGradientBackground(colorOne: #colorLiteral(red: 0.5019607843, green: 0.3647058824, blue: 0.1725490196, alpha: 1), colorTwo: #colorLiteral(red: 1, green: 0.6561305523, blue: 0.171354413, alpha: 1))
         
         // Stack View objects
         let topStackView = UIStackView(arrangedSubviews: [wishpickIcon, wishpickLabel, wishpickSubLabel])
@@ -169,5 +179,12 @@ class LoginViewController: UIViewController {
             emailLoginButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08)
             
             ])
+    }
+    
+    fileprivate func setButtonCornerRadius() {
+        
+        // TODO: Create an extension of UIButton
+        facebookLoginButton.layer.cornerRadius = facebookLoginButton.frame.height/2
+        emailLoginButton.layer.cornerRadius = emailLoginButton.frame.height/2
     }
 }

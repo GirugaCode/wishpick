@@ -52,6 +52,31 @@ class LoginViewController: UIViewController {
         return button
     }()
     
+    let emailLoginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Sign up with E-mail", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        button.titleLabel?.font = UIFont(name: Fonts.proximaBold, size: 20)
+        button.setTitleColor(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1), for: .normal)
+        button.layer.cornerRadius = 40
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(emailSignIn), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func emailSignIn() {
+        AppDelegate.shared.rootViewController.switchToLoginWithEmail()
+    }
+    
+    let tosLabel: UILabel = {
+        let label = UILabel()
+        label.text = "By signing up, you agree to our Terms of Service and Privacy Policy."
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     //MARK: Auth
     @objc func facebookSignIn() {
         let loginManager = LoginManager()
@@ -78,59 +103,40 @@ class LoginViewController: UIViewController {
                 }
                 
                 // TODO: Embed the view in a navation controller
-                let svc = MainTabViewController()
-                svc.modalTransitionStyle = .crossDissolve
-                self.present(svc, animated: true, completion: nil)
+                if (AccessToken.current != nil) {
+                    AppDelegate.shared.rootViewController.switchToMainScreen()
+                }
+                
             })
         }
     }
     
-    
-    let emailLoginButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Sign up with E-mail", for: .normal)
-        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        button.titleLabel?.font = UIFont(name: Fonts.proximaBold, size: 20)
-        button.setTitleColor(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1), for: .normal)
-        button.layer.cornerRadius = 40
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(emailSignIn), for: .touchUpInside)
-        return button
-    }()
-    
-    @objc func emailSignIn() {
-        let svc = EmailViewController()
-        svc.modalTransitionStyle = .crossDissolve
-        self.present(svc, animated: true, completion: nil)
+    //MARK: Load Views
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    let tosLabel: UILabel = {
-        let label = UILabel()
-        label.text = "By signing up, you agree to our Terms of Service and Privacy Policy."
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Show the navigation bar on other view controllers
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         setButtonCornerRadius()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
         
         setupLoginView()
-        if (AccessToken.current != nil) {
-            // User is logged in, do work such as go to next view controller.
-        }
     }
-    
   
     //MARK: UI setup
     fileprivate func setupLoginView() {

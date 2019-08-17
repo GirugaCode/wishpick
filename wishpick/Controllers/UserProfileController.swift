@@ -29,9 +29,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     @objc func handleLogout() {
         // TODO: Make root vc on main feed
         LoginManager().logOut()
-        let svc = LoginViewController()
-        svc.modalTransitionStyle = .crossDissolve
-        self.present(svc, animated: true, completion: nil)
+        AppDelegate.shared.rootViewController.switchToLogout()
     }
     
     override func viewDidLoad() {

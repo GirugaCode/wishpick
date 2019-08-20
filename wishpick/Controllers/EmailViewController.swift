@@ -14,25 +14,24 @@ class EmailViewController: UIViewController {
     
     let createAccLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Create an account"
         label.font = UIFont(name: Fonts.proximaThin, size: 38)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let emailLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Email"
         label.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         label.font = UIFont(name: Fonts.proximaRegular, size: 18)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let emailTextField: UITextField = {
         let textField = UITextField()
         let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = #colorLiteral(red: 0.9999071956, green: 1, blue: 0.999881804, alpha: 1)
         textField.layer.cornerRadius = 8
         textField.layer.shadowOpacity = 0.8
@@ -41,6 +40,7 @@ class EmailViewController: UIViewController {
         textField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         textField.leftView = paddingView
         textField.leftViewMode = .always
+        textField.translatesAutoresizingMaskIntoConstraints = false
         
         textField.addTarget(self, action: #selector(handleTextInput), for: .editingChanged)
         
@@ -49,17 +49,16 @@ class EmailViewController: UIViewController {
     
     let usernameLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Username"
         label.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         label.font = UIFont(name: Fonts.proximaRegular, size: 18)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let usernameTextField: UITextField = {
         let textField = UITextField()
         let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = #colorLiteral(red: 0.9999071956, green: 1, blue: 0.999881804, alpha: 1)
         textField.layer.cornerRadius = 8
         textField.layer.shadowOpacity = 0.8
@@ -68,6 +67,7 @@ class EmailViewController: UIViewController {
         textField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         textField.leftView = paddingView
         textField.leftViewMode = .always
+        textField.translatesAutoresizingMaskIntoConstraints = false
         
         textField.addTarget(self, action: #selector(handleTextInput), for: .editingChanged)
         
@@ -76,17 +76,16 @@ class EmailViewController: UIViewController {
     
     let passwordLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Password"
         label.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         label.font = UIFont(name: Fonts.proximaRegular, size: 18)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let passwordTextField: UITextField = {
         let textField = UITextField()
         let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
-        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = #colorLiteral(red: 0.9999071956, green: 1, blue: 0.999881804, alpha: 1)
         textField.isSecureTextEntry = true
         textField.layer.cornerRadius = 8
@@ -96,15 +95,15 @@ class EmailViewController: UIViewController {
         textField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         textField.leftView = paddingView
         textField.leftViewMode = .always
+        textField.translatesAutoresizingMaskIntoConstraints = false
         
         textField.addTarget(self, action: #selector(handleTextInput), for: .editingChanged)
-        
+
         return textField
     }()
     
     let signupButton: UIButton = {
         let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Sign up", for: .normal)
         button.titleLabel?.font = UIFont(name: Fonts.proximaRegular, size: 18)
         button.setTitleColor(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), for: .normal)
@@ -114,6 +113,7 @@ class EmailViewController: UIViewController {
         button.layer.shadowRadius = 2
         button.layer.shadowOffset = CGSize(width: 0, height: 3)
         button.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         
@@ -122,27 +122,40 @@ class EmailViewController: UIViewController {
         return button
     }()
     
-    let backButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Back", for: .normal)
-        button.titleLabel?.font = UIFont(name: Fonts.proximaRegular, size: 18)
-        button.setTitleColor(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.9679592252, green: 0.9208878279, blue: 0.8556233644, alpha: 1)
-        button.layer.cornerRadius = 8
-        button.layer.shadowOpacity = 0.8
-        button.layer.shadowRadius = 2
-        button.layer.shadowOffset = CGSize(width: 0, height: 3)
-        button.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+    let exisitingAccLabel: UILabel = {
+        let label = UILabel()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(backTransition))
+        label.text = "Already have an account? Sign In"
+        label.textAlignment = .center
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tap)
+        label.translatesAutoresizingMaskIntoConstraints = false
         
-        button.addTarget(self, action: #selector(backTransition), for: .touchUpInside)
-        
-        return button
+        return label
     }()
+    
+//    let backButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.setTitle("Back", for: .normal)
+//        button.titleLabel?.font = UIFont(name: Fonts.proximaRegular, size: 18)
+//        button.setTitleColor(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), for: .normal)
+//        button.backgroundColor = #colorLiteral(red: 0.9679592252, green: 0.9208878279, blue: 0.8556233644, alpha: 1)
+//        button.layer.cornerRadius = 8
+//        button.layer.shadowOpacity = 0.8
+//        button.layer.shadowRadius = 2
+//        button.layer.shadowOffset = CGSize(width: 0, height: 3)
+//        button.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//
+//        button.addTarget(self, action: #selector(backTransition), for: .touchUpInside)
+//
+//        return button
+//    }()
     
     //MARK: Back Transition
     @objc func backTransition() {
-        AppDelegate.shared.rootViewController.showLoginScreen()
+        print("working")
+        AppDelegate.shared.rootViewController.switchToMainScreen()
     }
     
     //MARK: Text Validation
@@ -244,16 +257,10 @@ class EmailViewController: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 10
         
-        let buttonStackView = UIStackView(arrangedSubviews: [signupButton, backButton])
-        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        buttonStackView.distribution = .fillEqually
-        buttonStackView.axis = .vertical
-        buttonStackView.spacing = 10
-        
         view.addSubview(createAccLabel)
         view.addSubview(stackView)
-        view.addSubview(buttonStackView)
+        view.addSubview(signupButton)
+        view.addSubview(exisitingAccLabel)
 
         NSLayoutConstraint.activate([
             createAccLabel.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 15),
@@ -266,10 +273,15 @@ class EmailViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
             stackView.heightAnchor.constraint(equalToConstant: 290),
             
-            buttonStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
-            buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 120),
-            buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -120),
-            buttonStackView.heightAnchor.constraint(equalToConstant: 50)
+            signupButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
+            signupButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 120),
+            signupButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -120),
+            signupButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            exisitingAccLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 230),
+            exisitingAccLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            exisitingAccLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            exisitingAccLabel.heightAnchor.constraint(equalToConstant: 50),
             ])
     }
 }

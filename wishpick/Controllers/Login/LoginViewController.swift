@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
     let wishpickSubLabel: UILabel = {
         let label = UILabel()
         label.text = "want & share"
-        label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        label.textColor = #colorLiteral(red: 1, green: 0.9387172013, blue: 0.6734803082, alpha: 1)
         label.font = UIFont(name: Fonts.proximaAltBold, size: 30)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -55,18 +55,17 @@ class LoginViewController: UIViewController {
     let emailLoginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign up with E-mail", for: .normal)
-        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         button.titleLabel?.font = UIFont(name: Fonts.proximaBold, size: 20)
         button.setTitleColor(#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1), for: .normal)
         button.layer.cornerRadius = 40
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleEdgeInsets.left = 10
+        button.imageEdgeInsets.right = 20
+        button.setImage(#imageLiteral(resourceName: "Email-Icon"), for: .normal)
+        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         button.addTarget(self, action: #selector(emailSignIn), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
-    @objc func emailSignIn() {
-        AppDelegate.shared.rootViewController.switchToLoginWithEmail()
-    }
     
     let tosLabel: UILabel = {
         let label = UILabel()
@@ -102,13 +101,16 @@ class LoginViewController: UIViewController {
                     return
                 }
                 
-                // TODO: Embed the view in a navation controller
                 if (AccessToken.current != nil) {
-                    AppDelegate.shared.rootViewController.switchToMainScreen()
+                    AppDelegate.shared.rootViewController.switchToUserSetup()
                 }
                 
             })
         }
+    }
+    
+    @objc func emailSignIn() {
+        AppDelegate.shared.rootViewController.switchToLoginWithEmail()
     }
     
     //MARK: Load Views

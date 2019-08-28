@@ -62,6 +62,12 @@ class RootViewController: UIViewController {
         animateDismissTransition(to: logoutScreen)
     }
     
+    func switchToUserSetup() {
+        let userSetupViewController = UserSetupViewController()
+        let userSetupScreen = UINavigationController(rootViewController: userSetupViewController)
+        animateDismissTransition(to: userSetupScreen)
+    }
+    
     //MARK: Transition Animations
     private func animateFadeTransition(to new: UIViewController, completion: (() -> Void)? = nil) {
         current.willMove(toParent: nil)

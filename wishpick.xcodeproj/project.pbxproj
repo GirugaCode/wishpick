@@ -29,6 +29,7 @@
 		28445DC82307FA82008CED37 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28445DC72307FA82008CED37 /* RootViewController.swift */; };
 		287ECD9622FAC19600D2CB7A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287ECD9522FAC19600D2CB7A /* LoginViewController.swift */; };
 		287ECD9822FAC2C600D2CB7A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287ECD9722FAC2C600D2CB7A /* UIView+Extension.swift */; };
+		28F2CBE72316677500D67525 /* UserSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2CBE62316677500D67525 /* UserSetupViewController.swift */; };
 		518F1FA4738CB652183100F6 /* Pods_wishpickTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FB82CAE1299E9A7778F127 /* Pods_wishpickTests.framework */; };
 		D11001378F18E825A9E81456 /* Pods_wishpick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A79FDE7DDDB7F08EA66EF6 /* Pods_wishpick.framework */; };
 		E4D0E68F707551599E58DB18 /* Pods_wishpickUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEFF0911C952C5F1BCD3DCA6 /* Pods_wishpickUITests.framework */; };
@@ -82,6 +83,7 @@
 		28445DC72307FA82008CED37 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		287ECD9522FAC19600D2CB7A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		287ECD9722FAC2C600D2CB7A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		28F2CBE62316677500D67525 /* UserSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupViewController.swift; sourceTree = "<group>"; };
 		5B74F70AB765165683C9AABA /* Pods-wishpickTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpickTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wishpickTests/Pods-wishpickTests.debug.xcconfig"; sourceTree = "<group>"; };
 		70A79FDE7DDDB7F08EA66EF6 /* Pods_wishpick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wishpick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EAAB6C495CE8CA476A563C3 /* Pods-wishpickUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpickUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wishpickUITests/Pods-wishpickUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -218,8 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				28445DC72307FA82008CED37 /* RootViewController.swift */,
-				287ECD9522FAC19600D2CB7A /* LoginViewController.swift */,
-				281609B522C32D340045D352 /* EmailViewController.swift */,
+				28F2CBE82316678200D67525 /* Login */,
+				28F2CBE62316677500D67525 /* UserSetupViewController.swift */,
 				28259FF022C82CD100A6E4D2 /* MainTabViewController.swift */,
 				28259FF222C82DE600A6E4D2 /* UserProfileController.swift */,
 			);
@@ -233,6 +235,15 @@
 				281609F322C345D20045D352 /* Constants.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		28F2CBE82316678200D67525 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				287ECD9522FAC19600D2CB7A /* LoginViewController.swift */,
+				281609B522C32D340045D352 /* EmailViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		967644F5EE5350087E25D6A7 /* Pods */ = {
@@ -511,6 +522,7 @@
 				281609B422C32D340045D352 /* AppDelegate.swift in Sources */,
 				28259FF322C82DE600A6E4D2 /* UserProfileController.swift in Sources */,
 				281609F422C345D20045D352 /* Constants.swift in Sources */,
+				28F2CBE72316677500D67525 /* UserSetupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

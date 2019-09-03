@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2809512E231F00B9001BD2DF /* SpacerView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2809512D231F00B9001BD2DF /* SpacerView+Extension.swift */; };
 		281609B422C32D340045D352 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281609B322C32D340045D352 /* AppDelegate.swift */; };
 		281609B622C32D340045D352 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281609B522C32D340045D352 /* EmailViewController.swift */; };
 		281609BB22C32D350045D352 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 281609BA22C32D350045D352 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		01E3D23E4303E2322779D102 /* Pods-wishpick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpick.release.xcconfig"; path = "Pods/Target Support Files/Pods-wishpick/Pods-wishpick.release.xcconfig"; sourceTree = "<group>"; };
 		1883471CA8C55894B2AFA563 /* Pods-wishpickUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpickUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-wishpickUITests/Pods-wishpickUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2809512D231F00B9001BD2DF /* SpacerView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpacerView+Extension.swift"; sourceTree = "<group>"; };
 		281609B022C32D340045D352 /* wishpick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wishpick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		281609B322C32D340045D352 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		281609B522C32D340045D352 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
@@ -221,7 +223,6 @@
 			children = (
 				28445DC72307FA82008CED37 /* RootViewController.swift */,
 				28F2CBE82316678200D67525 /* Login */,
-				28F2CBE62316677500D67525 /* UserSetupViewController.swift */,
 				28259FF022C82CD100A6E4D2 /* MainTabViewController.swift */,
 				28259FF222C82DE600A6E4D2 /* UserProfileController.swift */,
 			);
@@ -231,8 +232,9 @@
 		28314FED22FB0B7F0091F5A1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				287ECD9722FAC2C600D2CB7A /* UIView+Extension.swift */,
 				281609F322C345D20045D352 /* Constants.swift */,
+				2809512D231F00B9001BD2DF /* SpacerView+Extension.swift */,
+				287ECD9722FAC2C600D2CB7A /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -242,6 +244,7 @@
 			children = (
 				287ECD9522FAC19600D2CB7A /* LoginViewController.swift */,
 				281609B522C32D340045D352 /* EmailViewController.swift */,
+				28F2CBE62316677500D67525 /* UserSetupViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				287ECD9622FAC19600D2CB7A /* LoginViewController.swift in Sources */,
+				2809512E231F00B9001BD2DF /* SpacerView+Extension.swift in Sources */,
 				281609B622C32D340045D352 /* EmailViewController.swift in Sources */,
 				28445DC82307FA82008CED37 /* RootViewController.swift in Sources */,
 				287ECD9822FAC2C600D2CB7A /* UIView+Extension.swift in Sources */,

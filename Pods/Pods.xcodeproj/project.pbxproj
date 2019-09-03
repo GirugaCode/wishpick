@@ -123,7 +123,6 @@
 		1E35F6BFC09BD06406C29176322A6C61 /* FIRStorageReference.h in Headers */ = {isa = PBXBuildFile; fileRef = 711E6DF16AE271315D4EE80D03D62649 /* FIRStorageReference.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1F411F60AC433B7A8CF2AD16BB33548D /* FLevelDBStorageEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D4525F2403BA7053A09767FEA6AA119 /* FLevelDBStorageEngine.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		1F5C01F68004EE6E9652798667250024 /* FSyncTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F672B43E3738B54556115079F7B64BEC /* FSyncTree.m */; };
-		1F5FBECE086A422F62736E989DB6C330 /* FBSDKCoreKit.modulemap in Sources */ = {isa = PBXBuildFile; fileRef = 2ECFA813F353395F7CD86AA5F78A5AC6 /* FBSDKCoreKit.modulemap */; };
 		1F6E8FA3A6C220A83872BA383B7D1D54 /* FBSDKCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = D8EE99B704D820C2332C211ACE4998D9 /* FBSDKCopying.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1F8D6CC03F5623D9572B0346AEF6C2A5 /* FBSDKLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 356F2F7F77D8646A174FB716068D9986 /* FBSDKLoginButton.m */; };
 		1FDCEB6A40916796A1FBC79CD126FD23 /* FTypedefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 30A1BF63859C140D3E6A5574BEB6DFBC /* FTypedefs.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -5039,7 +5038,6 @@
 				FE0ABAFD5EE2C3C03424F61C1F1A7FA9 /* FBSDKConstants.m in Sources */,
 				43D6ED877B8B699BCFE2420A90BDA808 /* FBSDKContainerViewController.m in Sources */,
 				02703E785AACF6D6E76F2FA7BC10F983 /* FBSDKCoreKit-dummy.m in Sources */,
-				1F5FBECE086A422F62736E989DB6C330 /* FBSDKCoreKit.modulemap in Sources */,
 				4D7146635DB8269CA7A26137B2733ED8 /* FBSDKCrypto.m in Sources */,
 				305CDD908357AA7A90BBA11520905C56 /* FBSDKDeviceRequestsHelper.m in Sources */,
 				17BE262C135B7177C87EE2CE99BDA7E1 /* FBSDKDialogConfiguration.m in Sources */,

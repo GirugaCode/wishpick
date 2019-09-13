@@ -28,12 +28,21 @@ class UserSetupViewController: UIViewController {
     
     let descriptionLabel: UILabel = {
         let label = UILabel()
+
         label.text =
         """
         wishpick wants to provide
         a real way for people to connect and know which
         items they want to make that next occasion special
         """
+        
+        let colorRange = "wishpick"
+        let range = (label.text! as NSString).range(of: colorRange)
+        let attribute = NSMutableAttributedString.init(string: label.text!)
+        attribute.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.magenta, range: range)
+        label.attributedText = attribute
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
@@ -63,6 +72,12 @@ class UserSetupViewController: UIViewController {
         // Show the navigation bar on other view controllers
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setButtonCornerRadius()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +90,28 @@ class UserSetupViewController: UIViewController {
     fileprivate func setupUI() {
         view.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
         continueButton.roundedButton(button: continueButton)
+        
+        // Stack View objects
+        let mainStackView = UIStackView(arrangedSubviews: [welcomeLabel, userSetupAsset, descriptionLabel, continueButton])
+        mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        mainStackView.distribution = .fill
+        mainStackView.axis = .vertical
+        mainStackView.alignment = .center
+        mainStackView.spacing = 10
+        
+        // Adding stack views to the view
+        view.addSubview(mainStackView)
+        
+        // Constraining the UI
+        NSLayoutConstraint.activate([
+            mainStackView.topAnchor.constraint(equalTo: view.topAnchor),
+            mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
     }
-
+    
+    fileprivate func setButtonCornerRadius() {
+        continueButton.roundedButton(button: continueButton)
+    }
 }

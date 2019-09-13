@@ -190,9 +190,7 @@ class LoginViewController: UIViewController {
     }
     
     fileprivate func setButtonCornerRadius() {
-        
-        // TODO: Create an extension of UIButton
-        facebookLoginButton.layer.cornerRadius = facebookLoginButton.frame.height/2
-        emailLoginButton.layer.cornerRadius = emailLoginButton.frame.height/2
+        facebookLoginButton.roundedButton(button: facebookLoginButton)
+        emailLoginButton.roundedButton(button: emailLoginButton)
     }
 }

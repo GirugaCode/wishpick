@@ -6,7 +6,6 @@
 //  Copyright © 2019 Danh Phu Nguyen. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension UIView {

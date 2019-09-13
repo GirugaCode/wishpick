@@ -11,7 +11,6 @@ import UIKit
 
 class EmailViewController: UIViewController {
     
-    
     let createAccLabel: UILabel = {
         let label = UILabel()
         label.text = "Create an account"
@@ -134,23 +133,23 @@ class EmailViewController: UIViewController {
         return label
     }()
     
-//    let backButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setTitle("Back", for: .normal)
-//        button.titleLabel?.font = UIFont(name: Fonts.proximaRegular, size: 18)
-//        button.setTitleColor(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), for: .normal)
-//        button.backgroundColor = #colorLiteral(red: 0.9679592252, green: 0.9208878279, blue: 0.8556233644, alpha: 1)
-//        button.layer.cornerRadius = 8
-//        button.layer.shadowOpacity = 0.8
-//        button.layer.shadowRadius = 2
-//        button.layer.shadowOffset = CGSize(width: 0, height: 3)
-//        button.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//
-//        button.addTarget(self, action: #selector(backTransition), for: .touchUpInside)
-//
-//        return button
-//    }()
+    let backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Back", for: .normal)
+        button.titleLabel?.font = UIFont(name: Fonts.proximaRegular, size: 18)
+        button.setTitleColor(#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1), for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0.9679592252, green: 0.9208878279, blue: 0.8556233644, alpha: 1)
+        button.layer.cornerRadius = 8
+        button.layer.shadowOpacity = 0.8
+        button.layer.shadowRadius = 2
+        button.layer.shadowOffset = CGSize(width: 0, height: 3)
+        button.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        button.translatesAutoresizingMaskIntoConstraints = false
+
+        button.addTarget(self, action: #selector(backTransition), for: .touchUpInside)
+
+        return button
+    }()
     
     //MARK: Back Transition
     @objc func backTransition() {

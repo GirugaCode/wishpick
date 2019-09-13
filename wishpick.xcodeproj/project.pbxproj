@@ -28,6 +28,7 @@
 		28259FF522C87ED400A6E4D2 /* UserProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28259FF422C87ED400A6E4D2 /* UserProfileHeaderView.swift */; };
 		2829067422C81D7800D9AB0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2829067322C81D7700D9AB0E /* GoogleService-Info.plist */; };
 		28445DC82307FA82008CED37 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28445DC72307FA82008CED37 /* RootViewController.swift */; };
+		284DF6BC232B340500E651F5 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284DF6BB232B340500E651F5 /* UIButton+Extension.swift */; };
 		287ECD9622FAC19600D2CB7A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287ECD9522FAC19600D2CB7A /* LoginViewController.swift */; };
 		287ECD9822FAC2C600D2CB7A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287ECD9722FAC2C600D2CB7A /* UIView+Extension.swift */; };
 		28F2CBE72316677500D67525 /* UserSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2CBE62316677500D67525 /* UserSetupViewController.swift */; };
@@ -83,6 +84,7 @@
 		28259FF422C87ED400A6E4D2 /* UserProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderView.swift; sourceTree = "<group>"; };
 		2829067322C81D7700D9AB0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28445DC72307FA82008CED37 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		284DF6BB232B340500E651F5 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		287ECD9522FAC19600D2CB7A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		287ECD9722FAC2C600D2CB7A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		28F2CBE62316677500D67525 /* UserSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				281609F322C345D20045D352 /* Constants.swift */,
 				2809512D231F00B9001BD2DF /* SpacerView+Extension.swift */,
 				287ECD9722FAC2C600D2CB7A /* UIView+Extension.swift */,
+				284DF6BB232B340500E651F5 /* UIButton+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				281609B622C32D340045D352 /* EmailViewController.swift in Sources */,
 				28445DC82307FA82008CED37 /* RootViewController.swift in Sources */,
 				287ECD9822FAC2C600D2CB7A /* UIView+Extension.swift in Sources */,
+				284DF6BC232B340500E651F5 /* UIButton+Extension.swift in Sources */,
 				28259FF522C87ED400A6E4D2 /* UserProfileHeaderView.swift in Sources */,
 				28259FF122C82CD100A6E4D2 /* MainTabViewController.swift in Sources */,
 				281609B422C32D340045D352 /* AppDelegate.swift in Sources */,

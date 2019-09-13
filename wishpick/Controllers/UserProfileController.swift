@@ -42,7 +42,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         fetchUser()
         
-        setupView()
+        setupUI()
         
         // Registers the header view
         collectionView?.register(UserProfileHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
@@ -78,7 +78,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         }
     }
     
-    fileprivate func setupView() {
+    fileprivate func setupUI() {
         view.addSubview(logoutButton)
         
         NSLayoutConstraint.activate([

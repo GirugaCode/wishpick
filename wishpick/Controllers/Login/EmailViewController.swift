@@ -11,12 +11,31 @@ import UIKit
 
 class EmailViewController: UIViewController {
     
+    //MARK: UI COMPONENTS
     let createAccLabel: UILabel = {
         let label = UILabel()
         label.text = "Create an account"
         label.font = UIFont(name: Fonts.proximaThin, size: 38)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    lazy var mainStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [emailStackView, usernameStackView, passwordStackView])
+        stackView.distribution = .fillEqually
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    lazy var emailStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField])
+        stackView.distribution = .fillEqually
+        stackView.axis = .vertical
+        stackView.spacing = 2
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }()
     
     let emailLabel: UILabel = {
@@ -46,6 +65,15 @@ class EmailViewController: UIViewController {
         return textField
     }()
     
+    lazy var usernameStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [usernameLabel, usernameTextField])
+        stackView.distribution = .fillEqually
+        stackView.axis = .vertical
+        stackView.spacing = 2
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     let usernameLabel: UILabel = {
         let label = UILabel()
         label.text = "Username"
@@ -71,6 +99,15 @@ class EmailViewController: UIViewController {
         textField.addTarget(self, action: #selector(handleTextInput), for: .editingChanged)
         
         return textField
+    }()
+    
+    lazy var passwordStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fillEqually
+        stackView.axis = .vertical
+        stackView.spacing = 2
+        return stackView
     }()
     
     let passwordLabel: UILabel = {
@@ -151,13 +188,12 @@ class EmailViewController: UIViewController {
         return button
     }()
     
-    //MARK: Back Transition
+    //MARK: SEGUES
     @objc func backTransition() {
-        print("working")
-        AppDelegate.shared.rootViewController.switchToMainScreen()
+        AppDelegate.shared.rootViewController.switchToLogout()
     }
     
-    //MARK: Text Validation
+    //MARK: TEXT VALIDATIONS
     @objc func handleTextInput() {
         let isFormValid = emailTextField.text?.count ?? 0 > 0 && usernameTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
         
@@ -170,7 +206,7 @@ class EmailViewController: UIViewController {
         }
     }
     
-    //MARK: Auth
+    //MARK: AUTH
     @objc func handleSignUp() {
         guard let email = emailTextField.text else { return }
         guard let username = usernameTextField.text else { return }
@@ -205,7 +241,7 @@ class EmailViewController: UIViewController {
         AppDelegate.shared.rootViewController.switchToMainScreen()
     }
     
-    //MARK: Load Views
+    //MARK: OVERRIDE FUNCTIONS
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -225,59 +261,44 @@ class EmailViewController: UIViewController {
         setupInputFieldsView()
     }
     
-    //MARK: UI setup
+    //MARK: UI SETUP
     fileprivate func setupInputFieldsView() {
         
         // Set up background gradient
         view.setGradientBackground(colorOne: #colorLiteral(red: 0.5019607843, green: 0.3647058824, blue: 0.1725490196, alpha: 1), colorTwo: #colorLiteral(red: 1, green: 0.6561305523, blue: 0.171354413, alpha: 1))
         
-        let emailStackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField])
-        emailStackView.translatesAutoresizingMaskIntoConstraints = false
-        emailStackView.distribution = .fillEqually
-        emailStackView.axis = .vertical
-        emailStackView.spacing = 2
-        
-        let usernameStackView = UIStackView(arrangedSubviews: [usernameLabel, usernameTextField])
-        usernameStackView.translatesAutoresizingMaskIntoConstraints = false
-        usernameStackView.distribution = .fillEqually
-        usernameStackView.axis = .vertical
-        usernameStackView.spacing = 2
-        
-        let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField])
-        passwordStackView.translatesAutoresizingMaskIntoConstraints = false
-        passwordStackView.distribution = .fillEqually
-        passwordStackView.axis = .vertical
-        passwordStackView.spacing = 2
-        
-        let stackView = UIStackView(arrangedSubviews: [emailStackView, usernameStackView, passwordStackView])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-
-        stackView.distribution = .fillEqually
-        stackView.axis = .vertical
-        stackView.spacing = 10
-        
+        // Adding Views
         view.addSubview(createAccLabel)
-        view.addSubview(stackView)
+        view.addSubview(mainStackView)
         view.addSubview(signupButton)
         view.addSubview(exisitingAccLabel)
+        view.addSubview(backButton)
 
         NSLayoutConstraint.activate([
+            // Back button
+            backButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            backButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            
+            // Top Label
             createAccLabel.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 15),
             createAccLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2.5),
             createAccLabel.trailingAnchor.constraint(equalToSystemSpacingAfter: view.trailingAnchor, multiplier: -2),
             createAccLabel.heightAnchor.constraint(equalToConstant: 40),
             
-            stackView.topAnchor.constraint(equalTo: createAccLabel.bottomAnchor, constant: 25),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
-            stackView.heightAnchor.constraint(equalToConstant: 290),
+            // Text Field Stacks
+            mainStackView.topAnchor.constraint(equalTo: createAccLabel.bottomAnchor, constant: 25),
+            mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            mainStackView.heightAnchor.constraint(equalToConstant: 290),
             
-            signupButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
+            // Sign up Button
+            signupButton.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 30),
             signupButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 120),
             signupButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -120),
             signupButton.heightAnchor.constraint(equalToConstant: 50),
             
-            exisitingAccLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 230),
+            // Existing Account Label
+            exisitingAccLabel.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 230),
             exisitingAccLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             exisitingAccLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             exisitingAccLabel.heightAnchor.constraint(equalToConstant: 50),

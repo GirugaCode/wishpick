@@ -13,6 +13,17 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    //MARK: UI COMPONENTS
+    lazy var topStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [wishpickIcon, wishpickLabel, wishpickSubLabel])
+        stackView.distribution = .fillProportionally
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     let wishpickIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "wishpick_icon")
@@ -37,6 +48,16 @@ class LoginViewController: UIViewController {
         label.font = UIFont(name: Fonts.proximaAltBold, size: 30)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    lazy var bottomStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [facebookLoginButton, emailLoginButton, tosLabel])
+        stackView.distribution = .fillProportionally
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.spacing = 20
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }()
     
     let facebookLoginButton: UIButton = {
@@ -76,7 +97,7 @@ class LoginViewController: UIViewController {
         return label
     }()
     
-    //MARK: Auth
+    //MARK: AUTH
     @objc func facebookSignIn() {
         let loginManager = LoginManager()
         loginManager.logIn(permissions: ["public_profile", "email"], from: self) { (result, error) in
@@ -113,7 +134,7 @@ class LoginViewController: UIViewController {
         AppDelegate.shared.rootViewController.switchToLoginWithEmail()
     }
     
-    //MARK: Load Views
+    //MARK: OVERRIDE FUNCTIONS
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -140,28 +161,13 @@ class LoginViewController: UIViewController {
         setupLoginView()
     }
   
-    //MARK: UI setup
+    //MARK: UI SETUP
     fileprivate func setupLoginView() {
         
         // Set up background gradient
         view.setGradientBackground(colorOne: #colorLiteral(red: 0.5019607843, green: 0.3647058824, blue: 0.1725490196, alpha: 1), colorTwo: #colorLiteral(red: 1, green: 0.6561305523, blue: 0.171354413, alpha: 1))
         
-        // Stack View objects
-        let topStackView = UIStackView(arrangedSubviews: [wishpickIcon, wishpickLabel, wishpickSubLabel])
-        topStackView.translatesAutoresizingMaskIntoConstraints = false
-        topStackView.distribution = .fillProportionally
-        topStackView.axis = .vertical
-        topStackView.alignment = .center
-        topStackView.spacing = 10
-        
-        let bottomStackView = UIStackView(arrangedSubviews: [facebookLoginButton, emailLoginButton, tosLabel])
-        bottomStackView.translatesAutoresizingMaskIntoConstraints = false
-        bottomStackView.distribution = .fillProportionally
-        bottomStackView.axis = .vertical
-        bottomStackView.alignment = .center
-        bottomStackView.spacing = 20
-        
-        // Adding stack views to the view
+        // Adding Views
         view.addSubview(topStackView)
         view.addSubview(bottomStackView)
         

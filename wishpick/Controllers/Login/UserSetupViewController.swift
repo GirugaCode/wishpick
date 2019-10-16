@@ -10,6 +10,17 @@ import UIKit
 
 class UserSetupViewController: UIViewController {
     
+    // MARK: UI COMPONENTS
+    lazy var mainStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [welcomeLabel, userSetupAsset, descriptionLabel, continueButton])
+        stackView.distribution = .fill
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     let welcomeLabel: UILabel = {
         let label = UILabel()
         label.text = "Welcome to wishpick"
@@ -30,18 +41,13 @@ class UserSetupViewController: UIViewController {
     let descriptionLabel: UILabel = {
         let label = UILabel()
 
-        label.text =
-        """
-        wishpick wants to provide
-        a real way for people to connect and know which
-        items they want to make that next occasion special
-        """
-        
-        let colorRange = "wishpick"
-        let range = (label.text! as NSString).range(of: colorRange)
-        let attribute = NSMutableAttributedString.init(string: label.text!)
-        attribute.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.magenta, range: range)
-        label.attributedText = attribute
+        label.text = "wishpick wants to provide a real way for people to connect and know which items they want to make that next occasion special"
+        label.numberOfLines = 0
+//        let colorRange = "wishpick"
+//        let range = (label.text! as NSString).range(of: colorRange)
+//        let attribute = NSMutableAttributedString.init(string: label.text!)
+//        attribute.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.magenta, range: range)
+//        label.attributedText = attribute
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -50,7 +56,7 @@ class UserSetupViewController: UIViewController {
     let continueButton: UIButton = {
         let button = UIButton()
         button.setTitle("Continue", for: .normal)
-        button.titleLabel?.font = UIFont(name: Fonts.proximaBold, size: 30)
+        button.titleLabel?.font = UIFont(name: Fonts.proximaBold, size: 15)
         button.backgroundColor = #colorLiteral(red: 1, green: 0.7294117647, blue: 0.3450980392, alpha: 1)
 //        button.addTarget(self, action: #selector(), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +64,7 @@ class UserSetupViewController: UIViewController {
     }()
 
     
-    //MARK: Load Views
+    //MARK: OVERRIDE FUNCTIONS
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -88,27 +94,24 @@ class UserSetupViewController: UIViewController {
         
     }
     
+    //MARK: SETUP UI
     fileprivate func setupUI() {
-        view.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
-        continueButton.roundedButton(button: continueButton)
-        
-        // Stack View objects
-        let mainStackView = UIStackView(arrangedSubviews: [welcomeLabel, userSetupAsset, descriptionLabel, continueButton])
-        mainStackView.translatesAutoresizingMaskIntoConstraints = false
-        mainStackView.distribution = .fill
-        mainStackView.axis = .vertical
-        mainStackView.alignment = .center
-        mainStackView.spacing = 10
-        
         // Adding stack views to the view
         view.addSubview(mainStackView)
         
+        view.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
+        continueButton.roundedButton(button: continueButton)
+        
         // Constraining the UI
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: view.topAnchor),
-            mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+//            mainStackView.topAnchor.constraint(equalTo: view.topAnchor),
+//            mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            descriptionLabel.widthAnchor.constraint(equalToConstant: 240),
+            
             ])
     }
     

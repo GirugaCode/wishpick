@@ -82,7 +82,7 @@
   FBSDKDialogConfiguration *dialogConfiguration = [serverConfiguration dialogConfigurationForDialogName:methodName];
   if (!dialogConfiguration) {
     if (errorRef != NULL) {
-      *errorRef = [NSError fbErrorWithCode:FBSDKErrorDialogUnavailable message:nil];
+      *errorRef = [FBSDKError errorWithCode:FBSDKErrorDialogUnavailable message:nil];
     }
     return nil;
   }
@@ -96,7 +96,7 @@
     return nil;
   }
 
-  NSMutableDictionary<NSString *, id> *queryParameters = [[FBSDKInternalUtility dictionaryWithQueryString:requestURL.query] mutableCopy];
+  NSMutableDictionary<NSString *, id> *queryParameters = [[FBSDKBasicUtility dictionaryWithQueryString:requestURL.query] mutableCopy];
   queryParameters[@"ios_bundle_id"] = [NSBundle mainBundle].bundleIdentifier;
   NSURL *redirectURL = [self _redirectURLWithActionID:nil methodName:methodName error:errorRef];
   if (!redirectURL) {

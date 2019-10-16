@@ -19,7 +19,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "../Basics/Internal/FBSDKBasicUtility+Internal.h"
+#import "FBSDKCoreKit+Internal.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -113,25 +113,11 @@ NS_SWIFT_NAME(InternalUtility)
                     error:(NSError *__autoreleasing *)errorRef;
 
 /**
- Gzip data with default compression level if possible.
- @param data The raw data.
- @return nil if unable to gzip the data, otherwise gzipped data.
- */
-+ (NSData *)gzip:(NSData *)data;
-
-/**
   Parses an FB url's query params (and potentially fragment) into a dictionary.
  @param url The FB url.
  @return A dictionary with the key/value pairs.
  */
 + (NSDictionary *)dictionaryFromFBURL:(NSURL *)url;
-
-/**
-  Converts simple value types to the string equivalent for serializing to a request query or body.
- @param value The value to be converted.
- @return The value that may have been converted if able (otherwise the input param).
- */
-+ (id)convertRequestValue:(id)value;
 
 /**
   Constructs a Facebook URL.
@@ -214,47 +200,6 @@ NS_SWIFT_NAME(InternalUtility)
 + (BOOL)object:(id)object isEqualToObject:(id)other;
 
 /**
- Parses a query string into a dictionary.
- @param queryString The query string value.
- @return A dictionary with the key/value pairs.
- */
-+ (NSDictionary<NSString *, NSString *> *)dictionaryWithQueryString:(NSString *)queryString;
-
-/**
-  Converts a JSON string into an object
- @param string The JSON string to convert.
- @param errorRef If an error occurs, upon return contains an NSError object that describes the problem.
- @return An NSDictionary, NSArray, NSString or NSNumber containing the object representation, or nil if the string
- cannot be converted.
- */
-+ (id)objectForJSONString:(NSString *)string error:(NSError *__autoreleasing *)errorRef;
-
-/**
-  Constructs a query string from a dictionary.
- @param dictionary The dictionary with key/value pairs for the query string.
- @param errorRef If an error occurs, upon return contains an NSError object that describes the problem.
- @param invalidObjectHandler Handles objects that are invalid, returning a replacement value or nil to ignore.
- @return Query string representation of the parameters.
- */
-+ (NSString *)queryStringWithDictionary:(NSDictionary<NSString *, id> *)dictionary
-                                  error:(NSError *__autoreleasing *)errorRef
-                   invalidObjectHandler:(nullable FBSDKInvalidObjectHandler)invalidObjectHandler;
-
-/**
- Decodes a value from an URL.
- @param value The value to decode.
- @return The decoded value.
- */
-+ (NSString *)URLDecode:(NSString *)value;
-
-/**
- Encodes a value for an URL.
- @param value The value to encode.
- @return The encoded value.
- */
-+ (NSString *)URLEncode:(NSString *)value;
-
-/**
   Constructs an NSURL.
  @param scheme The scheme for the URL.
  @param host The host for the URL.
@@ -263,11 +208,11 @@ NS_SWIFT_NAME(InternalUtility)
  @param errorRef If an error occurs, upon return contains an NSError object that describes the problem.
  @return The URL.
  */
-+ (NSURL *)URLWithScheme:(NSString *)scheme
-                    host:(NSString *)host
-                    path:(NSString *)path
-         queryParameters:(NSDictionary *)queryParameters
-                   error:(NSError *__autoreleasing *)errorRef;
++ (nullable NSURL *)URLWithScheme:(NSString *)scheme
+                             host:(NSString *)host
+                             path:(NSString *)path
+                  queryParameters:(NSDictionary *)queryParameters
+                            error:(NSError *__autoreleasing *)errorRef;
 
 /**
  *  Deletes all the cookies in the NSHTTPCookieStorage for Facebook web dialogs
@@ -321,7 +266,7 @@ NS_SWIFT_NAME(InternalUtility)
 /**
   Attempts to find the first UIViewController in the view's responder chain. Returns nil if not found.
  */
-+ (UIViewController *)viewControllerForView:(UIView *)view;
++ (nullable UIViewController *)viewControllerForView:(UIView *)view;
 
 /**
   returns true if the url scheme is registered in the CFBundleURLTypes
@@ -331,32 +276,22 @@ NS_SWIFT_NAME(InternalUtility)
 /**
  returns the current key window
  */
-+ (UIWindow *)findWindow;
++ (nullable UIWindow *)findWindow;
 
 /**
   returns currently displayed top view controller.
  */
-+ (UIViewController *)topMostViewController;
++ (nullable UIViewController *)topMostViewController;
 
 /**
   Converts NSData to a hexadecimal UTF8 String.
  */
-+ (NSString *)hexadecimalStringFromData:(NSData *)data;
++ (nullable NSString *)hexadecimalStringFromData:(NSData *)data;
 
 /*
   Checks if the permission is a publish permission.
  */
 + (BOOL)isPublishPermission:(NSString *)permission;
-
-/*
-  Checks if the set of permissions are all read permissions.
- */
-+ (BOOL)areAllPermissionsReadPermissions:(NSSet *)permissions;
-
-/*
-  Checks if the set of permissions are all publish permissions.
- */
-+ (BOOL)areAllPermissionsPublishPermissions:(NSSet *)permissions;
 
 #pragma mark - FB Apps Installed
 

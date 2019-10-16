@@ -30,9 +30,11 @@
 #import "FBSDKConstants.h"
 #import "FBSDKDynamicFrameworkLoader.h"
 #import "FBSDKError.h"
+#import "FBSDKFeatureManager.h"
 #import "FBSDKGraphRequest+Internal.h"
 #import "FBSDKInternalUtility.h"
 #import "FBSDKLogger.h"
+#import "FBSDKRestrictiveDataFilterManager.h"
 #import "FBSDKPaymentObserver.h"
 #import "FBSDKServerConfiguration.h"
 #import "FBSDKServerConfigurationManager.h"
@@ -282,6 +284,8 @@ NSString *const FBSDKAppEventsDialogShareContentTypeMessengerMediaTemplate      
 NSString *const FBSDKAppEventsDialogShareContentTypeMessengerOpenGraphMusicTemplate   = @"OpenGraphMusicTemplate";
 NSString *const FBSDKAppEventsDialogShareContentTypeUnknown                           = @"Unknown";
 
+NSString *const FBSDKGateKeeperAppEventsKillSwitch                                    = @"app_events_killswitch";
+
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
 
 NSNotificationName const FBSDKAppEventsLoggingResultNotification = @"com.facebook.sdk:FBSDKAppEventsLoggingResultNotification";
@@ -317,7 +321,6 @@ NSString *const FBSDKAppEventsWKWebViewMessagesHandlerKey = @"fbmqHandler";
 NSString *const FBSDKAppEventsWKWebViewMessagesEventKey = @"event";
 NSString *const FBSDKAppEventsWKWebViewMessagesParamsKey = @"params";
 NSString *const FBSDKAPPEventsWKWebViewMessagesProtocolKey = @"fbmq-0.1";
-
 
 #define NUM_LOG_EVENTS_TO_TRY_TO_FLUSH_AFTER 100
 #define FLUSH_PERIOD_IN_SECONDS 15
@@ -358,6 +361,7 @@ static NSString *g_overrideAppID = nil;
 {
   if (self == [FBSDKAppEvents class]) {
     g_overrideAppID = [[[NSBundle mainBundle] objectForInfoDictionaryKey:FBSDKAppEventsOverrideAppIDBundleKey] copy];
+    [FBSDKBasicUtility anonymousID];
   }
 }
 
@@ -367,7 +371,7 @@ static NSString *g_overrideAppID = nil;
   if (self) {
     _flushBehavior = FBSDKAppEventsFlushBehaviorAuto;
 
-    typeof(self) __weak weakSelf = self;
+    __weak FBSDKAppEvents *weakSelf = self;
     self.flushTimer = [FBSDKUtility startGCDTimerWithInterval:FLUSH_PERIOD_IN_SECONDS
                                                         block:^{
                                                           [weakSelf flushTimerFired:nil];
@@ -785,7 +789,7 @@ static NSString *g_overrideAppID = nil;
 
   if (userID.length == 0) {
     [FBSDKLogger singleShotLogEntry:FBSDKLoggingBehaviorDeveloperErrors logEntry:@"Missing [FBSDKAppEvents userID] for [FBSDKAppEvents updateUserProperties:]"];
-    NSError *error = [NSError fbRequiredArgumentErrorWithName:@"userID" message:@"Missing [FBSDKAppEvents userID] for [FBSDKAppEvents updateUserProperties:]"];
+    NSError *error = [FBSDKError requiredArgumentErrorWithName:@"userID" message:@"Missing [FBSDKAppEvents userID] for [FBSDKAppEvents updateUserProperties:]"];
     if (handler) {
       handler(nil, nil, error);
     }
@@ -800,7 +804,7 @@ static NSString *g_overrideAppID = nil;
   __block NSError *invalidObjectError;
   NSString *dataJSONString = [FBSDKBasicUtility JSONStringForObject:@[dataDictionary] error:&error invalidObjectHandler:^id(id object, BOOL *stop) {
     *stop = YES;
-    invalidObjectError = [NSError fbUnknownErrorWithMessage:@"The values in the properties dictionary must be NSStrings or NSNumbers"];
+    invalidObjectError = [FBSDKError unknownErrorWithMessage:@"The values in the properties dictionary must be NSStrings or NSNumbers"];
     return nil;
   }];
   if (!error) {
@@ -1062,7 +1066,17 @@ static NSString *g_overrideAppID = nil;
       [FBSDKPaymentObserver stopObservingTransactions];
     }
 #if !TARGET_OS_TV
-    [self enableCodelessEvents];
+    [FBSDKFeatureManager checkFeature:FBSDKFeatureCodelessEvents completionBlock:^(BOOL enabled) {
+      if (enabled) {
+        [self enableCodelessEvents];
+      }
+    }];
+    [FBSDKFeatureManager checkFeature:FBSDKFeatureAAM completionBlock:^(BOOL enabled) {
+      if (enabled) {
+        // Enable AAM
+        [FBSDKMetadataIndexer enable];
+      }
+    }];
 #endif
     if (callback) {
       callback();
@@ -1078,7 +1092,6 @@ static NSString *g_overrideAppID = nil;
 {
   // Kill events if kill-switch is enabled
   if ([FBSDKGateKeeperManager boolForKey:FBSDKGateKeeperAppEventsKillSwitch
-                                   appID:[FBSDKSettings appID]
                             defaultValue:NO]) {
     [FBSDKLogger singleShotLogEntry:FBSDKLoggingBehaviorAppEvents
                        formatString:@"FBSDKAppEvents: KillSwitch is enabled and fail to log app event: %@",
@@ -1115,7 +1128,10 @@ static NSString *g_overrideAppID = nil;
     return;
   }
 
-  NSMutableDictionary *eventDictionary = [NSMutableDictionary dictionaryWithDictionary:parameters];
+  parameters = [FBSDKRestrictiveDataFilterManager processParameters:parameters
+                                                          eventName:eventName];
+
+  NSMutableDictionary<NSString *, id> *eventDictionary = [NSMutableDictionary dictionaryWithDictionary:parameters];
   eventDictionary[FBSDKAppEventParameterEventName] = eventName;
   if (!eventDictionary[FBSDKAppEventParameterLogTime]) {
     eventDictionary[FBSDKAppEventParameterLogTime] = @([FBSDKAppEventsUtility unixTimeNow]);

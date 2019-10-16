@@ -71,7 +71,8 @@ NS_SWIFT_NAME(FBLoginButton)
 /**
   Gets or sets the login behavior to use
  */
-@property (assign, nonatomic) FBSDKLoginBehavior loginBehavior;
+@property (assign, nonatomic) FBSDKLoginBehavior loginBehavior
+DEPRECATED_MSG_ATTRIBUTE("All login flows utilize the browser. This will be removed in the next major release");
 
 /*!
  @abstract The permissions to request.
@@ -84,12 +85,6 @@ NS_SWIFT_NAME(FBLoginButton)
  See [the permissions guide]( https://developers.facebook.com/docs/facebook-login/permissions/ ) for more details.
  */
 @property (copy, nonatomic) NSArray<NSString *> *permissions;
-
-@property (copy, nonatomic) NSArray<NSString *> *publishPermissions
-DEPRECATED_MSG_ATTRIBUTE("Use permissions instead.");
-
-@property (copy, nonatomic) NSArray<NSString *> *readPermissions
-DEPRECATED_MSG_ATTRIBUTE("Use permissions instead.");
 /**
   Gets or sets the desired tooltip behavior.
  */

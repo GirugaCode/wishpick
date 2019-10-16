@@ -14,6 +14,7 @@ class UserSetupViewController: UIViewController {
         let label = UILabel()
         label.text = "Welcome to wishpick"
         label.font = UIFont(name: Fonts.proximaRegular, size: 28)
+        label.textColor = #colorLiteral(red: 1, green: 0.7294117647, blue: 0.3450980392, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

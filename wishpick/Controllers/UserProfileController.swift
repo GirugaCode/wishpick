@@ -34,6 +34,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         AppDelegate.shared.rootViewController.switchToLogout()
     }
     
+    //MARK: OVERRIDE FUNCTIONS
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUser()
@@ -43,7 +44,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     private func setupCollectionView() {
         collectionView?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    
+        
         // Creates a flow layout for the collectionview
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         
@@ -65,9 +66,10 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return 13
     }
     
+    //MARK: COLLECTION VIEW PROTOCOLS
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         cell.backgroundColor = .purple

@@ -9,21 +9,66 @@
 import UIKit
 
 class MainTabViewController: UITabBarController {
+    
+    //MARK: OVERRIDE FUNCTIONS
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Show the navigation bar on other view controllers
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViewControllers()
+    }
+    
+    private func setupViewControllers() {
+        // Home
+        let homeNavController = templateNavController(unselectedImage:#imageLiteral(resourceName: "home-unfilled"), selectedImage: #imageLiteral(resourceName: "home-filled"))
         
+        // Search
+        let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search"), selectedImage: #imageLiteral(resourceName: "search"))
+        
+        // Add wishpick
+        let addWishPickNav = templateNavController(unselectedImage: #imageLiteral(resourceName: "Email-Icon"), selectedImage: #imageLiteral(resourceName: "Email-Icon"))
+
+        // Likes
+        let likesNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "heart-unfilled"), selectedImage: #imageLiteral(resourceName: "heart-filled"))
+        
+        // User Profile
         let layout = UICollectionViewLayout()
         
         let userProfileController = UserProfileController(collectionViewLayout: layout)
         
-        let navController = UINavigationController(rootViewController: userProfileController)
+        let userProfileNavController = UINavigationController(rootViewController: userProfileController)
         
-        navController.tabBarItem.image = #imageLiteral(resourceName: "user-unfilled")
-        navController.tabBarItem.selectedImage = #imageLiteral(resourceName: "user-filled")
+        userProfileNavController.tabBarItem.image = #imageLiteral(resourceName: "user-unfilled")
+        userProfileNavController.tabBarItem.selectedImage = #imageLiteral(resourceName: "user-filled")
         
         tabBar.tintColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        viewControllers = [navController, UIViewController()]
+        viewControllers = [homeNavController,
+                           searchNavController,
+                           addWishPickNav,
+                           likesNavController,
+                           userProfileNavController]
+    }
+    
+    fileprivate func templateNavController(unselectedImage: UIImage, selectedImage: UIImage) -> UINavigationController {
+        let viewController = UIViewController() // TODO: Create view controller
+        let navController = UINavigationController(rootViewController: viewController)
+        
+        navController.tabBarItem.image = unselectedImage
+        navController.tabBarItem.selectedImage = selectedImage
+        
+        return navController
     }
 
 }

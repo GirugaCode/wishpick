@@ -38,8 +38,12 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUser()
-        setupUI()
+//        setupUI()
         setupCollectionView()
+        
+        let logout = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        self.navigationItem.leftItemsSupplementBackButton = true
+        self.navigationItem.leftBarButtonItem = logout
     }
     
     private func setupCollectionView() {

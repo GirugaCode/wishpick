@@ -8,7 +8,21 @@
 
 import UIKit
 
-class MainTabViewController: UITabBarController {
+class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let index = viewControllers?.firstIndex(of: viewController)
+        if index == 2 {
+            let layout = UICollectionViewFlowLayout()
+            let photoSelectorController = PhotoSelctorController(collectionViewLayout: layout)
+            let navController = UINavigationController(rootViewController: photoSelectorController)
+            
+            present(navController, animated: true, completion: nil)
+            
+            return false
+        }
+        return true
+    }
     
     //MARK: OVERRIDE FUNCTIONS
     override func viewWillAppear(_ animated: Bool) {
@@ -27,6 +41,7 @@ class MainTabViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         setupViewControllers()
     }
     
@@ -59,6 +74,13 @@ class MainTabViewController: UITabBarController {
                            addWishPickNav,
                            likesNavController,
                            userProfileNavController]
+        
+        // Modify tab bar item insets
+        guard let items = tabBar.items else { return }
+        
+        for item in items {
+            item.imageInsets = UIEdgeInsets(top: 14, left: 0, bottom: -14, right: 0)
+        }
     }
     
     fileprivate func templateNavController(unselectedImage: UIImage, selectedImage: UIImage) -> UINavigationController {

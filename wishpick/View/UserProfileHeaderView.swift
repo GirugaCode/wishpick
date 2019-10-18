@@ -43,7 +43,7 @@ class UserProfileHeaderView: UICollectionViewCell {
     
     let userBioDescription: UITextView = {
         let textView = UITextView()
-        textView.text = "Hey there, I like things that make me stand out and makes be not hungry 😋 "
+        textView.text = "Hey there, I like things that make me stand out and makes me not hungry 😋 "
         textView.textAlignment = .center
         textView.isEditable = false
         textView.isScrollEnabled = false

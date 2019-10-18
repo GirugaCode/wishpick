@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserSetupViewController: UIViewController {
+class UserSetupPg1VC: UIViewController {
     
     // MARK: UI COMPONENTS
     lazy var mainStackView: UIStackView = {
@@ -16,7 +16,7 @@ class UserSetupViewController: UIViewController {
         stackView.distribution = .fill
         stackView.axis = .vertical
         stackView.alignment = .center
-        stackView.spacing = 10
+        stackView.spacing = 70
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -24,7 +24,7 @@ class UserSetupViewController: UIViewController {
     let welcomeLabel: UILabel = {
         let label = UILabel()
         label.text = "Welcome to wishpick"
-        label.font = UIFont(name: Fonts.proximaRegular, size: 28)
+        label.font = UIFont(name: Fonts.proximaAltBold, size: 28)
         label.textColor = #colorLiteral(red: 1, green: 0.7294117647, blue: 0.3450980392, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -41,13 +41,15 @@ class UserSetupViewController: UIViewController {
     let descriptionLabel: UILabel = {
         let label = UILabel()
 
-        label.text = "wishpick wants to provide a real way for people to connect and know which items they want to make that next occasion special"
+        label.text = "wishpick wants to provide a real way for people to connect and know which items they want to make that next occasion special!"
         label.numberOfLines = 0
-//        let colorRange = "wishpick"
-//        let range = (label.text! as NSString).range(of: colorRange)
-//        let attribute = NSMutableAttributedString.init(string: label.text!)
-//        attribute.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.magenta, range: range)
-//        label.attributedText = attribute
+        label.font = UIFont(name: Fonts.proximaRegular, size: 20)
+        label.textAlignment = .center
+        let colorRange = "wishpick"
+        let range = (label.text! as NSString).range(of: colorRange)
+        let attribute = NSMutableAttributedString.init(string: label.text!)
+        attribute.addAttribute(NSAttributedString.Key.foregroundColor, value: #colorLiteral(red: 1, green: 0.7294117647, blue: 0.3450980392, alpha: 1), range: range)
+        label.attributedText = attribute
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -56,7 +58,7 @@ class UserSetupViewController: UIViewController {
     let continueButton: UIButton = {
         let button = UIButton()
         button.setTitle("Continue", for: .normal)
-        button.titleLabel?.font = UIFont(name: Fonts.proximaBold, size: 15)
+        button.titleLabel?.font = UIFont(name: Fonts.proximaBold, size: 28)
         button.backgroundColor = #colorLiteral(red: 1, green: 0.7294117647, blue: 0.3450980392, alpha: 1)
 //        button.addTarget(self, action: #selector(), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -66,24 +68,11 @@ class UserSetupViewController: UIViewController {
     
     //MARK: OVERRIDE FUNCTIONS
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Hide the navigation bar on the this view controller
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Show the navigation bar on other view controllers
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         setButtonCornerRadius()
+        self.navigationController?.navigationBar.isHidden = true;
     }
 
     override func viewDidLoad() {
@@ -110,7 +99,9 @@ class UserSetupViewController: UIViewController {
 //            mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            descriptionLabel.widthAnchor.constraint(equalToConstant: 240),
+            descriptionLabel.widthAnchor.constraint(equalToConstant: 300),
+            continueButton.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.085),
+            continueButton.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.75),
             
             ])
     }

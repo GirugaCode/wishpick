@@ -60,11 +60,14 @@ class UserSetupPg1VC: UIViewController {
         button.setTitle("Continue", for: .normal)
         button.titleLabel?.font = UIFont(name: Fonts.proximaBold, size: 28)
         button.backgroundColor = #colorLiteral(red: 1, green: 0.7294117647, blue: 0.3450980392, alpha: 1)
-//        button.addTarget(self, action: #selector(), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tempPush), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
+    @objc func tempPush() {
+        AppDelegate.shared.rootViewController.switchToMainScreen()
+    }
     
     //MARK: OVERRIDE FUNCTIONS
     
@@ -93,16 +96,11 @@ class UserSetupPg1VC: UIViewController {
         
         // Constraining the UI
         NSLayoutConstraint.activate([
-//            mainStackView.topAnchor.constraint(equalTo: view.topAnchor),
-//            mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             descriptionLabel.widthAnchor.constraint(equalToConstant: 300),
             continueButton.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.085),
             continueButton.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.75),
-            
             ])
     }
     

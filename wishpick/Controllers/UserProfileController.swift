@@ -13,6 +13,8 @@ import UIKit
 
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    let cellId = "cellId"
+    
     let logoutButton: UIButton = {
         let button = UIButton()
         button.setTitle("Logout", for: .normal)
@@ -27,25 +29,31 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }()
     
     @objc func handleLogout() {
-        // TODO: Make root vc on main feed
+        //TODO: Make root vc on main feed
         LoginManager().logOut()
         AppDelegate.shared.rootViewController.switchToLogout()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        collectionView?.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        
+        fetchUser()
+        setupUI()
+        setupCollectionView()
+    }
+    
+    private func setupCollectionView() {
+        collectionView?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    
         // Creates a flow layout for the collectionview
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         
-        fetchUser()
-        
-        setupUI()
-        
         // Registers the header view
         collectionView?.register(UserProfileHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
+        
+        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        
+        // Creates a flow layout for the collectionview
+        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
     }
     
     // Header for the profile
@@ -56,11 +64,35 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         return header
     }
     
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 9
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        cell.backgroundColor = .purple
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (view.frame.width - 6) / 3
+        return CGSize(width: width, height: width)
+    }
+    
     // Size of the header for the profile
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 300)
     }
     
+    // Grabs the logged in user data
     fileprivate func fetchUser() {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }

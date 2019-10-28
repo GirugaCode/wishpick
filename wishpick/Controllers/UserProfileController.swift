@@ -38,13 +38,35 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUser()
-//        setupUI()
+        setupUI()
         setupCollectionView()
+    }
+    
+    //MARK: GET FIREBASE DATA
+    fileprivate func fetchUser() {
         
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+            // Gives me the username value and stop constantly observing the node in DB
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            guard let usernameDict = snapshot.value as? [String:Any] else { return }
+            let username = usernameDict["username"] as? String
+            
+            self.navigationItem.title = username
+            
+        }) { (err) in
+            print("Failed to fetch user:", err)
+        }
+    }
+    
+    //MARK: SETUP UI
+    fileprivate func setupUI() {
         let logout = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         self.navigationItem.leftItemsSupplementBackButton = true
         self.navigationItem.leftBarButtonItem = logout
     }
+    
     
     private func setupCollectionView() {
         collectionView?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -61,6 +83,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
     }
     
+    //MARK: COLLECTION VIEW PROTOCOLS
+    
     // Header for the profile
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 
@@ -69,11 +93,11 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         return header
     }
     
+    // Collection View of items
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 13
     }
-    
-    //MARK: COLLECTION VIEW PROTOCOLS
+
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         cell.backgroundColor = .purple
@@ -98,31 +122,4 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         return CGSize(width: view.frame.width, height: 300)
     }
     
-    // Grabs the logged in user data
-    fileprivate func fetchUser() {
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-            // Gives me the username value and stop constantly observing the node in DB
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            guard let usernameDict = snapshot.value as? [String:Any] else { return }
-            let username = usernameDict["username"] as? String
-            
-            self.navigationItem.title = username
-            
-        }) { (err) in
-            print("Failed to fetch user:", err)
-        }
-    }
-    
-    fileprivate func setupUI() {
-        view.addSubview(logoutButton)
-        
-        NSLayoutConstraint.activate([
-            logoutButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            logoutButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-            ])
-        
-    }
 }

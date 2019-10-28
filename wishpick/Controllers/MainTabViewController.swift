@@ -10,20 +10,6 @@ import UIKit
 
 class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
     
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        let index = viewControllers?.firstIndex(of: viewController)
-        if index == 2 {
-            let layout = UICollectionViewFlowLayout()
-            let photoSelectorController = PhotoSelctorController(collectionViewLayout: layout)
-            let navController = UINavigationController(rootViewController: photoSelectorController)
-            
-            present(navController, animated: true, completion: nil)
-            
-            return false
-        }
-        return true
-    }
-    
     //MARK: OVERRIDE FUNCTIONS
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -45,6 +31,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         setupViewControllers()
     }
     
+    //MARK: TAB BAR NAVIGATION
     private func setupViewControllers() {
         // Home
         let homeNavController = templateNavController(unselectedImage:#imageLiteral(resourceName: "home-unfilled"), selectedImage: #imageLiteral(resourceName: "home-filled"))
@@ -78,11 +65,28 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         // Modify tab bar item insets
         guard let items = tabBar.items else { return }
         
+        // Spacing for the tab bar icons
         for item in items {
             item.imageInsets = UIEdgeInsets(top: 14, left: 0, bottom: -14, right: 0)
         }
     }
     
+    //MARK: SELECT UPLOAD ICON
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let index = viewControllers?.firstIndex(of: viewController)
+        if index == 2 {
+            let layout = UICollectionViewFlowLayout()
+            let photoSelectorController = PhotoSelctorController(collectionViewLayout: layout)
+            let navController = UINavigationController(rootViewController: photoSelectorController)
+            
+            present(navController, animated: true, completion: nil)
+            
+            return false
+        }
+        return true
+    }
+    
+    //MARK: SUPPORT
     fileprivate func templateNavController(unselectedImage: UIImage, selectedImage: UIImage) -> UINavigationController {
         let viewController = UIViewController() // TODO: Create view controller
         let navController = UINavigationController(rootViewController: viewController)

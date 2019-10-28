@@ -164,12 +164,10 @@
 				28314FEB22FB0B3F0091F5A1 /* View */,
 				28314FEC22FB0B440091F5A1 /* Controllers */,
 				28314FED22FB0B7F0091F5A1 /* Extensions */,
-				281609E122C341EC0045D352 /* Custom Fonts */,
-				281609B322C32D340045D352 /* AppDelegate.swift */,
+				28D855032367B2550060A702 /* Supporting Files */,
 				281609BA22C32D350045D352 /* Assets.xcassets */,
 				281609BC22C32D350045D352 /* LaunchScreen.storyboard */,
 				281609BF22C32D350045D352 /* Info.plist */,
-				2829067322C81D7700D9AB0E /* GoogleService-Info.plist */,
 			);
 			path = wishpick;
 			sourceTree = "<group>";
@@ -190,14 +188,6 @@
 				281609D522C32D350045D352 /* Info.plist */,
 			);
 			path = wishpickUITests;
-			sourceTree = "<group>";
-		};
-		281609E122C341EC0045D352 /* Custom Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				281609E222C341FD0045D352 /* Fonts */,
-			);
-			path = "Custom Fonts";
 			sourceTree = "<group>";
 		};
 		281609E222C341FD0045D352 /* Fonts */ = {
@@ -264,6 +254,16 @@
 				288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */,
 			);
 			path = "User Setup";
+			sourceTree = "<group>";
+		};
+		28D855032367B2550060A702 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				281609B322C32D340045D352 /* AppDelegate.swift */,
+				2829067322C81D7700D9AB0E /* GoogleService-Info.plist */,
+				281609E222C341FD0045D352 /* Fonts */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		28F2CBE82316678200D67525 /* Login */ = {

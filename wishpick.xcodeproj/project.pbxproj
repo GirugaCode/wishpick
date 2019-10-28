@@ -164,7 +164,7 @@
 				28314FEB22FB0B3F0091F5A1 /* View */,
 				28314FEC22FB0B440091F5A1 /* Controllers */,
 				28314FED22FB0B7F0091F5A1 /* Extensions */,
-				28D855032367B2550060A702 /* Supporting Files */,
+				28D855042367B76A0060A702 /* Supporting Files */,
 				281609BA22C32D350045D352 /* Assets.xcassets */,
 				281609BC22C32D350045D352 /* LaunchScreen.storyboard */,
 				281609BF22C32D350045D352 /* Info.plist */,
@@ -256,7 +256,7 @@
 			path = "User Setup";
 			sourceTree = "<group>";
 		};
-		28D855032367B2550060A702 /* Supporting Files */ = {
+		28D855042367B76A0060A702 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				281609B322C32D340045D352 /* AppDelegate.swift */,

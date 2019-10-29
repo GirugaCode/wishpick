@@ -124,6 +124,10 @@ class LoginViewController: UIViewController {
                 
                 if (AccessToken.current != nil) {
                     AppDelegate.shared.rootViewController.switchToUserSetup()
+                    Analytics.logEvent(AnalyticsEventLogin, parameters: [
+                        "Login Error": error ?? "Error",
+                        "Username": user ?? "User"
+                    ])
                 }
                 
             })

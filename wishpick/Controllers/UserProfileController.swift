@@ -13,6 +13,7 @@ import UIKit
 
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    //MARK: PROPERTIES
     let cellId = "cellId"
     
     let logoutButton: UIButton = {
@@ -39,6 +40,10 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         super.viewDidLoad()
         fetchUser()
         setupUI()
+    }
+    
+    override func loadView() {
+        super.loadView()
         setupCollectionView()
     }
     

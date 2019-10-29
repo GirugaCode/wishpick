@@ -124,6 +124,8 @@ class LoginViewController: UIViewController {
                 
                 if (AccessToken.current != nil) {
                     AppDelegate.shared.rootViewController.switchToUserSetup()
+                    
+                    // Firebase Analytics
                     Analytics.logEvent(AnalyticsEventLogin, parameters: [
                         "Login Error": error ?? "Error",
                         "Username": user ?? "User"
@@ -162,14 +164,17 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupUI()
+    }
+    
+    override func loadView() {
+        super.loadView()
+        
         setupLoginView()
     }
-  
+    
     //MARK: UI SETUP
     fileprivate func setupLoginView() {
-        
-        // Set up background gradient
-        view.setGradientBackground(colorOne: #colorLiteral(red: 0.5019607843, green: 0.3647058824, blue: 0.1725490196, alpha: 1), colorTwo: #colorLiteral(red: 1, green: 0.6561305523, blue: 0.171354413, alpha: 1))
         
         // Adding Views
         view.addSubview(topStackView)
@@ -197,6 +202,11 @@ class LoginViewController: UIViewController {
             emailLoginButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08)
             
             ])
+    }
+    
+    fileprivate func setupUI() {
+        // Set up background gradient
+        view.setGradientBackground(colorOne: #colorLiteral(red: 0.5019607843, green: 0.3647058824, blue: 0.1725490196, alpha: 1), colorTwo: #colorLiteral(red: 1, green: 0.6561305523, blue: 0.171354413, alpha: 1))
     }
     
     fileprivate func setButtonCornerRadius() {

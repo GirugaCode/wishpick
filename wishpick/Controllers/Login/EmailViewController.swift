@@ -236,6 +236,8 @@ class EmailViewController: UIViewController {
                 }
                 
                 print("Successfully saved user info!", userID)
+                // Analytics to track sign up
+                Analytics.logEvent(AnalyticsEventSignUp, parameters: [:])
             })
         }
         AppDelegate.shared.rootViewController.switchToMainScreen()
@@ -258,15 +260,17 @@ class EmailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    override func loadView() {
+        super.loadView()
         setupInputFieldsView()
     }
     
     //MARK: UI SETUP
     fileprivate func setupInputFieldsView() {
-        
-        // Set up background gradient
-        view.setGradientBackground(colorOne: #colorLiteral(red: 0.5019607843, green: 0.3647058824, blue: 0.1725490196, alpha: 1), colorTwo: #colorLiteral(red: 1, green: 0.6561305523, blue: 0.171354413, alpha: 1))
-        
+
         // Adding Views
         view.addSubview(createAccLabel)
         view.addSubview(mainStackView)
@@ -303,6 +307,11 @@ class EmailViewController: UIViewController {
             exisitingAccLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             exisitingAccLabel.heightAnchor.constraint(equalToConstant: 50),
             ])
+    }
+    
+    fileprivate func setupUI() {
+        // Set up background gradient
+        view.setGradientBackground(colorOne: #colorLiteral(red: 0.5019607843, green: 0.3647058824, blue: 0.1725490196, alpha: 1), colorTwo: #colorLiteral(red: 1, green: 0.6561305523, blue: 0.171354413, alpha: 1))
     }
 }
 

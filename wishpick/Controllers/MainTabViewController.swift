@@ -27,12 +27,13 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.delegate = self
         setupViewControllers()
     }
     
     //MARK: TAB BAR NAVIGATION
     private func setupViewControllers() {
+        self.delegate = self
+        
         // Home
         let homeNavController = templateNavController(unselectedImage:#imageLiteral(resourceName: "home-unfilled"), selectedImage: #imageLiteral(resourceName: "home-filled"))
         

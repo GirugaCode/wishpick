@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
         stackView.distribution = .fillProportionally
         stackView.axis = .vertical
         stackView.alignment = .center
-        stackView.spacing = 20
+        stackView.spacing = 15
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -63,8 +63,8 @@ class LoginViewController: UIViewController {
     let facebookLoginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Connect with Facebook", for: .normal)
-        button.titleEdgeInsets.left = 25
-        button.imageEdgeInsets.right = 50
+        button.titleEdgeInsets.left = 30
+        button.imageEdgeInsets.right = 45
         button.setImage(#imageLiteral(resourceName: "facebook_icon"), for: .normal)
         button.titleLabel?.font = UIFont(name: Fonts.proximaBold, size: 20)
         button.backgroundColor = #colorLiteral(red: 0.3333333333, green: 0.4745098039, blue: 0.7882352941, alpha: 1)
@@ -187,11 +187,10 @@ class LoginViewController: UIViewController {
             topStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             topStackView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
             
-            bottomStackView.topAnchor.constraint(equalToSystemSpacingBelow: topStackView.bottomAnchor, multiplier: 30),
+            bottomStackView.topAnchor.constraint(equalToSystemSpacingBelow: topStackView.bottomAnchor, multiplier: 25),
             bottomStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             bottomStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            bottomStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
-            
+            bottomStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
             // Size of Facebook Login Button
             facebookLoginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),

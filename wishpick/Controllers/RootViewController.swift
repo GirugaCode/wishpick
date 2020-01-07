@@ -63,7 +63,7 @@ class RootViewController: UIViewController {
     }
     
     func switchToUserSetup() {
-        let userSetupViewController = UserSetupViewController()
+        let userSetupViewController = UserSetupViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [:])
         let userSetupScreen = UINavigationController(rootViewController: userSetupViewController)
         animateDismissTransition(to: userSetupScreen)
     }

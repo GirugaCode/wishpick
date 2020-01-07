@@ -8,10 +8,11 @@
 
 import UIKit
 
-class UserSetupViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+class UserSetupViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource  {
     
     //MARK: PROPERTIES
     var pages = [UIViewController]()
+    var currentPage = 0
     
     let pageControl: UIPageControl = {
         let pc = UIPageControl()
@@ -36,7 +37,6 @@ class UserSetupViewController: UIPageViewController, UIPageViewControllerDelegat
         self.dataSource = self
         self.delegate = self
         
-        let initialPage = 0
         let page1 = UserSetupPg1VC()
         let page2 = UserSetupPg2VC()
         let page3 = UserSetupPg3VC()
@@ -45,11 +45,11 @@ class UserSetupViewController: UIPageViewController, UIPageViewControllerDelegat
         self.pages.append(page1)
         self.pages.append(page2)
         self.pages.append(page3)
-        setViewControllers([pages[initialPage]], direction: .forward, animated: false, completion: nil)
+        setViewControllers([pages[currentPage]], direction: .forward, animated: false, completion: nil)
         
         view.addSubview(pageControl)
         pageControl.numberOfPages = pages.count
-        pageControl.currentPage = initialPage
+        pageControl.currentPage = currentPage
         
         NSLayoutConstraint.activate([
             pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
@@ -61,21 +61,35 @@ class UserSetupViewController: UIPageViewController, UIPageViewControllerDelegat
     
     //MARK: PROTOCOLS
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        let currentIndex = pages.firstIndex(of: viewController)
-        let previousIndex = abs((currentIndex! - 1) % pages.count)
-
+        
+        guard let viewControllerIndex = pages.firstIndex(of: viewController) else { return nil }
+        
+        let previousIndex = viewControllerIndex - 1
+        
+        guard previousIndex >= 0          else { return pages.last }
+        
+        guard pages.count > previousIndex else { return nil        }
+        
         return pages[previousIndex]
+        
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        let currentIndex = pages.firstIndex(of: viewController)
-        let previousIndex = abs((currentIndex! + 1) % pages.count)
-
-        return pages[previousIndex]
+        
+        guard let viewControllerIndex = pages.firstIndex(of: viewController) else { return nil }
+        
+        let nextIndex = viewControllerIndex + 1
+        
+        guard nextIndex < pages.count else { return pages.first }
+        
+        guard pages.count > nextIndex else { return nil         }
+        
+        return pages[nextIndex]
+        
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        
+
         // set the pageControl.currentPage to the index of the current viewController in pages
         if let viewControllers = pageViewController.viewControllers {
             if let viewControllerIndex = self.pages.firstIndex(of: viewControllers[0]) {

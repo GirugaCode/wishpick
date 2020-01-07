@@ -10,6 +10,9 @@ import UIKit
 
 class UserSetupPg1VC: UIViewController {
     
+    // MARK: PROPERTIES
+    
+    
     // MARK: UI COMPONENTS
     lazy var mainStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [welcomeLabel, userSetupAsset, descriptionLabel, continueButton])
@@ -71,10 +74,10 @@ class UserSetupPg1VC: UIViewController {
     
     //MARK: OVERRIDE FUNCTIONS
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        setButtonCornerRadius()
+//        setButtonCornerRadius()
         self.navigationController?.navigationBar.isHidden = true;
     }
 
@@ -92,16 +95,20 @@ class UserSetupPg1VC: UIViewController {
         view.addSubview(mainStackView)
         
         view.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
-        continueButton.roundedButton(button: continueButton)
+        
+        let frameHeight = view.frame.height
         
         // Constraining the UI
+        // TODO: Change the height anchor into a constant
         NSLayoutConstraint.activate([
             mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             mainStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             descriptionLabel.widthAnchor.constraint(equalToConstant: 300),
-            continueButton.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.085),
-            continueButton.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.75),
+            continueButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.085),
+            continueButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75),
             ])
+        
+        continueButton.layer.cornerRadius = (frameHeight * 0.085) / 2
     }
     
     fileprivate func setButtonCornerRadius() {

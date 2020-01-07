@@ -18,13 +18,13 @@
 
 #import <UIKit/UIKit.h>
 
-#import <FBSDKLoginKit/FBSDKLoginManager.h>
-
-#ifdef COCOAPODS
+#ifdef FBSDKCOCOAPODS
 #import <FBSDKCoreKit/FBSDKCoreKit+Internal.h>
 #else
 #import "FBSDKCoreKit+Internal.h"
 #endif
+
+#import "FBSDKLoginManager.h"
 
 @class FBSDKAccessToken;
 @class FBSDKLoginCompletionParameters;

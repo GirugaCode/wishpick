@@ -17,8 +17,7 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #import "FBSDKGraphErrorRecoveryProcessor.h"
 
-#import <FBSDKCoreKit/FBSDKCoreKit+Internal.h>
-
+#import "FBSDKCoreKit+Internal.h"
 #import "FBSDKErrorRecoveryAttempter.h"
 
 @interface FBSDKGraphErrorRecoveryProcessor()

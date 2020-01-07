@@ -18,7 +18,7 @@
 
 #import "FBSDKLoginManagerLogger.h"
 
-#ifdef COCOAPODS
+#ifdef FBSDKCOCOAPODS
 #import <FBSDKCoreKit/FBSDKCoreKit+Internal.h>
 #else
 #import "FBSDKCoreKit+Internal.h"
@@ -175,14 +175,6 @@ static NSString *const FBSDKLoginManagerLoggerTryBrowser = @"trySafariAuth";
     @"isURLSchemeRegistered" : @(isURLSchemeRegistered),
     @"isFacebookAppCanOpenURLSchemeRegistered" : @(isFacebookAppCanOpenURLSchemeRegistered),
     @"isMessengerAppCanOpenURLSchemeRegistered" : @(isMessengerAppCanOpenURLSchemeRegistered),
-  }];
-}
-
-- (void)systemAuthDidShowDialog:(BOOL)didShowDialog isUnTOSedDevice:(BOOL)isUnTOSedDevice
-{
-  [_extras addEntriesFromDictionary:@{
-    @"isUntosedDevice" : @(isUnTOSedDevice),
-    @"dialogShown" : @(didShowDialog),
   }];
 }
 

@@ -17,25 +17,16 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 
-NS_SWIFT_NAME(ViewHierarchy)
-@interface FBSDKViewHierarchy : NSObject
+NS_ASSUME_NONNULL_BEGIN
 
-+ (NSObject *)getParent:(NSObject *)obj;
-+ (NSArray<NSObject *> *)getChildren:(NSObject *)obj;
-+ (NSArray<NSObject *> *)getPath:(NSObject *)obj;
-+ (NSMutableDictionary<NSString *, id> *)getDetailAttributesOf:(NSObject *)obj;
+@interface FBSDKFeatureExtractor : NSObject
 
-+ (NSString *)getText:(NSObject *)obj;
-+ (NSString *)getHint:(NSObject *)obj;
-+ (NSIndexPath *)getIndexPath:(NSObject *)obj;
-+ (NSUInteger)getClassBitmask:(NSObject *)obj;
-+ (UITableView *)getParentTableView:(UIView *)cell;
-+ (UICollectionView *)getParentCollectionView:(UIView *)cell;
-+ (NSInteger)getTag:(NSObject *)obj;
-+ (NSNumber *)getViewReactTag:(UIView *)view;
-
-+ (BOOL)isUserInputView:(NSObject *)obj;
++ (void)loadRules;
++ (NSString *)getTextFeature:(NSString *)text
+              withScreenName:(NSString *)screenName;
++ (float *)getDenseFeatures:(NSDictionary *)viewHierarchy;
 
 @end
+
+NS_ASSUME_NONNULL_END

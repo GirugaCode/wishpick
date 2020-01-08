@@ -15,6 +15,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     //MARK: PROPERTIES
     var posts = [Posts]()
+    var user: User?
     let cellId = "cellId"
     
     //MARK: UI COMPONENTS
@@ -42,7 +43,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUser()
-        fetchPosts()
+//        fetchPosts()
+        fetchOrderedPosts()
         setupUI()
     }
     
@@ -90,6 +92,22 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             
         }) { (err) in
             print("Failed to fetch photos", err)
+        }
+    }
+    
+    fileprivate func fetchOrderedPosts() {
+        guard let uid = Auth.auth().currentUser?.uid else { return } // Current User
+        
+        let ref = Database.database().reference().child("posts").child(uid)
+        ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
+            
+            let post = Posts(dictionary: dictionary)
+            self.posts.append(post)
+            
+            self.collectionView?.reloadData()
+        }) { (err) in
+            print("Failed to fetch ordered photos", err)
         }
     }
     

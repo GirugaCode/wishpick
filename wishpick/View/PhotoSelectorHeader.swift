@@ -1,17 +1,17 @@
 //
-//  PhotoSelectorCell.swift
+//  PhotoSelectorHeader.swift
 //  wishpick
 //
-//  Created by Ryan Nguyen on 10/18/19.
-//  Copyright © 2019 Danh Phu Nguyen. All rights reserved.
+//  Created by Ryan Nguyen on 1/8/20.
+//  Copyright © 2020 Danh Phu Nguyen. All rights reserved.
 //
 
 import UIKit
 
-class PhotoSelectorCell: UICollectionViewCell {
+class PhotoSelectorHeader: UICollectionViewCell {
     
     //MARK: UI COMPONENTS
-    /// Image View for the tiny preview photos in grid
+    /// Image View for the large selected preview photos
     let photoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)

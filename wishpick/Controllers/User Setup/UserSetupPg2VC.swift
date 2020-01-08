@@ -26,7 +26,7 @@ class UserSetupPg2VC: UIViewController, UIImagePickerControllerDelegate, UINavig
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "add-profile-pic"), for: .normal)
         button.layer.masksToBounds = true
-        button.layer.borderColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        button.layer.borderColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
         button.layer.borderWidth = 2
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

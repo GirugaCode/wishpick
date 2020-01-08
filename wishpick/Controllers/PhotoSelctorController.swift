@@ -17,6 +17,7 @@ class PhotoSelctorController: UICollectionViewController, UICollectionViewDelega
     var images = [UIImage]()
     var assets = [PHAsset]()
     var selectedImage : UIImage?
+    var header: PhotoSelectorHeader?
     
     //MARK: OVERRIDE FUNCTIONS
     override func viewDidLoad() {
@@ -35,7 +36,9 @@ class PhotoSelctorController: UICollectionViewController, UICollectionViewDelega
     }
 
     @objc func handleNext() {
-        print("Handle Next")
+        let sharePhotoController = SharePhotoController()
+        sharePhotoController.selectedImage = header?.photoImageView.image
+        navigationController?.pushViewController(sharePhotoController, animated: true)
     }
     
     @objc func handleCancel() {
@@ -76,6 +79,9 @@ class PhotoSelctorController: UICollectionViewController, UICollectionViewDelega
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! PhotoSelectorHeader
         
+        // Gives REFERENCE to the header var
+        self.header = header
+        
         // Display the selected image from the grid as header view
         header.photoImageView.image = selectedImage
         
@@ -87,6 +93,7 @@ class PhotoSelctorController: UICollectionViewController, UICollectionViewDelega
                 let imageManager = PHImageManager.default()
                 let targetSize = CGSize(width: 600, height: 600)
                 imageManager.requestImage(for: selectedAsset, targetSize: targetSize, contentMode: .default, options: nil) { (image, info) in
+                    
                     header.photoImageView.image = image
                 }
             }
@@ -110,8 +117,13 @@ class PhotoSelctorController: UICollectionViewController, UICollectionViewDelega
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedImage = images[indexPath.item]
         self.collectionView.reloadData()
+        
+        // Scrolls the collection view to the top
+        let indexPath = IndexPath(item: 0, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
     }
-
+    
+    /// Hides the status bar on top of device
     override var prefersStatusBarHidden: Bool {
         return true
     }

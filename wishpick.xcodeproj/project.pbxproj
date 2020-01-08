@@ -31,6 +31,7 @@
 		284DF6BC232B340500E651F5 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284DF6BB232B340500E651F5 /* UIButton+Extension.swift */; };
 		287ECD9622FAC19600D2CB7A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287ECD9522FAC19600D2CB7A /* LoginViewController.swift */; };
 		287ECD9822FAC2C600D2CB7A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287ECD9722FAC2C600D2CB7A /* UIView+Extension.swift */; };
+		287FA3FE23C5D99B00AEAF35 /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA3FD23C5D99B00AEAF35 /* SharePhotoController.swift */; };
 		288B07FC2359812D0028F07C /* UserSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FB2359812D0028F07C /* UserSetupViewController.swift */; };
 		288B07FE235982290028F07C /* UserSetupPg2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FD235982290028F07C /* UserSetupPg2VC.swift */; };
 		288B08002359823F0028F07C /* UserSetupPg3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */; };
@@ -93,6 +94,7 @@
 		284DF6BB232B340500E651F5 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		287ECD9522FAC19600D2CB7A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		287ECD9722FAC2C600D2CB7A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		287FA3FD23C5D99B00AEAF35 /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
 		288B07FB2359812D0028F07C /* UserSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupViewController.swift; sourceTree = "<group>"; };
 		288B07FD235982290028F07C /* UserSetupPg2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg2VC.swift; sourceTree = "<group>"; };
 		288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg3VC.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				28259FF022C82CD100A6E4D2 /* MainTabViewController.swift */,
 				28259FF222C82DE600A6E4D2 /* UserProfileController.swift */,
 				288B0801235A49230028F07C /* PhotoSelctorController.swift */,
+				287FA3FD23C5D99B00AEAF35 /* SharePhotoController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				287ECD9622FAC19600D2CB7A /* LoginViewController.swift in Sources */,
 				288B0802235A49230028F07C /* PhotoSelctorController.swift in Sources */,
 				2809512E231F00B9001BD2DF /* SpacerView+Extension.swift in Sources */,
+				287FA3FE23C5D99B00AEAF35 /* SharePhotoController.swift in Sources */,
 				281609B622C32D340045D352 /* EmailViewController.swift in Sources */,
 				28445DC82307FA82008CED37 /* RootViewController.swift in Sources */,
 				287ECD9822FAC2C600D2CB7A /* UIView+Extension.swift in Sources */,

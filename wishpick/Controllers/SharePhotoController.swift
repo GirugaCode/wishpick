@@ -86,15 +86,26 @@ class SharePhotoController: UIViewController {
         ])
     }
     
+    /**
+     Uploades the selected image to firebase while organizing it in storage
+     */
     @objc func handleShare() {
+        // Handles the item description
+        guard let itemDescription = descriptionView.text, itemDescription.count > 0 else { return }
         guard let image = selectedImage else { return }
         
+        // Image of what will be uploaded to firebase
         guard let uploadData = image.jpegData(compressionQuality: 0.5) else { return }
+        
+        // Disable Share button after a successful share
+        navigationItem.rightBarButtonItem?.isEnabled = false
         
         let filename = NSUUID().uuidString
         let storageRef = Storage.storage().reference().child("posts").child(filename)
         storageRef.putData(uploadData, metadata: nil) { (metadata, err) in
             if let err = err {
+                // Enable share button if share is failed
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
                 print("Failed to upload image", err)
                 return
             }
@@ -104,16 +115,25 @@ class SharePhotoController: UIViewController {
                 }
                 print("Successfully uploaded image URL", imageUrl as Any)
                 
+                // Save the image URL to the DB
                 guard let imageUrlString = imageUrl?.absoluteString else { return }
                 self.saveToDBwithURL(imageUrl: imageUrlString)
             }
         }
     }
     
+    /**
+     Saves the selected image to the Firebase DB
+
+     - Parameters:
+        - imageUrl: The image that is passed through with handleShare()
+
+     - Returns: A saved image to the Firebase DB
+     */
     fileprivate func saveToDBwithURL(imageUrl: String) {
         guard let postImage = selectedImage else { return }
         guard let itemInfo = descriptionView.text else { return }
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let uid = Auth.auth().currentUser?.uid else { return } // Tracks current user
         
         let userPostRef = Database.database().reference().child("posts").child(uid)
         let ref = userPostRef.childByAutoId()
@@ -122,10 +142,12 @@ class SharePhotoController: UIViewController {
         
         ref.updateChildValues(values) { (err, ref) in
             if let err = err {
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
                 print("Failed to save post to DB", err)
                 return
             }
             print("Successfully saved post to DB", ref)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

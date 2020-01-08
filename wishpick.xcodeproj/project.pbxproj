@@ -32,6 +32,8 @@
 		287ECD9622FAC19600D2CB7A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287ECD9522FAC19600D2CB7A /* LoginViewController.swift */; };
 		287ECD9822FAC2C600D2CB7A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287ECD9722FAC2C600D2CB7A /* UIView+Extension.swift */; };
 		287FA3FE23C5D99B00AEAF35 /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA3FD23C5D99B00AEAF35 /* SharePhotoController.swift */; };
+		287FA40023C677FB00AEAF35 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA3FF23C677FB00AEAF35 /* Posts.swift */; };
+		287FA40223C67AA400AEAF35 /* UserProfilePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA40123C67AA400AEAF35 /* UserProfilePhotoCell.swift */; };
 		288B07FC2359812D0028F07C /* UserSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FB2359812D0028F07C /* UserSetupViewController.swift */; };
 		288B07FE235982290028F07C /* UserSetupPg2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FD235982290028F07C /* UserSetupPg2VC.swift */; };
 		288B08002359823F0028F07C /* UserSetupPg3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */; };
@@ -95,6 +97,8 @@
 		287ECD9522FAC19600D2CB7A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		287ECD9722FAC2C600D2CB7A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		287FA3FD23C5D99B00AEAF35 /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
+		287FA3FF23C677FB00AEAF35 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
+		287FA40123C67AA400AEAF35 /* UserProfilePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePhotoCell.swift; sourceTree = "<group>"; };
 		288B07FB2359812D0028F07C /* UserSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupViewController.swift; sourceTree = "<group>"; };
 		288B07FD235982290028F07C /* UserSetupPg2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg2VC.swift; sourceTree = "<group>"; };
 		288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg3VC.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 		28314FEA22FB0B300091F5A1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				287FA3FF23C677FB00AEAF35 /* Posts.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				28259FF422C87ED400A6E4D2 /* UserProfileHeaderView.swift */,
 				28FFC87D23C5C8A600046C1A /* PhotoSelectorHeader.swift */,
 				288B0803235A57990028F07C /* PhotoSelectorCell.swift */,
+				287FA40123C67AA400AEAF35 /* UserProfilePhotoCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -540,9 +546,11 @@
 				281609B622C32D340045D352 /* EmailViewController.swift in Sources */,
 				28445DC82307FA82008CED37 /* RootViewController.swift in Sources */,
 				287ECD9822FAC2C600D2CB7A /* UIView+Extension.swift in Sources */,
+				287FA40023C677FB00AEAF35 /* Posts.swift in Sources */,
 				288B08002359823F0028F07C /* UserSetupPg3VC.swift in Sources */,
 				284DF6BC232B340500E651F5 /* UIButton+Extension.swift in Sources */,
 				288B07FC2359812D0028F07C /* UserSetupViewController.swift in Sources */,
+				287FA40223C67AA400AEAF35 /* UserProfilePhotoCell.swift in Sources */,
 				28259FF522C87ED400A6E4D2 /* UserProfileHeaderView.swift in Sources */,
 				28259FF122C82CD100A6E4D2 /* MainTabViewController.swift in Sources */,
 				281609B422C32D340045D352 /* AppDelegate.swift in Sources */,

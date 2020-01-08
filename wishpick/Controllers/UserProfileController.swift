@@ -14,8 +14,11 @@ import UIKit
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     //MARK: PROPERTIES
+    var posts = [Posts]()
     let cellId = "cellId"
     
+    //MARK: UI COMPONENTS
+    /// Logout button in the user profile screen
     let logoutButton: UIButton = {
         let button = UIButton()
         button.setTitle("Logout", for: .normal)
@@ -39,6 +42,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUser()
+        fetchPosts()
         setupUI()
     }
     
@@ -47,12 +51,12 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         setupCollectionView()
     }
     
-    //MARK: GET FIREBASE DATA
+    //MARK: FIREBASE FETCHING
     fileprivate func fetchUser() {
         
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let uid = Auth.auth().currentUser?.uid else { return } // Current User
         
-            // Gives me the username value and stop constantly observing the node in DB
+        // Gives the username value and stop constantly observing the node in DB
         Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
             guard let usernameDict = snapshot.value as? [String:Any] else { return }
@@ -62,6 +66,30 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             
         }) { (err) in
             print("Failed to fetch user:", err)
+        }
+    }
+    
+    fileprivate func fetchPosts() {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return } // Current User
+        
+        let ref = Database.database().reference().child("posts").child(uid)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            // Iterates through the Dictionary of posts and appends it to the post array
+            dictionaries.forEach { (key, value) in
+                guard let dictionary = value as? [String: Any] else { return }
+                                
+                let post = Posts(dictionary: dictionary)
+                self.posts.append(post)
+            }
+            
+            self.collectionView?.reloadData()
+            
+        }) { (err) in
+            print("Failed to fetch photos", err)
         }
     }
     
@@ -82,7 +110,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         // Registers the header view
         collectionView?.register(UserProfileHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
         
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        // Registers the item cells
+        collectionView?.register(UserProfilePhotoCell.self, forCellWithReuseIdentifier: cellId)
         
         // Creates a flow layout for the collectionview
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
@@ -100,12 +129,14 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     // Collection View of items
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 13
+        return posts.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = .purple
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserProfilePhotoCell
+        
+        cell.post = posts[indexPath.item]
+        
         return cell
     }
     

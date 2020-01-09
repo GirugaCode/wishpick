@@ -32,6 +32,8 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
     
     //MARK: TAB BAR NAVIGATION
     private func setupViewControllers() {
+        tabBar.barTintColor = #colorLiteral(red: 0.9960784314, green: 0.7254901961, blue: 0.3411764706, alpha: 1)
+        tabBar.isTranslucent = false
         self.delegate = self
         
         // Home

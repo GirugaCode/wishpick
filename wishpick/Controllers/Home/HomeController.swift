@@ -22,6 +22,7 @@ class HomeController: UICollectionViewController {
     }
     
     private func setupNavigationItems() {
+        //TODO: Make a custom Image View to change the size
         navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "wishpick-banner"))
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.9960784314, green: 0.7254901961, blue: 0.3411764706, alpha: 1)
     }
@@ -69,6 +70,11 @@ class HomeController: UICollectionViewController {
 
 extension HomeController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 200)
+        var height: CGFloat = 40 + 8 + 8
+        height += view.frame.width
+        height += 50
+        height += 60
+        
+        return CGSize(width: view.frame.width, height: height)
     }
 }

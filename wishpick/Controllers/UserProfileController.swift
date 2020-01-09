@@ -114,6 +114,7 @@ class UserProfileController: UICollectionViewController {
     //MARK: SETUP UI
     fileprivate func setupUI() {
         let logout = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.9960784314, green: 0.7254901961, blue: 0.3411764706, alpha: 1)
         self.navigationItem.leftItemsSupplementBackButton = true
         self.navigationItem.leftBarButtonItem = logout
     }

@@ -11,7 +11,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import UIKit
 
-class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class UserProfileController: UICollectionViewController {
     
     //MARK: PROPERTIES
     var posts = [Posts]()
@@ -157,6 +157,9 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         return cell
     }
+}
+
+extension UserProfileController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 3
@@ -175,5 +178,4 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 300)
     }
-    
 }

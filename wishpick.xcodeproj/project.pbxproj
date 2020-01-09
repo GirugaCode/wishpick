@@ -35,6 +35,8 @@
 		287FA40023C677FB00AEAF35 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA3FF23C677FB00AEAF35 /* Posts.swift */; };
 		287FA40223C67AA400AEAF35 /* UserProfilePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA40123C67AA400AEAF35 /* UserProfilePhotoCell.swift */; };
 		287FA40423C692ED00AEAF35 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA40323C692ED00AEAF35 /* CustomImageView.swift */; };
+		287FA40723C6E12A00AEAF35 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA40623C6E12A00AEAF35 /* HomeController.swift */; };
+		287FA40923C6E46800AEAF35 /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA40823C6E46800AEAF35 /* HomePostCell.swift */; };
 		288B07FC2359812D0028F07C /* UserSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FB2359812D0028F07C /* UserSetupViewController.swift */; };
 		288B07FE235982290028F07C /* UserSetupPg2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FD235982290028F07C /* UserSetupPg2VC.swift */; };
 		288B08002359823F0028F07C /* UserSetupPg3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */; };
@@ -101,6 +103,8 @@
 		287FA3FF23C677FB00AEAF35 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		287FA40123C67AA400AEAF35 /* UserProfilePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePhotoCell.swift; sourceTree = "<group>"; };
 		287FA40323C692ED00AEAF35 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		287FA40623C6E12A00AEAF35 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		287FA40823C6E46800AEAF35 /* HomePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 		288B07FB2359812D0028F07C /* UserSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupViewController.swift; sourceTree = "<group>"; };
 		288B07FD235982290028F07C /* UserSetupPg2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg2VC.swift; sourceTree = "<group>"; };
 		288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg3VC.swift; sourceTree = "<group>"; };
@@ -226,10 +230,11 @@
 		28314FEB22FB0B3F0091F5A1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				287FA40823C6E46800AEAF35 /* HomePostCell.swift */,
 				28259FF422C87ED400A6E4D2 /* UserProfileHeaderView.swift */,
+				287FA40123C67AA400AEAF35 /* UserProfilePhotoCell.swift */,
 				28FFC87D23C5C8A600046C1A /* PhotoSelectorHeader.swift */,
 				288B0803235A57990028F07C /* PhotoSelectorCell.swift */,
-				287FA40123C67AA400AEAF35 /* UserProfilePhotoCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 		28314FEC22FB0B440091F5A1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				287FA40523C6E10F00AEAF35 /* Home */,
 				28F2CBE82316678200D67525 /* Login */,
 				288B07FA2359804B0028F07C /* User Setup */,
 				28445DC72307FA82008CED37 /* RootViewController.swift */,
@@ -258,6 +264,14 @@
 				287FA40323C692ED00AEAF35 /* CustomImageView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		287FA40523C6E10F00AEAF35 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				287FA40623C6E12A00AEAF35 /* HomeController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		288B07FA2359804B0028F07C /* User Setup */ = {
@@ -562,6 +576,8 @@
 				28259FF322C82DE600A6E4D2 /* UserProfileController.swift in Sources */,
 				281609F422C345D20045D352 /* Constants.swift in Sources */,
 				288B0804235A57990028F07C /* PhotoSelectorCell.swift in Sources */,
+				287FA40923C6E46800AEAF35 /* HomePostCell.swift in Sources */,
+				287FA40723C6E12A00AEAF35 /* HomeController.swift in Sources */,
 				28F2CBE72316677500D67525 /* UserSetupPg1VC.swift in Sources */,
 				288B07FE235982290028F07C /* UserSetupPg2VC.swift in Sources */,
 			);

@@ -35,7 +35,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
         
         // Home
-        let homeNavController = templateNavController(unselectedImage:#imageLiteral(resourceName: "home-unfilled"), selectedImage: #imageLiteral(resourceName: "home-filled"))
+        let homeNavController = templateNavController(unselectedImage:#imageLiteral(resourceName: "home-unfilled"), selectedImage: #imageLiteral(resourceName: "home-filled"), rootViewController: HomeController(collectionViewLayout: UICollectionViewFlowLayout() ))
         
         // Search
         let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search"), selectedImage: #imageLiteral(resourceName: "search"))
@@ -88,8 +88,8 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     //MARK: SUPPORT
-    fileprivate func templateNavController(unselectedImage: UIImage, selectedImage: UIImage) -> UINavigationController {
-        let viewController = UIViewController() // TODO: Create view controller
+    fileprivate func templateNavController(unselectedImage: UIImage, selectedImage: UIImage, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
+        let viewController = rootViewController // TODO: Create view controller
         let navController = UINavigationController(rootViewController: viewController)
         
         navController.tabBarItem.image = unselectedImage

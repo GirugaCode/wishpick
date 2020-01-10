@@ -123,7 +123,7 @@ class LoginViewController: UIViewController {
                 }
                 
                 if (AccessToken.current != nil) {
-                    AppDelegate.shared.rootViewController.switchToUserSetup()
+                    AppDelegate.shared.rootViewController.switchToMainScreen()
                     
                     // Firebase Analytics
                     Analytics.logEvent(AnalyticsEventLogin, parameters: [

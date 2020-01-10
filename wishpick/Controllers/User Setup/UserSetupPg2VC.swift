@@ -95,6 +95,7 @@ class UserSetupPg2VC: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         userAddImage.layer.cornerRadius = userAddImage.frame.width/2
+        userAddImage.layer.masksToBounds = true
         
         dismiss(animated: true, completion: nil)
     }

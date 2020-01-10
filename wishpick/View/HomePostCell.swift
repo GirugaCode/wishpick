@@ -74,8 +74,8 @@ class HomePostCell: UICollectionViewCell {
     /// Description Label to give details to each post
     let descriptionLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "Username ", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaBold, size: 14) as Any])
-        attributedText.append(NSAttributedString(string: "I've been meaning to get this for myself this year!", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 12) as Any]))
+        let attributedText = NSMutableAttributedString(string: "Username", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaBold, size: 14) as Any])
+        attributedText.append(NSAttributedString(string: " I've been meaning to get this for myself this year!", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 12) as Any]))
         attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 14) as Any]))
         attributedText.append(NSAttributedString(string: "1 week ago", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaAltThin, size: 12) as Any]))
         label.attributedText = attributedText

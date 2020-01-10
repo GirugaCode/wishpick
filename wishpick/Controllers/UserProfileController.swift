@@ -43,7 +43,6 @@ class UserProfileController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUser()
-//        fetchPosts()
         fetchOrderedPosts()
         setupUI()
     }
@@ -103,7 +102,7 @@ class UserProfileController: UICollectionViewController {
             guard let dictionary = snapshot.value as? [String: Any] else { return }
             
             let post = Posts(dictionary: dictionary)
-            self.posts.append(post)
+            self.posts.insert(post, at: 0) // Inserts the post in reverse order
             
             self.collectionView?.reloadData()
         }) { (err) in

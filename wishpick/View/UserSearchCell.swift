@@ -10,6 +10,17 @@ import UIKit
 
 class UserSearchCell: UICollectionViewCell {
     
+    //MARK: PROPERTIES
+    var user: User? {
+        didSet {
+            usernameLabel.text = user?.username
+            
+            guard let profileImageUrl = user?.profileImageUrl else { return }
+            profileImageView.loadImage(urlString: profileImageUrl)
+        }
+    }
+    
+    //MARK: UI COMPONENTS
     /// Profile Image for search results
     let profileImageView: CustomImageView = {
         let imageView = CustomImageView()

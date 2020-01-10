@@ -39,6 +39,8 @@
 		287FA40923C6E46800AEAF35 /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA40823C6E46800AEAF35 /* HomePostCell.swift */; };
 		287FA40C23C8415600AEAF35 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA40B23C8415600AEAF35 /* User.swift */; };
 		287FA40E23C87FEB00AEAF35 /* Database+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA40D23C87FEB00AEAF35 /* Database+Extension.swift */; };
+		287FA41123C8826400AEAF35 /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA41023C8826400AEAF35 /* UserSearchController.swift */; };
+		287FA41323C88A7F00AEAF35 /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA41223C88A7F00AEAF35 /* UserSearchCell.swift */; };
 		288B07FC2359812D0028F07C /* UserSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FB2359812D0028F07C /* UserSetupViewController.swift */; };
 		288B07FE235982290028F07C /* UserSetupPg2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FD235982290028F07C /* UserSetupPg2VC.swift */; };
 		288B08002359823F0028F07C /* UserSetupPg3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */; };
@@ -109,6 +111,8 @@
 		287FA40823C6E46800AEAF35 /* HomePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 		287FA40B23C8415600AEAF35 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		287FA40D23C87FEB00AEAF35 /* Database+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Extension.swift"; sourceTree = "<group>"; };
+		287FA41023C8826400AEAF35 /* UserSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchController.swift; sourceTree = "<group>"; };
+		287FA41223C88A7F00AEAF35 /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
 		288B07FB2359812D0028F07C /* UserSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupViewController.swift; sourceTree = "<group>"; };
 		288B07FD235982290028F07C /* UserSetupPg2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg2VC.swift; sourceTree = "<group>"; };
 		288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg3VC.swift; sourceTree = "<group>"; };
@@ -240,6 +244,7 @@
 				287FA40123C67AA400AEAF35 /* UserProfilePhotoCell.swift */,
 				28FFC87D23C5C8A600046C1A /* PhotoSelectorHeader.swift */,
 				288B0803235A57990028F07C /* PhotoSelectorCell.swift */,
+				287FA41223C88A7F00AEAF35 /* UserSearchCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -247,8 +252,9 @@
 		28314FEC22FB0B440091F5A1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				287FA40523C6E10F00AEAF35 /* Home */,
 				28F2CBE82316678200D67525 /* Login */,
+				287FA40523C6E10F00AEAF35 /* Home */,
+				287FA40F23C8824F00AEAF35 /* Search */,
 				288B07FA2359804B0028F07C /* User Setup */,
 				28445DC72307FA82008CED37 /* RootViewController.swift */,
 				28259FF022C82CD100A6E4D2 /* MainTabViewController.swift */,
@@ -278,6 +284,14 @@
 				287FA40623C6E12A00AEAF35 /* HomeController.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		287FA40F23C8824F00AEAF35 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				287FA41023C8826400AEAF35 /* UserSearchController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		288B07FA2359804B0028F07C /* User Setup */ = {
@@ -569,10 +583,12 @@
 				287FA3FE23C5D99B00AEAF35 /* SharePhotoController.swift in Sources */,
 				281609B622C32D340045D352 /* EmailViewController.swift in Sources */,
 				28445DC82307FA82008CED37 /* RootViewController.swift in Sources */,
+				287FA41123C8826400AEAF35 /* UserSearchController.swift in Sources */,
 				287ECD9822FAC2C600D2CB7A /* UIView+Extension.swift in Sources */,
 				287FA40423C692ED00AEAF35 /* CustomImageView.swift in Sources */,
 				287FA40023C677FB00AEAF35 /* Posts.swift in Sources */,
 				288B08002359823F0028F07C /* UserSetupPg3VC.swift in Sources */,
+				287FA41323C88A7F00AEAF35 /* UserSearchCell.swift in Sources */,
 				284DF6BC232B340500E651F5 /* UIButton+Extension.swift in Sources */,
 				288B07FC2359812D0028F07C /* UserSetupViewController.swift in Sources */,
 				287FA40223C67AA400AEAF35 /* UserProfilePhotoCell.swift in Sources */,

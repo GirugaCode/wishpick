@@ -40,7 +40,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         let homeNavController = templateNavController(unselectedImage:#imageLiteral(resourceName: "home-unfilled"), selectedImage: #imageLiteral(resourceName: "home-filled"), rootViewController: HomeController(collectionViewLayout: UICollectionViewFlowLayout() ))
         
         // Search
-        let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search"), selectedImage: #imageLiteral(resourceName: "search"))
+        let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search"), selectedImage: #imageLiteral(resourceName: "search"), rootViewController: UserSearchController(collectionViewLayout: UICollectionViewFlowLayout()))
         
         // Add wishpick
         let addWishPickNav = templateNavController(unselectedImage: #imageLiteral(resourceName: "Email-Icon"), selectedImage: #imageLiteral(resourceName: "Email-Icon"))

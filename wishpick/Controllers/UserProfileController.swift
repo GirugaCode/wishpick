@@ -60,10 +60,13 @@ class UserProfileController: UICollectionViewController {
         // Gives the username value and stop constantly observing the node in DB
         Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
-            guard let usernameDict = snapshot.value as? [String:Any] else { return }
-            let username = usernameDict["username"] as? String
+            guard let dictionary = snapshot.value as? [String:Any] else { return }
             
-            self.navigationItem.title = username
+            self.user = User(dictionary: dictionary)
+            
+            self.navigationItem.title = self.user?.username // Sets the username according to user
+            
+            self.collectionView.reloadData()
             
         }) { (err) in
             print("Failed to fetch user:", err)
@@ -140,7 +143,9 @@ class UserProfileController: UICollectionViewController {
     // Header for the profile
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! UserProfileHeaderView
+        
+        header.user = self.user
 
         return header
     }

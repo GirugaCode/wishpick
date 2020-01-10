@@ -6,9 +6,17 @@
 //  Copyright © 2019 Danh Phu Nguyen. All rights reserved.
 //
 
+import Firebase
 import UIKit
 
 class UserProfileHeaderView: UICollectionViewCell {
+    
+    //MARK: PROPERTIES
+    var user: User? {
+        didSet{
+            setProfileImage()
+        }
+    }
     
     //MARK: UI COMPONENTS
     lazy var profileStackView: UIStackView = {
@@ -21,13 +29,10 @@ class UserProfileHeaderView: UICollectionViewCell {
         return stackView
     }()
     
-    let profileImageView: UIImageView = {
-        let image = UIImageView()
-        image.image = #imageLiteral(resourceName: "sample-profile-image")
-        image.contentMode = .scaleAspectFit
-        image.layer.masksToBounds = false
-        image.layer.borderColor = UIColor.black.cgColor
-        image.layer.cornerRadius = image.frame.height/2
+    let profileImageView: CustomImageView = {
+        let image = CustomImageView()
+        image.contentMode = .scaleAspectFill
+        image.layer.cornerRadius = 80/2
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
@@ -145,8 +150,7 @@ class UserProfileHeaderView: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         // custom code for layout
-        setupProfileHeader()
-        
+        setupProfileHeader()        
     }
     
     private func setupProfileHeader() {
@@ -156,6 +160,9 @@ class UserProfileHeaderView: UICollectionViewCell {
             profileStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             profileStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
             
+            profileImageView.widthAnchor.constraint(equalToConstant: 80),
+            profileImageView.heightAnchor.constraint(equalToConstant: 80),
+            
             userBioDescription.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
         ])
         
@@ -163,6 +170,14 @@ class UserProfileHeaderView: UICollectionViewCell {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    /**
+     URL session to set the profile image
+     */
+    fileprivate func setProfileImage() {
+        guard let profileImageUrl = user?.profileImageUrl else { return }
+        profileImageView.loadImage(urlString: profileImageUrl)
     }
     
 }

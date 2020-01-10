@@ -248,7 +248,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
             guard let uploadData = image.jpegData(compressionQuality: 0.3) else { return }
             
             let filename = NSUUID().uuidString
-            let storageRef = Storage.storage().reference().child("posts").child(filename)
+            let storageRef = Storage.storage().reference().child("profile_images").child(filename)
 
             storageRef.putData(uploadData, metadata: nil) { (metadata, err) in
                 if let err = err {
@@ -348,7 +348,8 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
             addPhotoButton.topAnchor.constraint(equalTo: signupButton.bottomAnchor, constant: 10),
             addPhotoButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 80),
             addPhotoButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -80),
-            addPhotoButton.heightAnchor.constraint(equalToConstant: 140),
+            addPhotoButton.heightAnchor.constraint(equalToConstant: 120),
+            addPhotoButton.widthAnchor.constraint(equalToConstant: 30),
             
             // Existing Account Label
             exisitingAccLabel.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 230),
@@ -372,7 +373,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
             addPhotoButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
         }
         
-        addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width/2
+        addPhotoButton.layer.cornerRadius = 30/2
         addPhotoButton.layer.masksToBounds = true
         
         dismiss(animated: true, completion: nil)

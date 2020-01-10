@@ -32,8 +32,14 @@ class UserSearchController: UICollectionViewController, UISearchBarDelegate {
         fetchUsers()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchBar.isHidden = false
+    }
+    
     private func setupCollectionView() {
         collectionView.backgroundColor = .white
+        collectionView.keyboardDismissMode = .onDrag
         collectionView.register(UserSearchCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.alwaysBounceVertical = true // Scroll the collection view 
     }
@@ -57,6 +63,13 @@ class UserSearchController: UICollectionViewController, UISearchBarDelegate {
             
             // Iterates through dictionary of users and adds them into array
             dictionaries.forEach { (key, value) in
+                
+                // Remove the current user from the search list
+                if key == Auth.auth().currentUser?.uid {
+                    print("Found Myself")
+                    return
+                }
+                
                 guard let userDictionary = value as? [String: Any] else { return }
                 let user = User(uid: key, dictionary: userDictionary)
                 self.users.append(user)
@@ -85,6 +98,17 @@ class UserSearchController: UICollectionViewController, UISearchBarDelegate {
         cell.user = filteredUsers[indexPath.item]
         
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        searchBar.isHidden = true
+        searchBar.resignFirstResponder() // Dismiss keyboard
+        
+        let user = filteredUsers[indexPath.item]
+        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
+        userProfileController.userId = user.uid // Set the uid to the selected one and push to that profile
+        navigationController?.pushViewController(userProfileController, animated: true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

@@ -16,6 +16,7 @@ class UserProfileController: UICollectionViewController {
     //MARK: PROPERTIES
     var posts = [Posts]()
     var user: User?
+    var userId: String?
     let cellId = "cellId"
     
     //MARK: UI COMPONENTS
@@ -43,7 +44,6 @@ class UserProfileController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUser()
-        fetchOrderedPosts()
         setupUI()
         setupCollectionView()
     }
@@ -51,17 +51,18 @@ class UserProfileController: UICollectionViewController {
     //MARK: FIREBASE FETCHING
     fileprivate func fetchUser() {
         
-        guard let uid = Auth.auth().currentUser?.uid else { return } // Current User
-        
+        let uid = userId ?? (Auth.auth().currentUser?.uid ?? "") // Allows to show the current/selected user
         Database.fetchUserWithUID(uid: uid) { (user) in
             self.user = user
             self.navigationItem.title = self.user?.username // Sets the username according to user
             self.collectionView.reloadData()
+            
+            self.fetchOrderedPosts()
         }
     }
     
     fileprivate func fetchOrderedPosts() {
-        guard let uid = Auth.auth().currentUser?.uid else { return } // Current User
+        guard let uid = self.user?.uid else { return } // Current User
         
         let ref = Database.database().reference().child("posts").child(uid)
         ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in

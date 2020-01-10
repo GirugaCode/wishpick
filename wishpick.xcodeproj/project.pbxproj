@@ -38,6 +38,7 @@
 		287FA40723C6E12A00AEAF35 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA40623C6E12A00AEAF35 /* HomeController.swift */; };
 		287FA40923C6E46800AEAF35 /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA40823C6E46800AEAF35 /* HomePostCell.swift */; };
 		287FA40C23C8415600AEAF35 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA40B23C8415600AEAF35 /* User.swift */; };
+		287FA40E23C87FEB00AEAF35 /* Database+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA40D23C87FEB00AEAF35 /* Database+Extension.swift */; };
 		288B07FC2359812D0028F07C /* UserSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FB2359812D0028F07C /* UserSetupViewController.swift */; };
 		288B07FE235982290028F07C /* UserSetupPg2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FD235982290028F07C /* UserSetupPg2VC.swift */; };
 		288B08002359823F0028F07C /* UserSetupPg3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */; };
@@ -107,6 +108,7 @@
 		287FA40623C6E12A00AEAF35 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		287FA40823C6E46800AEAF35 /* HomePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 		287FA40B23C8415600AEAF35 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		287FA40D23C87FEB00AEAF35 /* Database+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Extension.swift"; sourceTree = "<group>"; };
 		288B07FB2359812D0028F07C /* UserSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupViewController.swift; sourceTree = "<group>"; };
 		288B07FD235982290028F07C /* UserSetupPg2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg2VC.swift; sourceTree = "<group>"; };
 		288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg3VC.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				287ECD9722FAC2C600D2CB7A /* UIView+Extension.swift */,
 				284DF6BB232B340500E651F5 /* UIButton+Extension.swift */,
 				287FA40323C692ED00AEAF35 /* CustomImageView.swift */,
+				287FA40D23C87FEB00AEAF35 /* Database+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				281609F422C345D20045D352 /* Constants.swift in Sources */,
 				288B0804235A57990028F07C /* PhotoSelectorCell.swift in Sources */,
 				287FA40923C6E46800AEAF35 /* HomePostCell.swift in Sources */,
+				287FA40E23C87FEB00AEAF35 /* Database+Extension.swift in Sources */,
 				287FA40723C6E12A00AEAF35 /* HomeController.swift in Sources */,
 				28F2CBE72316677500D67525 /* UserSetupPg1VC.swift in Sources */,
 				288B07FE235982290028F07C /* UserSetupPg2VC.swift in Sources */,

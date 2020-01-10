@@ -45,10 +45,6 @@ class UserProfileController: UICollectionViewController {
         fetchUser()
         fetchOrderedPosts()
         setupUI()
-    }
-    
-    override func loadView() {
-        super.loadView()
         setupCollectionView()
     }
     
@@ -57,43 +53,10 @@ class UserProfileController: UICollectionViewController {
         
         guard let uid = Auth.auth().currentUser?.uid else { return } // Current User
         
-        // Gives the username value and stop constantly observing the node in DB
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            guard let dictionary = snapshot.value as? [String:Any] else { return }
-            
-            self.user = User(dictionary: dictionary)
-            
+        Database.fetchUserWithUID(uid: uid) { (user) in
+            self.user = user
             self.navigationItem.title = self.user?.username // Sets the username according to user
-            
             self.collectionView.reloadData()
-            
-        }) { (err) in
-            print("Failed to fetch user:", err)
-        }
-    }
-    
-    fileprivate func fetchPosts() {
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return } // Current User
-        
-        let ref = Database.database().reference().child("posts").child(uid)
-        
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            guard let dictionaries = snapshot.value as? [String: Any] else { return }
-            // Iterates through the Dictionary of posts and appends it to the post array
-            dictionaries.forEach { (key, value) in
-                guard let dictionary = value as? [String: Any] else { return }
-                                
-                let post = Posts(dictionary: dictionary)
-                self.posts.append(post)
-            }
-            
-            self.collectionView?.reloadData()
-            
-        }) { (err) in
-            print("Failed to fetch photos", err)
         }
     }
     
@@ -104,7 +67,9 @@ class UserProfileController: UICollectionViewController {
         ref.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else { return }
             
-            let post = Posts(dictionary: dictionary)
+            guard let user = self.user else { return }
+            
+            let post = Posts(user: user, dictionary: dictionary)
             self.posts.insert(post, at: 0) // Inserts the post in reverse order
             
             self.collectionView?.reloadData()
@@ -142,11 +107,11 @@ class UserProfileController: UICollectionViewController {
     
     // Header for the profile
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-
+        
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! UserProfileHeaderView
         
         header.user = self.user
-
+        
         return header
     }
     
@@ -154,7 +119,7 @@ class UserProfileController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserProfilePhotoCell
         

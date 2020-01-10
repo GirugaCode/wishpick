@@ -33,10 +33,16 @@ class HomeController: UICollectionViewController {
     }
     
     fileprivate func fetchPosts() {
-        
         guard let uid = Auth.auth().currentUser?.uid else { return } // Current User
         
-        let ref = Database.database().reference().child("posts").child(uid)
+        Database.fetchUserWithUID(uid: uid) { (user) in
+            self.fetchPostsWithUser(user: user)
+        }
+    }
+    
+    fileprivate func fetchPostsWithUser(user: User) {
+        
+        let ref = Database.database().reference().child("posts").child(user.uid)
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -44,8 +50,8 @@ class HomeController: UICollectionViewController {
             // Iterates through the Dictionary of posts and appends it to the post array
             dictionaries.forEach { (key, value) in
                 guard let dictionary = value as? [String: Any] else { return }
-                                
-                let post = Posts(dictionary: dictionary)
+                
+                let post = Posts(user: user, dictionary: dictionary)
                 self.posts.append(post)
             }
             

@@ -15,6 +15,8 @@ class HomePostCell: UICollectionViewCell {
     var post: Posts? {
         didSet {
             setPostImages()
+            setProfileInfo()
+            setupAttributedText()
         }
     }
     
@@ -24,7 +26,6 @@ class HomePostCell: UICollectionViewCell {
         let imageView = CustomImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .blue
         imageView.layer.cornerRadius = 40 / 2
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -74,11 +75,6 @@ class HomePostCell: UICollectionViewCell {
     /// Description Label to give details to each post
     let descriptionLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "Username", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaBold, size: 14) as Any])
-        attributedText.append(NSAttributedString(string: " I've been meaning to get this for myself this year!", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 12) as Any]))
-        attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 14) as Any]))
-        attributedText.append(NSAttributedString(string: "1 week ago", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaAltThin, size: 12) as Any]))
-        label.attributedText = attributedText
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -165,6 +161,31 @@ class HomePostCell: UICollectionViewCell {
     fileprivate func setPostImages() {
         guard let postImageUrl = post?.imageUrl else { return }
         photoImageView.loadImage(urlString: postImageUrl)
+    }
+    
+    /**
+     URL session to set the images to each cell in the profile
+     */
+    fileprivate func setProfileInfo() {
+        // Sets up the username for each post
+        usernameLabel.text = post?.user.username
+        // Adds the profile image to each post
+        guard let profileImageUrl = post?.user.profileImageUrl else { return }
+        userProfileImageView.loadImage(urlString: profileImageUrl)
+    }
+    
+    /**
+     Sets up the information text for each post with the attributed strings
+     */
+    fileprivate func setupAttributedText() {
+        guard let post = self.post else { return }
+        
+        let attributedText = NSMutableAttributedString(string: post.user.username, attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaBold, size: 14) as Any])
+        attributedText.append(NSAttributedString(string: " \(post.itemInfo)", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 12) as Any]))
+         attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 14) as Any]))
+         attributedText.append(NSAttributedString(string: "1 week ago", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaAltThin, size: 12) as Any]))
+        
+        descriptionLabel.attributedText = attributedText
     }
     
 }

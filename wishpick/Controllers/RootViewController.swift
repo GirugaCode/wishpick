@@ -12,7 +12,7 @@ class RootViewController: UIViewController {
     private var current: UIViewController
     
     init() {
-        self.current = LoginViewController()
+        self.current = MainTabViewController()
         super.init(nibName: nil, bundle: nil)
     }
     

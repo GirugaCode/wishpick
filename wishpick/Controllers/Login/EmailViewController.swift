@@ -9,7 +9,7 @@
 import Firebase
 import UIKit
 
-class EmailViewController: UIViewController {
+class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: UI COMPONENTS
     let createAccLabel: UILabel = {
@@ -158,6 +158,24 @@ class EmailViewController: UIViewController {
         return button
     }()
     
+    let addPhotoButton: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "add-photo"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFill
+        button.titleLabel?.font = UIFont(name: Fonts.proximaBold, size: 28)
+        button.addTarget(self, action: #selector(handleAddPhoto), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    @objc func handleAddPhoto() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+    
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
     let exisitingAccLabel: UILabel = {
         let label = UILabel()
         let tap = UITapGestureRecognizer(target: self, action: #selector(backTransition))
@@ -225,20 +243,44 @@ class EmailViewController: UIViewController {
                 print("Sucessfully created user:", Auth.auth().currentUser?.uid ?? "")
             }
             
-            guard let userID = Auth.auth().currentUser?.uid else { return }
-            let usernameValues = ["username":username]
-            let values = [userID:usernameValues]
+            guard let image = self.addPhotoButton.imageView?.image else { return }
             
-            Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
+            guard let uploadData = image.jpegData(compressionQuality: 0.3) else { return }
+            
+            let filename = NSUUID().uuidString
+            let storageRef = Storage.storage().reference().child("posts").child(filename)
+
+            storageRef.putData(uploadData, metadata: nil) { (metadata, err) in
                 if let err = err {
-                    print("Failed to save user info:", err)
+                    print("Failed to upload profile picture:", err)
                     return
                 }
                 
-                print("Successfully saved user info!", userID)
-                // Analytics to track sign up
-                Analytics.logEvent(AnalyticsEventSignUp, parameters: [:])
-            })
+                storageRef.downloadURL { (imageUrl, error) in
+                    if let error = error {
+                        print("Failed to download URL", error)
+                    }
+                    
+                    guard let profileImageUrl = imageUrl?.absoluteString else { return }
+                    print("Sucessfully uploaded image to DB", profileImageUrl)
+                    
+                    guard let userID = Auth.auth().currentUser?.uid else { return }
+                    let dictionaryValues = ["username":username, "profileImageUrl": profileImageUrl]
+                     let values = [userID:dictionaryValues]
+
+                     Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
+                         if let err = err {
+                             print("Failed to save user info:", err)
+                             return
+                         }
+
+                         print("Successfully saved user info!", userID)
+                         // Analytics to track sign up
+                         Analytics.logEvent(AnalyticsEventSignUp, parameters: [:])
+                     })
+                }
+                
+            }
         }
         AppDelegate.shared.rootViewController.switchToMainScreen()
     }
@@ -276,6 +318,7 @@ class EmailViewController: UIViewController {
         view.addSubview(mainStackView)
         view.addSubview(signupButton)
         view.addSubview(exisitingAccLabel)
+        view.addSubview(addPhotoButton)
         view.addSubview(backButton)
 
         NSLayoutConstraint.activate([
@@ -301,6 +344,12 @@ class EmailViewController: UIViewController {
             signupButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -120),
             signupButton.heightAnchor.constraint(equalToConstant: 50),
             
+            // Add Photo Button
+            addPhotoButton.topAnchor.constraint(equalTo: signupButton.bottomAnchor, constant: 10),
+            addPhotoButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 80),
+            addPhotoButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -80),
+            addPhotoButton.heightAnchor.constraint(equalToConstant: 140),
+            
             // Existing Account Label
             exisitingAccLabel.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 230),
             exisitingAccLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -312,6 +361,21 @@ class EmailViewController: UIViewController {
     fileprivate func setupUI() {
         // Set up background gradient
         view.setGradientBackground(colorOne: #colorLiteral(red: 0.5019607843, green: 0.3647058824, blue: 0.1725490196, alpha: 1), colorTwo: #colorLiteral(red: 1, green: 0.6561305523, blue: 0.171354413, alpha: 1))
+    }
+    
+    /// Picker Controller function to allow user to choose and set image as profile
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let editedImage = info[.editedImage] as? UIImage {
+            addPhotoButton.setImage(editedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else if let originalImage = info[.originalImage] as? UIImage {
+            addPhotoButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
+        addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width/2
+        addPhotoButton.layer.masksToBounds = true
+        
+        dismiss(animated: true, completion: nil)
     }
 }
 

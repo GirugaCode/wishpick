@@ -19,10 +19,6 @@
     Create your favorite wish list items and follow all your friends wants as well!
     <br />
     <br />
-
-    <a href="https://github.com/GirugaCode/wishpick/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/GirugaCode/wishpick/issues">Request Feature</a>
   </p>
 </p>
 

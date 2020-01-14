@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2809512E231F00B9001BD2DF /* SpacerView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2809512D231F00B9001BD2DF /* SpacerView+Extension.swift */; };
+		280AACF523C9137100E42543 /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 280AACF423C9137100E42543 /* HomeKit.framework */; };
 		281609B422C32D340045D352 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281609B322C32D340045D352 /* AppDelegate.swift */; };
 		281609B622C32D340045D352 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281609B522C32D340045D352 /* EmailViewController.swift */; };
 		281609BB22C32D350045D352 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 281609BA22C32D350045D352 /* Assets.xcassets */; };
@@ -41,6 +42,8 @@
 		287FA40E23C87FEB00AEAF35 /* Database+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA40D23C87FEB00AEAF35 /* Database+Extension.swift */; };
 		287FA41123C8826400AEAF35 /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA41023C8826400AEAF35 /* UserSearchController.swift */; };
 		287FA41323C88A7F00AEAF35 /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA41223C88A7F00AEAF35 /* UserSearchCell.swift */; };
+		287FA41623C90BBF00AEAF35 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287FA41523C90BBF00AEAF35 /* HealthKit.framework */; };
+		287FA41823C90BF200AEAF35 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287FA41723C90BF200AEAF35 /* MapKit.framework */; };
 		288B07FC2359812D0028F07C /* UserSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FB2359812D0028F07C /* UserSetupViewController.swift */; };
 		288B07FE235982290028F07C /* UserSetupPg2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FD235982290028F07C /* UserSetupPg2VC.swift */; };
 		288B08002359823F0028F07C /* UserSetupPg3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */; };
@@ -74,6 +77,8 @@
 		01E3D23E4303E2322779D102 /* Pods-wishpick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpick.release.xcconfig"; path = "Pods/Target Support Files/Pods-wishpick/Pods-wishpick.release.xcconfig"; sourceTree = "<group>"; };
 		1883471CA8C55894B2AFA563 /* Pods-wishpickUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpickUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-wishpickUITests/Pods-wishpickUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2809512D231F00B9001BD2DF /* SpacerView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpacerView+Extension.swift"; sourceTree = "<group>"; };
+		280AACF323C9119F00E42543 /* wishpick.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wishpick.entitlements; sourceTree = "<group>"; };
+		280AACF423C9137100E42543 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
 		281609B022C32D340045D352 /* wishpick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wishpick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		281609B322C32D340045D352 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		281609B522C32D340045D352 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +118,8 @@
 		287FA40D23C87FEB00AEAF35 /* Database+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Extension.swift"; sourceTree = "<group>"; };
 		287FA41023C8826400AEAF35 /* UserSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchController.swift; sourceTree = "<group>"; };
 		287FA41223C88A7F00AEAF35 /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
+		287FA41523C90BBF00AEAF35 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		287FA41723C90BF200AEAF35 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		288B07FB2359812D0028F07C /* UserSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupViewController.swift; sourceTree = "<group>"; };
 		288B07FD235982290028F07C /* UserSetupPg2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg2VC.swift; sourceTree = "<group>"; };
 		288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg3VC.swift; sourceTree = "<group>"; };
@@ -135,6 +142,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D11001378F18E825A9E81456 /* Pods_wishpick.framework in Frameworks */,
+				287FA41823C90BF200AEAF35 /* MapKit.framework in Frameworks */,
+				280AACF523C9137100E42543 /* HomeKit.framework in Frameworks */,
+				287FA41623C90BBF00AEAF35 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +192,7 @@
 		281609B222C32D340045D352 /* wishpick */ = {
 			isa = PBXGroup;
 			children = (
+				280AACF323C9119F00E42543 /* wishpick.entitlements */,
 				28314FEA22FB0B300091F5A1 /* Model */,
 				28314FEB22FB0B3F0091F5A1 /* View */,
 				28314FEC22FB0B440091F5A1 /* Controllers */,
@@ -340,6 +351,9 @@
 		D1FEBF30B579A0A0936637CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				280AACF423C9137100E42543 /* HomeKit.framework */,
+				287FA41723C90BF200AEAF35 /* MapKit.framework */,
+				287FA41523C90BBF00AEAF35 /* HealthKit.framework */,
 				70A79FDE7DDDB7F08EA66EF6 /* Pods_wishpick.framework */,
 				80FB82CAE1299E9A7778F127 /* Pods_wishpickTests.framework */,
 				DEFF0911C952C5F1BCD3DCA6 /* Pods_wishpickUITests.framework */,
@@ -771,6 +785,8 @@
 			baseConfigurationReference = 8CA6427999CCEA59F9025857 /* Pods-wishpick.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = wishpick/wishpick.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FBPU586293;
 				INFOPLIST_FILE = wishpick/Info.plist;
@@ -780,6 +796,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.RyanNguyen.wishpick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -790,6 +807,8 @@
 			baseConfigurationReference = 01E3D23E4303E2322779D102 /* Pods-wishpick.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = wishpick/wishpick.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FBPU586293;
 				INFOPLIST_FILE = wishpick/Info.plist;
@@ -799,6 +818,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.RyanNguyen.wishpick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

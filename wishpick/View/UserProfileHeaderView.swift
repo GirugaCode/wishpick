@@ -14,17 +14,18 @@ class UserProfileHeaderView: UICollectionViewCell {
     //MARK: PROPERTIES
     var user: User? {
         didSet{
-            setProfileImage()
+            setupProfile()
+            setupEditFollowButton()
         }
     }
     
     //MARK: UI COMPONENTS
     lazy var profileStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [profileImageView, usernameLabel, userBioDescription, userStatStackView])
+        let stackView = UIStackView(arrangedSubviews: [profileImageView, usernameLabel, userBioDescription, editProfileFollowButton, userStatStackView])
         stackView.distribution = .fill
         stackView.axis = .vertical
         stackView.alignment = .center
-        stackView.spacing = 10
+        stackView.spacing = 8
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -55,6 +56,21 @@ class UserProfileHeaderView: UICollectionViewCell {
         textView.font = UIFont(name: Fonts.proximaAltBold, size: 14)
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
+    }()
+    
+    /// Profile Button to either Follow/Unfollow or Edit Profile
+    lazy var editProfileFollowButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Edit Profile", for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.4039215686, green: 0.3215686275, blue: 0.3215686275, alpha: 1), for: .normal)
+        button.titleLabel?.font = UIFont(name: Fonts.proximaRegular, size: 14)
+        button.backgroundColor = .clear
+        button.layer.cornerRadius = 15
+        button.layer.borderWidth = 1
+        button.layer.borderColor = #colorLiteral(red: 1, green: 0.8980392157, blue: 0.7529411765, alpha: 1)
+        button.addTarget(self, action: #selector(handleEditProfileOrFollow), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     lazy var userStatStackView: UIStackView = {
@@ -164,20 +180,108 @@ class UserProfileHeaderView: UICollectionViewCell {
             profileImageView.heightAnchor.constraint(equalToConstant: 80),
             
             userBioDescription.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.9),
+            editProfileFollowButton.widthAnchor.constraint(equalToConstant: 150),
+            editProfileFollowButton.heightAnchor.constraint(equalToConstant: 30),
         ])
         
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     /**
-     URL session to set the profile image
+     URL session to set up the profile
      */
-    fileprivate func setProfileImage() {
+    fileprivate func setupProfile() {
+        // Transfered the user profile image
         guard let profileImageUrl = user?.profileImageUrl else { return }
         profileImageView.loadImage(urlString: profileImageUrl)
+        
+        // Transfered the username label
+        usernameLabel.text = user?.username
+    }
+    
+    /**
+     Checks if the current user is following or not following a user when searched
+     
+     Updates the UI of the profile button based on current user and searched user
+     */
+    fileprivate func setupEditFollowButton() {
+        guard let currentUser = Auth.auth().currentUser?.uid else { return }
+        
+        guard let userId = user?.uid else { return }
+        
+        if currentUser == userId {
+            // edit profile
+        } else {
+            // Check if user is following
+            Database.database().reference().child("following").child(currentUser).child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if let isFollowing = snapshot.value as? Int, isFollowing == 1 {
+                    self.editProfileFollowButton.setTitle("Unfollow", for: .normal)
+                    
+                } else {
+                    self.setupFollowStyle()
+                }
+                
+            }) { (err) in
+                print("Failed to check if following:", err)
+            }
+        }
+    }
+    
+    /**
+     Handles the follow and unfollow feature and updates Firebase Database
+     */
+    @objc func handleEditProfileOrFollow() {
+        guard let currentUser = Auth.auth().currentUser?.uid else { return }
+        
+        guard let userId = user?.uid else { return }
+        
+        // Unfollow Logic
+        if editProfileFollowButton.titleLabel?.text == "Unfollow" {
+            Database.database().reference().child("following").child(currentUser).child(userId).removeValue { (err, ref) in
+                if let err = err {
+                    print("Failed to unfollow user:", err)
+                    return
+                }
+                print("Sucessfully unfollowed user:", self.user?.username ?? "")
+                self.setupFollowStyle()
+            }
+        }
+            // Follow Logic
+        else {
+            let ref = Database.database().reference().child("following").child(currentUser)
+            let values = [userId: 1]
+            ref.updateChildValues(values) { (err, ref) in
+                if let err = err {
+                    print("Failed to follow user:", err)
+                    return
+                }
+                print("Succesfully followed user: ", self.user?.username ?? "")
+                self.setupUnfollowStyle()
+            }
+        }
+    }
+    
+    /**
+     Style changes for setting up the follow style button
+     */
+    fileprivate func setupFollowStyle() {
+        self.editProfileFollowButton.setTitle("Follow", for: .normal)
+        self.editProfileFollowButton.backgroundColor = #colorLiteral(red: 0.9960784314, green: 0.7254901961, blue: 0.3411764706, alpha: 1)
+        self.editProfileFollowButton.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+        self.editProfileFollowButton.titleLabel?.font = UIFont(name: Fonts.proximaAltBold, size: 14)
+    }
+    /**
+     Style changes for setting up the unfollow style button
+     */
+    fileprivate func setupUnfollowStyle() {
+        self.editProfileFollowButton.setTitle("Unfollow", for: .normal)
+        self.editProfileFollowButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        self.editProfileFollowButton.setTitleColor(#colorLiteral(red: 0.4039215686, green: 0.3215686275, blue: 0.3215686275, alpha: 1), for: .normal)
+        self.editProfileFollowButton.titleLabel?.font = UIFont(name: Fonts.proximaRegular, size: 14)
     }
     
 }

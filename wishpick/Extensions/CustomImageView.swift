@@ -24,6 +24,8 @@ class CustomImageView: UIImageView {
 
     func loadImage(urlString: String) {
         
+        self.image = nil // Uses a blank place holder image while loading the image
+        
         lastURLUseToLoadImage = urlString
         
         // Checks if the image is in the cached area to optimize network

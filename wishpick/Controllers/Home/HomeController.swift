@@ -17,10 +17,36 @@ class HomeController: UICollectionViewController {
     //MARK: OVERRIDE FUNCTIONS
     override func viewDidLoad() {
         super.viewDidLoad()
+        notificationForFeed()
+        refreshController()
         setupCollectionView()
         setupNavigationItems()
-        fetchPosts()
-        fetchFollowingUserIds()
+        fetchAllPosts()
+    }
+    
+    /**
+     Sets up the refresh controller to reload posts
+     */
+    private func refreshController() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
+    }
+    
+    @objc func handleRefresh() {
+        posts.removeAll()
+        fetchAllPosts()
+    }
+    
+    /**
+     Observes when the user post a photo to refresh the home view
+     */
+    private func notificationForFeed() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFeed), name: SharePhotoController.updateFeedNotification, object: nil)
+    }
+    
+    @objc func handleUpdateFeed() {
+        handleRefresh()
     }
     
     /**
@@ -38,6 +64,11 @@ class HomeController: UICollectionViewController {
     private func setupCollectionView() {
         collectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         collectionView.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
+    }
+    
+    fileprivate func fetchAllPosts() {
+        fetchPosts()
+        fetchFollowingUserIds()
     }
     
     /**
@@ -71,18 +102,21 @@ class HomeController: UICollectionViewController {
     }
     
     /**
-    Fetches the post with a given user id
-
-    - Parameters:
-      - user: The user id of a user
-    */
+     Fetches the post with a given user id
+     
+     - Parameters:
+     - user: The user id of a user
+     */
     fileprivate func fetchPostsWithUser(user: User) {
         
         let ref = Database.database().reference().child("posts").child(user.uid)
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
+            self.collectionView.refreshControl?.endRefreshing()
+            
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            
             // Iterates through the Dictionary of posts and appends it to the post array
             dictionaries.forEach { (key, value) in
                 guard let dictionary = value as? [String: Any] else { return }

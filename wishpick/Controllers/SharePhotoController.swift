@@ -18,6 +18,9 @@ class SharePhotoController: UIViewController {
         }
     }
     
+    // Notification to check when to update feed
+    static let updateFeedNotification = NSNotification.Name(rawValue: "UpdateFeed")
+    
     //MARK: UI COMPONENTS
     /// Container View to hold the image and text
     let containerView: UIView = {
@@ -148,6 +151,9 @@ class SharePhotoController: UIViewController {
             }
             print("Successfully saved post to DB", ref)
             self.dismiss(animated: true, completion: nil)
+            
+            // Send off an notification when user uploads an image
+            NotificationCenter.default.post(name: SharePhotoController.updateFeedNotification, object: nil)
         }
     }
     

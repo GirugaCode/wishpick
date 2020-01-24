@@ -14,24 +14,35 @@ class HomeController: UICollectionViewController {
     var posts = [Posts]()
     let cellId = "cellId"
     
+    //MARK: OVERRIDE FUNCTIONS
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
         setupNavigationItems()
         fetchPosts()
+        fetchFollowingUserIds()
     }
     
+    /**
+     Sets up navigation properties for the view controller
+     */
     private func setupNavigationItems() {
         //TODO: Make a custom Image View to change the size
         navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "wishpick-banner"))
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.9960784314, green: 0.7254901961, blue: 0.3411764706, alpha: 1)
     }
     
+    /**
+     Sets up collection view of the cell
+     */
     private func setupCollectionView() {
         collectionView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         collectionView.register(HomePostCell.self, forCellWithReuseIdentifier: cellId)
     }
     
+    /**
+     Fetches the post of the current user
+     */
     fileprivate func fetchPosts() {
         guard let uid = Auth.auth().currentUser?.uid else { return } // Current User
         
@@ -40,6 +51,31 @@ class HomeController: UICollectionViewController {
         }
     }
     
+    /**
+     Fetches the ids of all the users the CURRENT user are following
+     */
+    fileprivate func fetchFollowingUserIds() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Database.database().reference().child("following").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let userIdsDictionary = snapshot.value as? [String: Any] else { return }
+            
+            userIdsDictionary.forEach({ (key, value) in
+                Database.fetchUserWithUID(uid: key) { (user) in
+                    self.fetchPostsWithUser(user: user)
+                }
+            })
+            
+        }) { (err) in
+            print("Failed to fetch following user ids:", err)
+        }
+    }
+    
+    /**
+    Fetches the post with a given user id
+
+    - Parameters:
+      - user: The user id of a user
+    */
     fileprivate func fetchPostsWithUser(user: User) {
         
         let ref = Database.database().reference().child("posts").child(user.uid)
@@ -54,6 +90,10 @@ class HomeController: UICollectionViewController {
                 let post = Posts(user: user, dictionary: dictionary)
                 self.posts.append(post)
             }
+            
+            self.posts.sort { (p1, p2) -> Bool in
+                return p1.creationDate.compare(p2.creationDate) == .orderedDescending
+            } // Sorts the posts in decending order based on creation date
             
             self.collectionView?.reloadData()
             

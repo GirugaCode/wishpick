@@ -119,7 +119,7 @@ class HomePostCell: UICollectionViewCell {
             photoImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             photoImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1),
-
+            
             descriptionLabel.topAnchor.constraint(equalTo: likeButton.bottomAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 8),
@@ -182,8 +182,10 @@ class HomePostCell: UICollectionViewCell {
         
         let attributedText = NSMutableAttributedString(string: post.user.username, attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaBold, size: 14) as Any])
         attributedText.append(NSAttributedString(string: " \(post.itemInfo)", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 12) as Any]))
-         attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 14) as Any]))
-         attributedText.append(NSAttributedString(string: "1 week ago", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaAltThin, size: 12) as Any]))
+        attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 14) as Any]))
+        
+        let timeAgoDisplay = post.creationDate.timeAgo() // Uses date extension to display time ago
+        attributedText.append(NSAttributedString(string: timeAgoDisplay, attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaAltThin, size: 12) as Any]))
         
         descriptionLabel.attributedText = attributedText
     }

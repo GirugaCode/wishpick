@@ -13,7 +13,7 @@ class UserProfileHeaderView: UICollectionViewCell {
     
     //MARK: PROPERTIES
     var user: User? {
-        didSet{
+        didSet {
             setupProfile()
             setupEditFollowButton()
         }

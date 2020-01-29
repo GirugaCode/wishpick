@@ -14,6 +14,9 @@
   </a>
 
   <h3 align="center">wishpick</h3>
+  <p align="center">
+  Currently in development
+  </p>
 
   <p align="center">
     Create your favorite wish list items and follow all your friends wants as well!

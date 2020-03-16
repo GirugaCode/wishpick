@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2806B4632418DFCC009408D4 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806B4622418DFCC009408D4 /* CameraController.swift */; };
 		2809512E231F00B9001BD2DF /* SpacerView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2809512D231F00B9001BD2DF /* SpacerView+Extension.swift */; };
 		280AACF523C9137100E42543 /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 280AACF423C9137100E42543 /* HomeKit.framework */; };
 		281609B422C32D340045D352 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281609B322C32D340045D352 /* AppDelegate.swift */; };
@@ -52,9 +53,9 @@
 		288B0804235A57990028F07C /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B0803235A57990028F07C /* PhotoSelectorCell.swift */; };
 		28F2CBE72316677500D67525 /* UserSetupPg1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2CBE62316677500D67525 /* UserSetupPg1VC.swift */; };
 		28FFC87E23C5C8A600046C1A /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FFC87D23C5C8A600046C1A /* PhotoSelectorHeader.swift */; };
-		518F1FA4738CB652183100F6 /* Pods_wishpickTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FB82CAE1299E9A7778F127 /* Pods_wishpickTests.framework */; };
-		D11001378F18E825A9E81456 /* Pods_wishpick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A79FDE7DDDB7F08EA66EF6 /* Pods_wishpick.framework */; };
-		E4D0E68F707551599E58DB18 /* Pods_wishpickUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEFF0911C952C5F1BCD3DCA6 /* Pods_wishpickUITests.framework */; };
+		4B10F0C5B2C916DA08FE5F1C /* Pods_wishpickTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24F489DC47C6A9996821937 /* Pods_wishpickTests.framework */; };
+		9F971012189EC742969EEE89 /* Pods_wishpick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8236A045529211A21530297 /* Pods_wishpick.framework */; };
+		B88668CBD43FCA71808FE54E /* Pods_wishpickUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA51C7C5B3564FF0B52BEC43 /* Pods_wishpickUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 /* Begin PBXFileReference section */
 		01E3D23E4303E2322779D102 /* Pods-wishpick.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpick.release.xcconfig"; path = "Pods/Target Support Files/Pods-wishpick/Pods-wishpick.release.xcconfig"; sourceTree = "<group>"; };
 		1883471CA8C55894B2AFA563 /* Pods-wishpickUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpickUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-wishpickUITests/Pods-wishpickUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2806B4622418DFCC009408D4 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		2809512D231F00B9001BD2DF /* SpacerView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpacerView+Extension.swift"; sourceTree = "<group>"; };
 		280AACF323C9119F00E42543 /* wishpick.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wishpick.entitlements; sourceTree = "<group>"; };
 		280AACF423C9137100E42543 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
@@ -101,6 +103,8 @@
 		281609E922C344800045D352 /* Proxima Nova Alt Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Light.otf"; sourceTree = "<group>"; };
 		281609EA22C344800045D352 /* Proxima Nova Alt Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Bold.otf"; sourceTree = "<group>"; };
 		281609F322C345D20045D352 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2823E5D12418EB5B0095AA5D /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2823E5D62418EBE00095AA5D /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28259FF022C82CD100A6E4D2 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		28259FF222C82DE600A6E4D2 /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		28259FF422C87ED400A6E4D2 /* UserProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -130,12 +134,12 @@
 		28F2CBE62316677500D67525 /* UserSetupPg1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg1VC.swift; sourceTree = "<group>"; };
 		28FFC87D23C5C8A600046C1A /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
 		5B74F70AB765165683C9AABA /* Pods-wishpickTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpickTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wishpickTests/Pods-wishpickTests.debug.xcconfig"; sourceTree = "<group>"; };
-		70A79FDE7DDDB7F08EA66EF6 /* Pods_wishpick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wishpick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EAAB6C495CE8CA476A563C3 /* Pods-wishpickUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpickUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wishpickUITests/Pods-wishpickUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		80FB82CAE1299E9A7778F127 /* Pods_wishpickTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wishpickTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CA6427999CCEA59F9025857 /* Pods-wishpick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpick.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wishpick/Pods-wishpick.debug.xcconfig"; sourceTree = "<group>"; };
+		BA51C7C5B3564FF0B52BEC43 /* Pods_wishpickUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wishpickUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD2160DB732EC7538DB85213 /* Pods-wishpickTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpickTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-wishpickTests/Pods-wishpickTests.release.xcconfig"; sourceTree = "<group>"; };
-		DEFF0911C952C5F1BCD3DCA6 /* Pods_wishpickUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wishpickUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C24F489DC47C6A9996821937 /* Pods_wishpickTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wishpickTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8236A045529211A21530297 /* Pods_wishpick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wishpick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,10 +147,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D11001378F18E825A9E81456 /* Pods_wishpick.framework in Frameworks */,
 				287FA41823C90BF200AEAF35 /* MapKit.framework in Frameworks */,
 				280AACF523C9137100E42543 /* HomeKit.framework in Frameworks */,
 				287FA41623C90BBF00AEAF35 /* HealthKit.framework in Frameworks */,
+				9F971012189EC742969EEE89 /* Pods_wishpick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				518F1FA4738CB652183100F6 /* Pods_wishpickTests.framework in Frameworks */,
+				4B10F0C5B2C916DA08FE5F1C /* Pods_wishpickTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,7 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4D0E68F707551599E58DB18 /* Pods_wishpickUITests.framework in Frameworks */,
+				B88668CBD43FCA71808FE54E /* Pods_wishpickUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +278,7 @@
 				28259FF222C82DE600A6E4D2 /* UserProfileController.swift */,
 				288B0801235A49230028F07C /* PhotoSelctorController.swift */,
 				287FA3FD23C5D99B00AEAF35 /* SharePhotoController.swift */,
+				2806B4622418DFCC009408D4 /* CameraController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -354,12 +359,14 @@
 		D1FEBF30B579A0A0936637CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2823E5D62418EBE00095AA5D /* FBLPromises.framework */,
+				2823E5D12418EB5B0095AA5D /* FBLPromises.framework */,
 				280AACF423C9137100E42543 /* HomeKit.framework */,
 				287FA41723C90BF200AEAF35 /* MapKit.framework */,
 				287FA41523C90BBF00AEAF35 /* HealthKit.framework */,
-				70A79FDE7DDDB7F08EA66EF6 /* Pods_wishpick.framework */,
-				80FB82CAE1299E9A7778F127 /* Pods_wishpickTests.framework */,
-				DEFF0911C952C5F1BCD3DCA6 /* Pods_wishpickUITests.framework */,
+				D8236A045529211A21530297 /* Pods_wishpick.framework */,
+				C24F489DC47C6A9996821937 /* Pods_wishpickTests.framework */,
+				BA51C7C5B3564FF0B52BEC43 /* Pods_wishpickUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -375,7 +382,7 @@
 				281609AC22C32D330045D352 /* Sources */,
 				281609AD22C32D330045D352 /* Frameworks */,
 				281609AE22C32D330045D352 /* Resources */,
-				5D2E9543FD252CB0CECE212B /* [CP] Embed Pods Frameworks */,
+				C5DD559FD5DA40F1C88491D1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -525,23 +532,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5D2E9543FD252CB0CECE212B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-wishpick/Pods-wishpick-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-wishpick/Pods-wishpick-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wishpick/Pods-wishpick-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		870C0B02FDF3559A87CFD0AE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -562,6 +552,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5DD559FD5DA40F1C88491D1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wishpick/Pods-wishpick-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wishpick/Pods-wishpick-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wishpick/Pods-wishpick-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F316FAB0B7A4E7D6D026864A /* [CP] Check Pods Manifest.lock */ = {
@@ -617,6 +624,7 @@
 				28259FF322C82DE600A6E4D2 /* UserProfileController.swift in Sources */,
 				281609F422C345D20045D352 /* Constants.swift in Sources */,
 				288B0804235A57990028F07C /* PhotoSelectorCell.swift in Sources */,
+				2806B4632418DFCC009408D4 /* CameraController.swift in Sources */,
 				287FA40923C6E46800AEAF35 /* HomePostCell.swift in Sources */,
 				287FA40E23C87FEB00AEAF35 /* Database+Extension.swift in Sources */,
 				287FA40723C6E12A00AEAF35 /* HomeController.swift in Sources */,

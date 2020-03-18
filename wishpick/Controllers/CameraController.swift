@@ -31,11 +31,6 @@ class CameraController: UIViewController {
         return button
     }()
     
-    /// Handles capturing a photo
-    @objc func handleCapturePhoto() {
-        print("Capture Photo")
-    }
-    
     /// Handles dismissing the view
     @objc func handleDismiss() {
         dismiss(animated: true, completion: nil)
@@ -69,14 +64,31 @@ class CameraController: UIViewController {
         ])
     }
     
+    /// Handles capturing a photo
+    @objc func handleCapturePhoto() {
+        print("Capture Photo")
+        let settings = AVCapturePhotoSettings()
+        
+        // Sets up the preview of the captured image
+        guard let previewFormateType = settings.availablePreviewPhotoPixelFormatTypes.first else { return }
+        settings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewFormateType]
+        
+        // Captures the photos with settings and delegate functions
+        output.capturePhoto(with: settings, delegate: self)
+    }
+    
     /**
      Sets up the capture session for the phones camera
      */
+    let output = AVCapturePhotoOutput()
     fileprivate func setupCaptureSession() {
         // Inputs of camera's capture session
         let captureSession = AVCaptureSession()
         
-        guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
+        guard let captureDevice = AVCaptureDevice.default(for: .video) else {
+            print("Unable to access camera")
+            return
+        }
         
         do {
             let input = try AVCaptureDeviceInput(device: captureDevice)
@@ -88,7 +100,6 @@ class CameraController: UIViewController {
         }
         
         // Outputs of camera's capture session
-        let output = AVCapturePhotoOutput()
         if captureSession.canAddOutput(output){
             captureSession.addOutput(output)
         }
@@ -101,5 +112,28 @@ class CameraController: UIViewController {
         // Runs the camera session
         captureSession.startRunning()
         
+    }
+}
+
+extension CameraController: AVCapturePhotoCaptureDelegate {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        guard let imageData = photo.fileDataRepresentation() else {
+            print("Unable to get image data")
+            return
+        }
+        
+        // Sets up preview image view after image was taken
+        let previewImage = UIImage(data: imageData)
+        
+        let previewImageView = UIImageView(image: previewImage)
+        previewImageView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(previewImageView)
+        
+        NSLayoutConstraint.activate([
+            previewImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            previewImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            previewImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            previewImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
     }
 }

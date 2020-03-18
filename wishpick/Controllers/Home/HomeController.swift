@@ -55,7 +55,7 @@ class HomeController: UICollectionViewController {
     private func setupNavigationItems() {
         //TODO: Make a custom Image View to change the size
         navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "wishpick-banner"))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "add-photo").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleCamera))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "camera").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleCamera))
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.9960784314, green: 0.7254901961, blue: 0.3411764706, alpha: 1)
     }
     

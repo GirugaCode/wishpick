@@ -53,9 +53,9 @@
 		288B0804235A57990028F07C /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B0803235A57990028F07C /* PhotoSelectorCell.swift */; };
 		28F2CBE72316677500D67525 /* UserSetupPg1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2CBE62316677500D67525 /* UserSetupPg1VC.swift */; };
 		28FFC87E23C5C8A600046C1A /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FFC87D23C5C8A600046C1A /* PhotoSelectorHeader.swift */; };
-		4B10F0C5B2C916DA08FE5F1C /* Pods_wishpickTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24F489DC47C6A9996821937 /* Pods_wishpickTests.framework */; };
-		9F971012189EC742969EEE89 /* Pods_wishpick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8236A045529211A21530297 /* Pods_wishpick.framework */; };
-		B88668CBD43FCA71808FE54E /* Pods_wishpickUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA51C7C5B3564FF0B52BEC43 /* Pods_wishpickUITests.framework */; };
+		3574BBA8D156A3259E4113C9 /* libPods-wishpick.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF146E3439636337E890D51E /* libPods-wishpick.a */; };
+		4FCEF23A37E9A3D2E0B3F67B /* libPods-wishpickUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA58E7B9383FD77DB4F91A1E /* libPods-wishpickUITests.a */; };
+		FBAE4DF801E968A14CB876E2 /* libPods-wishpickTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EA3AA1BBC503D5ED68DC158 /* libPods-wishpickTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,13 +133,13 @@
 		288B0803235A57990028F07C /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
 		28F2CBE62316677500D67525 /* UserSetupPg1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg1VC.swift; sourceTree = "<group>"; };
 		28FFC87D23C5C8A600046C1A /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
+		4EA3AA1BBC503D5ED68DC158 /* libPods-wishpickTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wishpickTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B74F70AB765165683C9AABA /* Pods-wishpickTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpickTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wishpickTests/Pods-wishpickTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7EAAB6C495CE8CA476A563C3 /* Pods-wishpickUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpickUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wishpickUITests/Pods-wishpickUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8CA6427999CCEA59F9025857 /* Pods-wishpick.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpick.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wishpick/Pods-wishpick.debug.xcconfig"; sourceTree = "<group>"; };
-		BA51C7C5B3564FF0B52BEC43 /* Pods_wishpickUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wishpickUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD2160DB732EC7538DB85213 /* Pods-wishpickTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpickTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-wishpickTests/Pods-wishpickTests.release.xcconfig"; sourceTree = "<group>"; };
-		C24F489DC47C6A9996821937 /* Pods_wishpickTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wishpickTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8236A045529211A21530297 /* Pods_wishpick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wishpick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF146E3439636337E890D51E /* libPods-wishpick.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wishpick.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA58E7B9383FD77DB4F91A1E /* libPods-wishpickUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wishpickUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +150,7 @@
 				287FA41823C90BF200AEAF35 /* MapKit.framework in Frameworks */,
 				280AACF523C9137100E42543 /* HomeKit.framework in Frameworks */,
 				287FA41623C90BBF00AEAF35 /* HealthKit.framework in Frameworks */,
-				9F971012189EC742969EEE89 /* Pods_wishpick.framework in Frameworks */,
+				3574BBA8D156A3259E4113C9 /* libPods-wishpick.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,7 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B10F0C5B2C916DA08FE5F1C /* Pods_wishpickTests.framework in Frameworks */,
+				FBAE4DF801E968A14CB876E2 /* libPods-wishpickTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,7 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B88668CBD43FCA71808FE54E /* Pods_wishpickUITests.framework in Frameworks */,
+				4FCEF23A37E9A3D2E0B3F67B /* libPods-wishpickUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,9 +364,9 @@
 				280AACF423C9137100E42543 /* HomeKit.framework */,
 				287FA41723C90BF200AEAF35 /* MapKit.framework */,
 				287FA41523C90BBF00AEAF35 /* HealthKit.framework */,
-				D8236A045529211A21530297 /* Pods_wishpick.framework */,
-				C24F489DC47C6A9996821937 /* Pods_wishpickTests.framework */,
-				BA51C7C5B3564FF0B52BEC43 /* Pods_wishpickUITests.framework */,
+				BF146E3439636337E890D51E /* libPods-wishpick.a */,
+				4EA3AA1BBC503D5ED68DC158 /* libPods-wishpickTests.a */,
+				DA58E7B9383FD77DB4F91A1E /* libPods-wishpickUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -382,7 +382,7 @@
 				281609AC22C32D330045D352 /* Sources */,
 				281609AD22C32D330045D352 /* Frameworks */,
 				281609AE22C32D330045D352 /* Resources */,
-				C5DD559FD5DA40F1C88491D1 /* [CP] Embed Pods Frameworks */,
+				38B73FC1437DC8F83A010948 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -532,6 +532,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		38B73FC1437DC8F83A010948 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wishpick/Pods-wishpick-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wishpick/Pods-wishpick-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wishpick/Pods-wishpick-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		870C0B02FDF3559A87CFD0AE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -552,23 +569,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C5DD559FD5DA40F1C88491D1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-wishpick/Pods-wishpick-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-wishpick/Pods-wishpick-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wishpick/Pods-wishpick-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F316FAB0B7A4E7D6D026864A /* [CP] Check Pods Manifest.lock */ = {

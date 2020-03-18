@@ -16,7 +16,7 @@ class CameraController: UIViewController {
     /// Button to dismiss the camera controller
     let dismissCamera: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "dismiss"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "dismiss").withRenderingMode(.alwaysOriginal), for: .normal)
         button.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -25,7 +25,7 @@ class CameraController: UIViewController {
     /// Button to take a photo of Capture Session
     let capturePhotoButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "capture-image"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "capture-image").withRenderingMode(.alwaysOriginal), for: .normal)
         button.addTarget(self, action: #selector(handleCapturePhoto), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -42,6 +42,11 @@ class CameraController: UIViewController {
         
         setupCaptureSession()
         setupCameraUI()
+    }
+    
+    // Hides the status bar when presenting Camera
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     /**
@@ -116,24 +121,26 @@ class CameraController: UIViewController {
 }
 
 extension CameraController: AVCapturePhotoCaptureDelegate {
+    // Captures the photo in the camera view
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         guard let imageData = photo.fileDataRepresentation() else {
             print("Unable to get image data")
             return
         }
-        
         // Sets up preview image view after image was taken
         let previewImage = UIImage(data: imageData)
         
-        let previewImageView = UIImageView(image: previewImage)
-        previewImageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(previewImageView)
+        // Displays the container view of the taken photo
+        let containerView = PreviewPhotoContainerView()
+        containerView.previewImageView.image = previewImage
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(containerView)
         
         NSLayoutConstraint.activate([
-            previewImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            previewImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            previewImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            previewImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            containerView.topAnchor.constraint(equalTo: view.topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
 }

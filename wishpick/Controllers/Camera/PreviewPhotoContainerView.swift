@@ -45,9 +45,9 @@ class PreviewPhotoContainerView: UIView {
     
     /// Saves the image to device
     @objc func handleSave(){
-        print("Handled Save")
         guard let previewImage = previewImageView.image else { return }
-        let library = PHPhotoLibrary.shared()
+        let library = PHPhotoLibrary.shared() // Access to photo library in device
+        // Requests the preview image to be stored
         library.performChanges({
             PHAssetChangeRequest.creationRequestForAsset(from: previewImage)
         }) { (success, err) in
@@ -106,7 +106,7 @@ class PreviewPhotoContainerView: UIView {
         savedLabel.font = UIFont(name: Fonts.proximaRegular, size: 12)
         savedLabel.textAlignment = .center
         savedLabel.textColor = .white
-        savedLabel.backgroundColor = #colorLiteral(red: 0.4108086891, green: 0.4447915449, blue: 0.4941601933, alpha: 1)
+        savedLabel.backgroundColor = UIColor(white: 0, alpha: 0.3)
         savedLabel.numberOfLines = 0
         savedLabel.frame = CGRect(x: 0, y: 0, width: 150, height: 80)
         savedLabel.center = self.center

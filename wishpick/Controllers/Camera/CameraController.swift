@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class CameraController: UIViewController {
+class CameraController: UIViewController, UIViewControllerTransitioningDelegate {
     
     // MARK: UI COMPONENTS
     
@@ -40,6 +40,7 @@ class CameraController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        presentAndDismissAnimation()
         setupCaptureSession()
         setupCameraUI()
     }
@@ -74,7 +75,7 @@ class CameraController: UIViewController {
         print("Capture Photo")
         let settings = AVCapturePhotoSettings()
         
-        // Sets up the preview of the captured image
+        // Sets up the preview format of the captured image
         guard let previewFormateType = settings.availablePreviewPhotoPixelFormatTypes.first else { return }
         settings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewFormateType]
         
@@ -118,6 +119,23 @@ class CameraController: UIViewController {
         captureSession.startRunning()
         
     }
+    
+    /**
+     Uses the UIViewControllerTransitioningDelegate to animate the
+     view transition for the camera to and from view.
+     */
+    private func presentAndDismissAnimation() {
+        transitioningDelegate = self
+        let customAnimationPresentor = CustomAnimationPresentor()
+        let customAnimationDismisser = CustomAnimationDismisser()
+        func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+            return customAnimationPresentor
+        }
+        
+        func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+            return customAnimationDismisser
+        }
+    }
 }
 
 extension CameraController: AVCapturePhotoCaptureDelegate {
@@ -144,3 +162,7 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
         ])
     }
 }
+
+//extension CameraController: UIViewControllerTransitioningDelegate {
+//
+//}

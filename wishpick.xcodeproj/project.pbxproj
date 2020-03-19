@@ -52,6 +52,8 @@
 		288B08002359823F0028F07C /* UserSetupPg3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */; };
 		288B0802235A49230028F07C /* PhotoSelctorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B0801235A49230028F07C /* PhotoSelctorController.swift */; };
 		288B0804235A57990028F07C /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B0803235A57990028F07C /* PhotoSelectorCell.swift */; };
+		28AF8B682422DF0D0081250B /* CustomAnimationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF8B672422DF0D0081250B /* CustomAnimationPresentor.swift */; };
+		28AF8B6A2423004E0081250B /* CustomAnimationDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF8B692423004E0081250B /* CustomAnimationDismisser.swift */; };
 		28F2CBE72316677500D67525 /* UserSetupPg1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2CBE62316677500D67525 /* UserSetupPg1VC.swift */; };
 		28FFC87E23C5C8A600046C1A /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FFC87D23C5C8A600046C1A /* PhotoSelectorHeader.swift */; };
 		3574BBA8D156A3259E4113C9 /* libPods-wishpick.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF146E3439636337E890D51E /* libPods-wishpick.a */; };
@@ -133,6 +135,8 @@
 		288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg3VC.swift; sourceTree = "<group>"; };
 		288B0801235A49230028F07C /* PhotoSelctorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelctorController.swift; sourceTree = "<group>"; };
 		288B0803235A57990028F07C /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
+		28AF8B672422DF0D0081250B /* CustomAnimationPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationPresentor.swift; sourceTree = "<group>"; };
+		28AF8B692423004E0081250B /* CustomAnimationDismisser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationDismisser.swift; sourceTree = "<group>"; };
 		28F2CBE62316677500D67525 /* UserSetupPg1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg1VC.swift; sourceTree = "<group>"; };
 		28FFC87D23C5C8A600046C1A /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
 		4EA3AA1BBC503D5ED68DC158 /* libPods-wishpickTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wishpickTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -251,6 +255,8 @@
 			children = (
 				2806B4622418DFCC009408D4 /* CameraController.swift */,
 				2824FD372421EF45002C0EAD /* PreviewPhotoContainerView.swift */,
+				28AF8B672422DF0D0081250B /* CustomAnimationPresentor.swift */,
+				28AF8B692423004E0081250B /* CustomAnimationDismisser.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -611,6 +617,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28AF8B6A2423004E0081250B /* CustomAnimationDismisser.swift in Sources */,
 				287ECD9622FAC19600D2CB7A /* LoginViewController.swift in Sources */,
 				288B0802235A49230028F07C /* PhotoSelctorController.swift in Sources */,
 				2809512E231F00B9001BD2DF /* SpacerView+Extension.swift in Sources */,
@@ -633,6 +640,7 @@
 				281609B422C32D340045D352 /* AppDelegate.swift in Sources */,
 				28FFC87E23C5C8A600046C1A /* PhotoSelectorHeader.swift in Sources */,
 				28259FF322C82DE600A6E4D2 /* UserProfileController.swift in Sources */,
+				28AF8B682422DF0D0081250B /* CustomAnimationPresentor.swift in Sources */,
 				281609F422C345D20045D352 /* Constants.swift in Sources */,
 				288B0804235A57990028F07C /* PhotoSelectorCell.swift in Sources */,
 				2806B4632418DFCC009408D4 /* CameraController.swift in Sources */,

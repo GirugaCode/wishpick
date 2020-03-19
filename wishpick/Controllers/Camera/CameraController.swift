@@ -9,10 +9,13 @@
 import UIKit
 import AVFoundation
 
-class CameraController: UIViewController, UIViewControllerTransitioningDelegate {
+class CameraController: UIViewController {
+    
+    // MARK: PROPERTIES
+    let customAnimationPresentor = CustomAnimationPresentor()
+    let customAnimationDismisser = CustomAnimationDismisser()
     
     // MARK: UI COMPONENTS
-    
     /// Button to dismiss the camera controller
     let dismissCamera: UIButton = {
         let button = UIButton(type: .system)
@@ -39,12 +42,11 @@ class CameraController: UIViewController, UIViewControllerTransitioningDelegate 
     // MARK: OVERRIDE FUNCTIONS
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        presentAndDismissAnimation()
+        transitioningDelegate = self
         setupCaptureSession()
         setupCameraUI()
     }
-    
+
     // Hides the status bar when presenting Camera
     override var prefersStatusBarHidden: Bool {
         return true
@@ -163,6 +165,13 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
     }
 }
 
-//extension CameraController: UIViewControllerTransitioningDelegate {
-//
-//}
+extension CameraController: UIViewControllerTransitioningDelegate {
+    // Delegates the present animation
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return customAnimationPresentor
+    }
+    // Delegates the dismiss animation
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return customAnimationDismisser
+    }
+}

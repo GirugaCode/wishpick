@@ -8,9 +8,20 @@
 
 import UIKit
 
+/**
+ Custom Delegate method to delegate which comment section
+ is selected.
+ */
+protocol HomePostCellDelegate {
+    func didTapComment(post: Posts)
+}
+
 class HomePostCell: UICollectionViewCell {
     
     //MARK: PROPERTIES
+    /// Instance of the Custom Delegate
+    var delegate: HomePostCellDelegate?
+    
     /// Receives all the post images from the user
     var post: Posts? {
         didSet {
@@ -57,9 +68,10 @@ class HomePostCell: UICollectionViewCell {
     }()
     
     /// Comment button for each post
-    let commentButton: UIButton = {
+    lazy var commentButton: UIButton = {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "comment-button").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleComment), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -87,6 +99,16 @@ class HomePostCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    /**
+     Notifies the Comment Controller which post the app is
+     pushing into
+     */
+    @objc func handleComment() {
+        print("Showing comment section")
+        guard let post = post else { return }
+        delegate?.didTapComment(post: post)
     }
     
     //MARK: SETUP UI

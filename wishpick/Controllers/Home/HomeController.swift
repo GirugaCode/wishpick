@@ -9,7 +9,7 @@
 import Firebase
 import UIKit
 
-class HomeController: UICollectionViewController {
+class HomeController: UICollectionViewController, HomePostCellDelegate {
     //MARK: PROPERTIES
     var posts = [Posts]()
     let cellId = "cellId"
@@ -144,6 +144,15 @@ class HomeController: UICollectionViewController {
         }
     }
     
+    /**
+     Uses the custom protocal to identify which comment section of a post to
+     push into.
+     */
+    func didTapComment(post: Posts) {
+        let commentsController = CommentsController(collectionViewLayout: UICollectionViewFlowLayout())
+        navigationController?.pushViewController(commentsController, animated: true)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
     }
@@ -152,6 +161,7 @@ class HomeController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! HomePostCell
         cell.post = posts[indexPath.item]
+        cell.delegate = self // Conformed to the HomePostCellDelegate
         return cell
     }
 }

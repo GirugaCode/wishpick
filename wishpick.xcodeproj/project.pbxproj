@@ -54,6 +54,7 @@
 		288B0804235A57990028F07C /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B0803235A57990028F07C /* PhotoSelectorCell.swift */; };
 		28AF8B682422DF0D0081250B /* CustomAnimationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF8B672422DF0D0081250B /* CustomAnimationPresentor.swift */; };
 		28AF8B6A2423004E0081250B /* CustomAnimationDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF8B692423004E0081250B /* CustomAnimationDismisser.swift */; };
+		28AF8B6C242336950081250B /* CommentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF8B6B242336950081250B /* CommentsController.swift */; };
 		28F2CBE72316677500D67525 /* UserSetupPg1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2CBE62316677500D67525 /* UserSetupPg1VC.swift */; };
 		28FFC87E23C5C8A600046C1A /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FFC87D23C5C8A600046C1A /* PhotoSelectorHeader.swift */; };
 		3574BBA8D156A3259E4113C9 /* libPods-wishpick.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF146E3439636337E890D51E /* libPods-wishpick.a */; };
@@ -137,6 +138,7 @@
 		288B0803235A57990028F07C /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
 		28AF8B672422DF0D0081250B /* CustomAnimationPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationPresentor.swift; sourceTree = "<group>"; };
 		28AF8B692423004E0081250B /* CustomAnimationDismisser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationDismisser.swift; sourceTree = "<group>"; };
+		28AF8B6B242336950081250B /* CommentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsController.swift; sourceTree = "<group>"; };
 		28F2CBE62316677500D67525 /* UserSetupPg1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg1VC.swift; sourceTree = "<group>"; };
 		28FFC87D23C5C8A600046C1A /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
 		4EA3AA1BBC503D5ED68DC158 /* libPods-wishpickTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wishpickTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -318,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				287FA40623C6E12A00AEAF35 /* HomeController.swift */,
+				28AF8B6B242336950081250B /* CommentsController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				281609B622C32D340045D352 /* EmailViewController.swift in Sources */,
 				28445DC82307FA82008CED37 /* RootViewController.swift in Sources */,
 				287FA41123C8826400AEAF35 /* UserSearchController.swift in Sources */,
+				28AF8B6C242336950081250B /* CommentsController.swift in Sources */,
 				287ECD9822FAC2C600D2CB7A /* UIView+Extension.swift in Sources */,
 				287FA40423C692ED00AEAF35 /* CustomImageView.swift in Sources */,
 				287FA40023C677FB00AEAF35 /* Posts.swift in Sources */,

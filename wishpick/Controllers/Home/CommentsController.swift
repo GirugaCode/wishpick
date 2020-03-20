@@ -6,30 +6,21 @@
 //  Copyright © 2020 Danh Phu Nguyen. All rights reserved.
 //
 
+import Firebase
 import UIKit
 
 class CommentsController: UICollectionViewController {
     
+    //MARK: PROPERTIES
+    var post: Posts?
+    
     //MARK: UI COMPONENTS
     /// Container View for writing in comments
-    var containerView: UIView = {
+    lazy var containerView: UIView = {
         /// Outer container view for comments
         let containerView = UIView()
         containerView.backgroundColor = .white
         containerView.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
-        
-        /// Text Field to write in comments
-        let commentTextField = UITextField()
-        commentTextField.placeholder = "Enter Comment"
-        commentTextField.translatesAutoresizingMaskIntoConstraints = false
-        
-        /// Submit button the send comments
-        let submitButton = UIButton(type: .system)
-        submitButton.setTitle("Submit", for: .normal)
-        submitButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        submitButton.titleLabel?.font = UIFont(name: Fonts.proximaAltBold, size: 14)
-        submitButton.addTarget(self, action: #selector(handleSubmit), for: .touchUpInside)
-        submitButton.translatesAutoresizingMaskIntoConstraints = false
         
         containerView.addSubview(commentTextField)
         containerView.addSubview(submitButton)
@@ -47,9 +38,52 @@ class CommentsController: UICollectionViewController {
         ])
         return containerView
     }()
-        
+    
+    /// Text Field to write in comments
+    let commentTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Enter Comment"
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    /// Submit button the send comments
+    let submitButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Submit", for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        button.titleLabel?.font = UIFont(name: Fonts.proximaAltBold, size: 14)
+        button.addTarget(self, action: #selector(handleSubmit), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    /**
+     Creates comments child in Firebase DB, passes in
+     - commentTextField.text
+     - creationDate
+     - uid
+     as values
+     */
     @objc func handleSubmit() {
-        print("Handles Submitting a comment")
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let postId = self.post?.id ?? ""
+        let values = ["Text": commentTextField.text ?? "",
+                      "creationDate": Date().timeIntervalSince1970,
+                      "uid": uid] as [String : Any]
+        
+        Database.database()
+            .reference()
+            .child("comments")
+            .child(postId)
+            .childByAutoId()
+            .updateChildValues(values) { (err, ref) in
+            if let err = err {
+                print("Failed to insert comment:", err)
+                return
+            }
+            print("Sucessfully inserted comment")
+        }
     }
     
     //MARK: OVERRIDE FUNCTIONS

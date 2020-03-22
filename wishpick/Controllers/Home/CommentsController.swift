@@ -27,6 +27,7 @@ class CommentsController: UICollectionViewController {
         
         containerView.addSubview(commentTextField)
         containerView.addSubview(submitButton)
+        containerView.addSubview(lineSeparatoreView)
         
         NSLayoutConstraint.activate([
             commentTextField.topAnchor.constraint(equalTo: containerView.topAnchor),
@@ -38,6 +39,11 @@ class CommentsController: UICollectionViewController {
             submitButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -15),
             submitButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             submitButton.widthAnchor.constraint(equalToConstant: 50),
+            
+            lineSeparatoreView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            lineSeparatoreView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            lineSeparatoreView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            lineSeparatoreView.heightAnchor.constraint(equalToConstant: 0.5),
         ])
         return containerView
     }()
@@ -61,6 +67,14 @@ class CommentsController: UICollectionViewController {
         return button
     }()
     
+    /// Line separator for each comment line
+    let lineSeparatoreView: UIView = {
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     /**
      Creates comments child in Firebase DB, passes in
      - commentTextField.text
@@ -126,6 +140,10 @@ class CommentsController: UICollectionViewController {
         collectionView.backgroundColor = .red
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -50, right: 0) // Fixes the extra space for comment cells
         collectionView.register(CommentCell.self, forCellWithReuseIdentifier: cellId)
+        
+        // Bounces collection view to dismiss keyboard
+        collectionView.alwaysBounceVertical = true
+        collectionView.keyboardDismissMode = .interactive
     }
     
     /**
@@ -142,10 +160,15 @@ class CommentsController: UICollectionViewController {
         
         ref.observe(.childAdded, with: { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else { return }
-            let comment = Comment(dictionary: dictionary)
+            guard let uid = dictionary["uid"] as? String else { return }
             
-            self.comments.append(comment)
-            self.collectionView.reloadData()
+            Database.fetchUserWithUID(uid: uid) { (user) in
+                let comment = Comment(user: user, dictionary: dictionary)
+                self.comments.append(comment)
+                self.collectionView.reloadData()
+            }
+            
+            
             
         }) { (err) in
             print("Failed to observe comments")
@@ -164,6 +187,20 @@ class CommentsController: UICollectionViewController {
 
 extension CommentsController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 50)
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        let dummyCell = CommentCell(frame: frame)
+        dummyCell.comment = comments[indexPath.item]
+        dummyCell.layoutIfNeeded()
+        
+        let targetSize = CGSize(width: view.frame.width, height: 1000)
+        let estimatedSize = dummyCell.systemLayoutSizeFitting(targetSize)
+        
+        let height = max(40 + 10 + 10, estimatedSize.height)
+        
+        return CGSize(width: view.frame.width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }

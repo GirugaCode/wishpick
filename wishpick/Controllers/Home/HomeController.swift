@@ -95,7 +95,11 @@ class HomeController: UICollectionViewController, HomePostCellDelegate {
      */
     fileprivate func fetchFollowingUserIds() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        Database.database().reference().child("following").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+        Database.database()
+            .reference()
+            .child("following")
+            .child(uid)
+            .observeSingleEvent(of: .value, with: { (snapshot) in
             guard let userIdsDictionary = snapshot.value as? [String: Any] else { return }
             
             userIdsDictionary.forEach({ (key, value) in
@@ -112,12 +116,19 @@ class HomeController: UICollectionViewController, HomePostCellDelegate {
     /**
      Fetches the post with a given user id
      
-     - Parameters:
+     Parameters:
      - user: The user id of a user
+     
+     Description:
+     - Creates/Updates "posts" node to FireBase Database
+     - Observes the "likes" node and toggles the like/dislike feature
      */
     fileprivate func fetchPostsWithUser(user: User) {
         
-        let ref = Database.database().reference().child("posts").child(user.uid)
+        let ref = Database.database()
+            .reference()
+            .child("posts")
+            .child(user.uid)
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -132,14 +143,31 @@ class HomeController: UICollectionViewController, HomePostCellDelegate {
                 var post = Posts(user: user, dictionary: dictionary)
                 post.id = key // Sets the key value
                 
-                self.posts.append(post)
+                guard let uid = Auth.auth().currentUser?.uid else { return }
+                Database.database()
+                    .reference()
+                    .child("likes")
+                    .child(key)
+                    .child(uid)
+                    .observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    if let value = snapshot.value as? Int, value == 1 {
+                        post.hasLiked = true
+                    } else {
+                        post.hasLiked = false
+                    }
+                    self.posts.append(post)
+                    
+                    
+                    self.posts.sort { (p1, p2) -> Bool in
+                        return p1.creationDate.compare(p2.creationDate) == .orderedDescending
+                    } // Sorts the posts in decending order based on creation date
+                    
+                    self.collectionView?.reloadData()
+                }) { (err) in
+                    print("Failed to fetch like info for post:", err)
+                }
             }
-            
-            self.posts.sort { (p1, p2) -> Bool in
-                return p1.creationDate.compare(p2.creationDate) == .orderedDescending
-            } // Sorts the posts in decending order based on creation date
-            
-            self.collectionView?.reloadData()
             
         }) { (err) in
             print("Failed to fetch photos", err)
@@ -147,13 +175,42 @@ class HomeController: UICollectionViewController, HomePostCellDelegate {
     }
     
     /**
-     Uses the custom protocal to identify which comment section of a post to
-     push into.
+     Uses the HomePostCellDelegate protocal to identify which
+     comment section of a post to push into.
      */
     func didTapComment(post: Posts) {
         let commentsController = CommentsController(collectionViewLayout: UICollectionViewFlowLayout())
         commentsController.post = post // Passes reference of post
         navigationController?.pushViewController(commentsController, animated: true)
+    }
+    
+    /**
+     Uses the HomePostCellDelegate protocal to track the liking of a post
+     - Creates and add a "likes" node to FireBase Database
+     - Updates the value of "likes" from 0 -> 1 in Database
+     */
+    func didLike(for cell: HomePostCell) {
+        
+        guard let indexPath = collectionView.indexPath(for: cell) else { return }
+        var post = self.posts[indexPath.item]
+        
+        guard let postId = post.id else { return }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let values = [uid: post.hasLiked == true ? 0 : 1]
+        Database.database()
+            .reference()
+            .child("likes")
+            .child(postId)
+            .updateChildValues(values) { (err, _) in
+            if let err = err {
+                print("Failed to like post:", err)
+                return
+            }
+            post.hasLiked = !post.hasLiked
+            self.posts[indexPath.item] = post
+            self.collectionView.reloadItems(at: [indexPath])
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

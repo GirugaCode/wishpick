@@ -14,6 +14,7 @@ import UIKit
  */
 protocol HomePostCellDelegate {
     func didTapComment(post: Posts)
+    func didLike(for cell: HomePostCell)
 }
 
 class HomePostCell: UICollectionViewCell {
@@ -28,6 +29,7 @@ class HomePostCell: UICollectionViewCell {
             setPostImages()
             setProfileInfo()
             setupAttributedText()
+            setPostLikes()
         }
     }
     
@@ -60,9 +62,10 @@ class HomePostCell: UICollectionViewCell {
     }()
     
     /// Like button for each post
-    let likeButton: UIButton = {
+    lazy var likeButton: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "like-button").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "heart-unfilled").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleLike), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -109,6 +112,14 @@ class HomePostCell: UICollectionViewCell {
         print("Showing comment section")
         guard let post = post else { return }
         delegate?.didTapComment(post: post)
+    }
+    
+    /**
+     Notifies the HomeController to handle
+     the liking of a post
+     */
+    @objc func handleLike() {
+        delegate?.didLike(for: self)
     }
     
     //MARK: SETUP UI
@@ -210,6 +221,14 @@ class HomePostCell: UICollectionViewCell {
         attributedText.append(NSAttributedString(string: timeAgoDisplay, attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaAltThin, size: 12) as Any]))
         
         descriptionLabel.attributedText = attributedText
+    }
+    
+    /**
+     Sets up the like feature by checking the FireBase value
+     in HomeController
+     */
+    fileprivate func setPostLikes() {
+        likeButton.setImage(post?.hasLiked == true ? #imageLiteral(resourceName: "heart-filled").withRenderingMode(.alwaysOriginal): #imageLiteral(resourceName: "heart-unfilled").withRenderingMode(.alwaysOriginal), for: .normal)
     }
     
 }

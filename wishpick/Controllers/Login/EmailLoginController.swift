@@ -6,6 +6,7 @@
 //  Copyright © 2020 Danh Phu Nguyen. All rights reserved.
 //
 
+import Firebase
 import UIKit
 
 class EmailLoginController: UIViewController {
@@ -35,7 +36,7 @@ class EmailLoginController: UIViewController {
         textField.leftView = paddingView
         textField.leftViewMode = .always
         textField.translatesAutoresizingMaskIntoConstraints = false
-//        textField.addTarget(self, action: #selector(handleTextInput), for: .editingChanged)
+        textField.addTarget(self, action: #selector(handleTextInput), for: .editingChanged)
         return textField
     }()
     
@@ -54,7 +55,7 @@ class EmailLoginController: UIViewController {
         textField.leftView = paddingView
         textField.leftViewMode = .always
         textField.translatesAutoresizingMaskIntoConstraints = false
-//        textField.addTarget(self, action: #selector(handleTextInput), for: .editingChanged)
+        textField.addTarget(self, action: #selector(handleTextInput), for: .editingChanged)
         return textField
     }()
     
@@ -71,7 +72,7 @@ class EmailLoginController: UIViewController {
         button.layer.shadowOffset = CGSize(width: 0, height: 3)
         button.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         button.translatesAutoresizingMaskIntoConstraints = false
-//        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         button.isEnabled = false
         return button
     }()
@@ -88,8 +89,56 @@ class EmailLoginController: UIViewController {
     }()
     
     //MARK: SELECTOR FUNCTIONS
+    /**
+     Switches the rootViewController back to sign up
+     */
     @objc func handleShowSignUp() {
         AppDelegate.shared.rootViewController.switchToLoginWithEmail()
+    }
+    
+    /**
+    Enables the login button based on input in text fields
+     */
+    @objc func handleTextInput() {
+        let isFormValid = emailTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
+        
+        if isFormValid {
+            loginButton.isEnabled = true
+            loginButton.backgroundColor = #colorLiteral(red: 0.9999071956, green: 1, blue: 0.999881804, alpha: 1)
+        } else {
+            loginButton.isEnabled = false
+            loginButton.backgroundColor = #colorLiteral(red: 0.9679592252, green: 0.9208878279, blue: 0.8556233644, alpha: 1)
+        }
+    }
+    
+    /**
+     Logs an exsisting user into the app with the correct credentials
+     - Changes the rootViewController to the MainTabViewController
+     - Displays Alert Error is user is nil
+     */
+    @objc func handleLogin() {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (res, err) in
+            if let err = err {
+                print("Failed to sign in with email:", err)
+            }
+            
+            if res?.user.uid != nil {
+                // Resets the UI when logged in
+                let mainTabBarController = MainTabViewController()
+                mainTabBarController.setupViewControllers()
+                
+                AppDelegate.shared.rootViewController.switchToMainScreen()
+            } else {
+                let alert = UIAlertController(title: "Failed Attempt", message: "Invalid credentials, please try again", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                NSLog("The \"OK\" alert occured.")
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
     
     //MARK: OVERRIDE FUNCTIONS

@@ -206,7 +206,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     //MARK: SEGUES
     @objc func backTransition() {
-        AppDelegate.shared.rootViewController.switchToLogout()
+        AppDelegate.shared.rootViewController.switchToLogin()
     }
     
     //MARK: TEXT VALIDATIONS

@@ -6,11 +6,18 @@
 //  Copyright © 2019 Danh Phu Nguyen. All rights reserved.
 //
 
+import Firebase
 import UIKit
 
 class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
     
     //MARK: OVERRIDE FUNCTIONS
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        checkAuthUser()
+        setupViewControllers()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -24,14 +31,21 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         // Show the navigation bar on other view controllers
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupViewControllers()
+    
+    /**
+     Checks if the current user in the app has been
+     authenticated or be shown the login
+     */
+    private func checkAuthUser() {
+        if Auth.auth().currentUser == nil {
+            DispatchQueue.main.async {
+                AppDelegate.shared.rootViewController.showLoginScreen()
+            }
+        }
     }
     
     //MARK: TAB BAR NAVIGATION
-    private func setupViewControllers() {
+    func setupViewControllers() {
         tabBar.barTintColor = #colorLiteral(red: 0.9960784314, green: 0.7254901961, blue: 0.3411764706, alpha: 1)
         tabBar.isTranslucent = false
         self.delegate = self

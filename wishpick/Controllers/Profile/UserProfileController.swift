@@ -37,7 +37,7 @@ class UserProfileController: UICollectionViewController {
     @objc func handleLogout() {
         //TODO: Make root vc on main feed
         LoginManager().logOut()
-        AppDelegate.shared.rootViewController.switchToLogout()
+        AppDelegate.shared.rootViewController.switchToLogin()
     }
     
     //MARK: OVERRIDE FUNCTIONS

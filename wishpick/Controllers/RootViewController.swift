@@ -62,7 +62,7 @@ class RootViewController: UIViewController {
         animateFadeTransition(to: mainScreen)
     }
     
-    func switchToLogout() {
+    func switchToLogin() {
         let loginViewController = LoginViewController()
         let logoutScreen = UINavigationController(rootViewController: loginViewController)
         animateDismissTransition(to: logoutScreen)

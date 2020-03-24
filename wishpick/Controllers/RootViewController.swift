@@ -44,10 +44,16 @@ class RootViewController: UIViewController {
         current = new // Update the current view controller
     }
     
-    func switchToLoginWithEmail(){
+    func switchToLoginWithEmail() {
         let emailViewController = EmailViewController()
         let emailScreen = UINavigationController(rootViewController: emailViewController)
         animateFadeTransition(to: emailScreen)
+    }
+    
+    func switchToSignInWithEmail() {
+        let emailLoginController = EmailLoginController()
+        let emailLoginScreen = UINavigationController(rootViewController: emailLoginController)
+        animateFadeTransition(to: emailLoginScreen)
     }
     
     func switchToMainScreen() {

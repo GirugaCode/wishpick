@@ -176,16 +176,14 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         present(imagePickerController, animated: true, completion: nil)
     }
     
-    let exisitingAccLabel: UILabel = {
-        let label = UILabel()
-        let tap = UITapGestureRecognizer(target: self, action: #selector(backTransition))
-        label.text = "Already have an account? Sign In"
-        label.textAlignment = .center
-        label.isUserInteractionEnabled = true
-        label.addGestureRecognizer(tap)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
+    let exisitingAccLabel: UIButton = {
+        let button = UIButton()
+        let attributedText = NSMutableAttributedString(string: "Already have an account? ", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 18) as Any])
+        attributedText.append(NSAttributedString(string: "Sign In", attributes: [NSAttributedString.Key.font : UIFont(name: Fonts.proximaBold, size: 18) as Any]))
+        button.setAttributedTitle(attributedText, for: .normal)
+        button.addTarget(self, action: #selector(handleShowSignIn), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     let backButton: UIButton = {
@@ -285,6 +283,10 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         AppDelegate.shared.rootViewController.switchToMainScreen()
     }
     
+    @objc func handleShowSignIn() {
+        AppDelegate.shared.rootViewController.switchToSignInWithEmail()
+    }
+    
     //MARK: OVERRIDE FUNCTIONS
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -352,7 +354,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
             addPhotoButton.widthAnchor.constraint(equalToConstant: 30),
             
             // Existing Account Label
-            exisitingAccLabel.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 230),
+            exisitingAccLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             exisitingAccLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             exisitingAccLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             exisitingAccLabel.heightAnchor.constraint(equalToConstant: 50),

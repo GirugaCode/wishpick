@@ -51,7 +51,7 @@ class LoginViewController: UIViewController {
     }()
     
     lazy var bottomStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [facebookLoginButton, emailLoginButton, tosLabel])
+        let stackView = UIStackView(arrangedSubviews: [facebookLoginButton, emailLoginButton, tosButton])
         stackView.distribution = .fillProportionally
         stackView.axis = .vertical
         stackView.alignment = .center
@@ -88,13 +88,18 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    let tosLabel: UILabel = {
-        let label = UILabel()
-        label.text = "By signing up, you agree to our Terms of Service and Privacy Policy."
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    let tosButton: UIButton = {
+        let button = UIButton()
+        let attributedText = NSMutableAttributedString(string: "By signing up, you agree to our ", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 18) as Any])
+        attributedText.append(NSAttributedString(string: "Terms of Service ", attributes: [NSAttributedString.Key.font : UIFont(name: Fonts.proximaBold, size: 18) as Any]))
+        attributedText.append(NSAttributedString(string: "and ", attributes: [NSAttributedString.Key.font : UIFont(name: Fonts.proximaRegular, size: 18) as Any]))
+        attributedText.append(NSAttributedString(string: "Privacy Policy ", attributes: [NSAttributedString.Key.font : UIFont(name: Fonts.proximaBold, size: 18) as Any]))
+        button.setAttributedTitle(attributedText, for: .normal)
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.textAlignment = .center
+        button.sizeToFit()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     //MARK: AUTH

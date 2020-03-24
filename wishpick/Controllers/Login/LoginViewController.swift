@@ -128,6 +128,7 @@ class LoginViewController: UIViewController {
                 }
                 
                 if (AccessToken.current != nil) {
+                    UserDefaults.standard.setIsLoggedIn(value: true)
                     AppDelegate.shared.rootViewController.switchToMainScreen()
                     
                     // Firebase Analytics
@@ -135,8 +136,14 @@ class LoginViewController: UIViewController {
                         "Login Error": error ?? "Error",
                         "Username": user ?? "User"
                     ])
+                } else {
+                    // Present failed login
+                    let alert = UIAlertController(title: "Facebook Failed Attempt", message: "Error Processing, please try again", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                    NSLog("The \"OK\" alert occured.")
+                    }))
+                    self.present(alert, animated: true, completion: nil)
                 }
-                
             })
         }
     }

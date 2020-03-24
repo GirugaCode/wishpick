@@ -280,6 +280,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 
             }
         }
+        UserDefaults.standard.setIsLoggedIn(value: true)
         AppDelegate.shared.rootViewController.switchToMainScreen()
     }
     

@@ -29,6 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = RootViewController()
         self.window?.makeKeyAndVisible()
         
+        // Checks for logged in user
+        if UserDefaults.standard.isLoggedIn() {
+            AppDelegate.shared.rootViewController.switchToMainScreen()
+        }
+        
         // Captures NSException errors and prints the call stack
         NSSetUncaughtExceptionHandler { exception in
            print(exception)

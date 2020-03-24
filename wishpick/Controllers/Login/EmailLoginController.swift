@@ -130,7 +130,10 @@ class EmailLoginController: UIViewController {
                 let mainTabBarController = MainTabViewController()
                 mainTabBarController.setupViewControllers()
                 
+                UserDefaults.standard.setIsLoggedIn(value: true)
+                
                 AppDelegate.shared.rootViewController.switchToMainScreen()
+        
             } else {
                 let alert = UIAlertController(title: "Failed Attempt", message: "Invalid credentials, please try again", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in

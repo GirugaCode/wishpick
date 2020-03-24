@@ -137,7 +137,7 @@ class CommentsController: UICollectionViewController {
      */
     private func setupCollectionView() {
         navigationItem.title = "Comments"
-        collectionView.backgroundColor = .red
+        collectionView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -50, right: 0) // Fixes the extra space for comment cells
         collectionView.register(CommentCell.self, forCellWithReuseIdentifier: cellId)
         

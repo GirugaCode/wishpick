@@ -15,6 +15,7 @@ class PreviewPhotoContainerView: UIView {
     /// Image view for the taken photo
     let previewImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

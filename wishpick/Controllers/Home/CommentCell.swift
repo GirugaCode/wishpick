@@ -34,7 +34,7 @@ class CommentCell: UICollectionViewCell {
         let textView = UITextView()
         textView.font = UIFont(name: Fonts.proximaRegular, size: 14)
         textView.isScrollEnabled = false
-        textView.backgroundColor = .lightGray
+        textView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
@@ -52,7 +52,7 @@ class CommentCell: UICollectionViewCell {
      Sets up the UI for the collection view of every comment
      */
     private func setupCommentUI() {
-        backgroundColor = .yellow
+        backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         addSubview(profileImageView)
         addSubview(commentLabel)
         

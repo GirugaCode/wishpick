@@ -42,6 +42,13 @@ class CameraController: UIViewController {
     // MARK: OVERRIDE FUNCTIONS
     override func viewDidLoad() {
         super.viewDidLoad()
+//        transitioningDelegate = self
+//        setupCaptureSession()
+//        setupCameraUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         transitioningDelegate = self
         setupCaptureSession()
         setupCameraUI()
@@ -61,11 +68,11 @@ class CameraController: UIViewController {
         
         NSLayoutConstraint.activate([
             dismissCamera.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            dismissCamera.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            dismissCamera.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
             dismissCamera.widthAnchor.constraint(equalToConstant: 50),
             dismissCamera.heightAnchor.constraint(equalToConstant: 50),
             
-            capturePhotoButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            capturePhotoButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             capturePhotoButton.widthAnchor.constraint(equalToConstant: 80),
             capturePhotoButton.heightAnchor.constraint(equalToConstant: 80),
             capturePhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -114,6 +121,7 @@ class CameraController: UIViewController {
         
         // Setup the output preview, shows camera output
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        previewLayer.videoGravity = .resizeAspectFill
         previewLayer.frame = view.frame
         view.layer.addSublayer(previewLayer)
         

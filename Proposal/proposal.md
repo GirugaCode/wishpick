@@ -27,13 +27,13 @@ I would like to build upon my iOS app wishpick. It ties into my previous experie
 
 
 **How will you demonstrate completion of your objective?**
-Github commit link
+[Github Commit Link](https://github.com/GirugaCode/wishpick/commit/5d49fc22fdcc8ebdbad06ba077436a761e4e76b)
 
 ## Objective 2: Feature for users to post comments
 **I need to meet this objective to add a feature for users to be able make a comment and retrieve comments under each wish list item.**
 
 
-**How will you demonstrate completion of your objective?** Github commit link
+**How will you demonstrate completion of your objective?** [Github Commit Link](https://github.com/GirugaCode/wishpick/commit/089c17552d910b3deffef478016bd53e04c38c6f)
 
 ## Objective 3: Pagination and User Notifications
 **I need to meet this objective to add a feature for users to have a great UX when searching through posts and engaged with push notifications.**

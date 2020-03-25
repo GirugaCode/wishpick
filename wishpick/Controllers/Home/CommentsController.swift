@@ -21,8 +21,8 @@ class CommentsController: UICollectionViewController {
     lazy var containerView: UIView = {
         /// Outer container view for comments
         let containerView = UIView()
-        containerView.backgroundColor = .white
-        containerView.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+        containerView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        containerView.frame = CGRect(x: 0, y: 0, width: 100, height: view.frame.height / 8)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         
         containerView.addSubview(commentTextField)
@@ -167,9 +167,6 @@ class CommentsController: UICollectionViewController {
                 self.comments.append(comment)
                 self.collectionView.reloadData()
             }
-            
-            
-            
         }) { (err) in
             print("Failed to observe comments")
         }
@@ -186,6 +183,9 @@ class CommentsController: UICollectionViewController {
 }
 
 extension CommentsController: UICollectionViewDelegateFlowLayout {
+    /**
+     Creates the equal space between each comment to be displayed
+     */
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
         let dummyCell = CommentCell(frame: frame)

@@ -95,7 +95,7 @@ class UserProfileHeaderView: UICollectionViewCell {
     
     let wantsNumber: UILabel = {
         let label = UILabel()
-        label.text = "9"
+        label.text = "0"
         label.font = UIFont(name: Fonts.proximaRegular, size: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -121,7 +121,7 @@ class UserProfileHeaderView: UICollectionViewCell {
     
     let followersNumber: UILabel = {
         let label = UILabel()
-        label.text = "74"
+        label.text = "0"
         label.font = UIFont(name: Fonts.proximaRegular, size: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -147,7 +147,7 @@ class UserProfileHeaderView: UICollectionViewCell {
     
     let followingNumber: UILabel = {
         let label = UILabel()
-        label.text = "890"
+        label.text = "0"
         label.font = UIFont(name: Fonts.proximaRegular, size: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

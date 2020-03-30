@@ -100,16 +100,16 @@ class HomeController: UICollectionViewController, HomePostCellDelegate {
             .child("following")
             .child(uid)
             .observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let userIdsDictionary = snapshot.value as? [String: Any] else { return }
-            
-            userIdsDictionary.forEach({ (key, value) in
-                Database.fetchUserWithUID(uid: key) { (user) in
-                    self.fetchPostsWithUser(user: user)
-                }
-            })
-            
-        }) { (err) in
-            print("Failed to fetch following user ids:", err)
+                guard let userIdsDictionary = snapshot.value as? [String: Any] else { return }
+                
+                userIdsDictionary.forEach({ (key, value) in
+                    Database.fetchUserWithUID(uid: key) { (user) in
+                        self.fetchPostsWithUser(user: user)
+                    }
+                })
+                
+            }) { (err) in
+                print("Failed to fetch following user ids:", err)
         }
     }
     
@@ -203,13 +203,13 @@ class HomeController: UICollectionViewController, HomePostCellDelegate {
             .child("likes")
             .child(postId)
             .updateChildValues(values) { (err, _) in
-            if let err = err {
-                print("Failed to like post:", err)
-                return
-            }
-            post.hasLiked = !post.hasLiked
-            self.posts[indexPath.item] = post
-            self.collectionView.reloadItems(at: [indexPath])
+                if let err = err {
+                    print("Failed to like post:", err)
+                    return
+                }
+                post.hasLiked = !post.hasLiked
+                self.posts[indexPath.item] = post
+                self.collectionView.reloadItems(at: [indexPath])
         }
     }
     

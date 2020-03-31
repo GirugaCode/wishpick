@@ -82,9 +82,9 @@ class PreviewPhotoContainerView: UIView {
         addSubview(saveButton)
         NSLayoutConstraint.activate([
             previewImageView.topAnchor.constraint(equalTo: topAnchor),
-            previewImageView.leadingAnchor.constraint(lessThanOrEqualTo: leadingAnchor),
-            previewImageView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
-            previewImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
+            previewImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            previewImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            previewImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             cancelButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
             cancelButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),

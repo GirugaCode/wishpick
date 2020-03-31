@@ -12,6 +12,8 @@ import AVFoundation
 class CameraController: UIViewController {
     
     // MARK: PROPERTIES
+    let output = AVCapturePhotoOutput()
+    let captureSession = AVCaptureSession()
     let customAnimationPresentor = CustomAnimationPresentor()
     let customAnimationDismisser = CustomAnimationDismisser()
     
@@ -42,16 +44,18 @@ class CameraController: UIViewController {
     // MARK: OVERRIDE FUNCTIONS
     override func viewDidLoad() {
         super.viewDidLoad()
-//        transitioningDelegate = self
-//        setupCaptureSession()
-//        setupCameraUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        transitioningDelegate = self
+//        transitioningDelegate = self
         setupCaptureSession()
         setupCameraUI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        captureSession.stopRunning()
     }
 
     // Hides the status bar when presenting Camera
@@ -81,12 +85,8 @@ class CameraController: UIViewController {
     
     /// Handles capturing a photo
     @objc func handleCapturePhoto() {
-        print("Capture Photo")
-        let settings = AVCapturePhotoSettings()
-        
         // Sets up the preview format of the captured image
-        guard let previewFormateType = settings.availablePreviewPhotoPixelFormatTypes.first else { return }
-        settings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewFormateType]
+        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
         
         // Captures the photos with settings and delegate functions
         output.capturePhoto(with: settings, delegate: self)
@@ -95,18 +95,18 @@ class CameraController: UIViewController {
     /**
      Sets up the capture session for the phones camera
      */
-    let output = AVCapturePhotoOutput()
     fileprivate func setupCaptureSession() {
-        // Inputs of camera's capture session
-        let captureSession = AVCaptureSession()
         
-        guard let captureDevice = AVCaptureDevice.default(for: .video) else {
+        captureSession.sessionPreset = .medium
+        
+        guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video) else {
             print("Unable to access camera")
             return
         }
         
+        // Inputs of camera's capture session
         do {
-            let input = try AVCaptureDeviceInput(device: captureDevice)
+            let input = try AVCaptureDeviceInput(device: backCamera)
             if captureSession.canAddInput(input) {
                 captureSession.addInput(input)
             }
@@ -122,11 +122,14 @@ class CameraController: UIViewController {
         // Setup the output preview, shows camera output
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.videoGravity = .resizeAspectFill
+        previewLayer.connection?.videoOrientation = .portrait
         previewLayer.frame = view.frame
         view.layer.addSublayer(previewLayer)
         
         // Runs the camera session
-        captureSession.startRunning()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.captureSession.startRunning()
+        }
         
     }
     

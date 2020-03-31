@@ -34,7 +34,6 @@ class HomeController: UICollectionViewController, HomePostCellDelegate {
     }
     
     @objc func handleRefresh() {
-        posts.removeAll()
         fetchAllPosts()
     }
     
@@ -132,6 +131,7 @@ class HomeController: UICollectionViewController, HomePostCellDelegate {
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
+            self.posts.removeAll()
             self.collectionView.refreshControl?.endRefreshing()
             
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
@@ -157,7 +157,6 @@ class HomeController: UICollectionViewController, HomePostCellDelegate {
                         post.hasLiked = false
                     }
                     self.posts.append(post)
-                    
                     
                     self.posts.sort { (p1, p2) -> Bool in
                         return p1.creationDate.compare(p2.creationDate) == .orderedDescending

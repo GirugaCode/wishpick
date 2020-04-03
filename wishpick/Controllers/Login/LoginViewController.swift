@@ -6,12 +6,17 @@
 //  Copyright © 2019 Danh Phu Nguyen. All rights reserved.
 //
 
+import AuthenticationServices
+import CryptoKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
 import UIKit
 
 class LoginViewController: UIViewController {
+    
+    /// Unhashed Nonce for Apple Authentication
+    fileprivate var currentNonce: String?
     
     //MARK: UI COMPONENTS
     lazy var topStackView: UIStackView = {
@@ -102,6 +107,43 @@ class LoginViewController: UIViewController {
         return button
     }()
     
+    //MARK: OVERRIDE FUNCTIONS
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Show the navigation bar on other view controllers
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setButtonCornerRadius()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+        if #available(iOS 13.0, *) {
+            appleSignIn()
+        } else {
+            // Fallback on earlier versions
+            return
+        }
+    }
+    
+    override func loadView() {
+        super.loadView()
+        
+        setupLoginView()
+    }
+    
     //MARK: AUTH
     @objc func facebookSignIn() {
         let loginManager = LoginManager()
@@ -140,7 +182,7 @@ class LoginViewController: UIViewController {
                     // Present failed login
                     let alert = UIAlertController(title: "Facebook Failed Attempt", message: "Error Processing, please try again", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-                    NSLog("The \"OK\" alert occured.")
+                        NSLog("The \"OK\" alert occured.")
                     }))
                     self.present(alert, animated: true, completion: nil)
                 }
@@ -150,39 +192,6 @@ class LoginViewController: UIViewController {
     
     @objc func emailSignIn() {
         AppDelegate.shared.rootViewController.switchToLoginWithEmail()
-    }
-    
-    //MARK: OVERRIDE FUNCTIONS
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Hide the navigation bar on the this view controller
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Show the navigation bar on other view controllers
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        setButtonCornerRadius()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupUI()
-    }
-    
-    override func loadView() {
-        super.loadView()
-        
-        setupLoginView()
     }
     
     //MARK: UI SETUP
@@ -212,7 +221,7 @@ class LoginViewController: UIViewController {
             emailLoginButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.70),
             emailLoginButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.08)
             
-            ])
+        ])
     }
     
     fileprivate func setupUI() {
@@ -223,5 +232,172 @@ class LoginViewController: UIViewController {
     fileprivate func setButtonCornerRadius() {
         facebookLoginButton.roundedButton(button: facebookLoginButton)
         emailLoginButton.roundedButton(button: emailLoginButton)
+    }
+}
+
+
+@available(iOS 13.0, *)
+extension LoginViewController: ASAuthorizationControllerPresentationContextProviding, ASAuthorizationControllerDelegate {
+    
+    private func appleSignIn() {
+        let siwaButton = ASAuthorizationAppleIDButton()
+        
+        // set this so the button will use auto layout constraint
+        siwaButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        // add the button to the view controller root view
+        self.view.addSubview(siwaButton)
+        
+        // set constraint
+        NSLayoutConstraint.activate([
+            siwaButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 35.0),
+            siwaButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -35.0),
+            siwaButton.bottomAnchor.constraint(equalTo: bottomStackView.topAnchor, constant: -20.0),
+            siwaButton.heightAnchor.constraint(equalToConstant: 50.0)
+        ])
+        
+        // the function that will be executed when user tap the button
+        siwaButton.addTarget(self, action: #selector(handleAppleSignIn), for: .touchUpInside)
+    }
+    
+    @objc func handleAppleSignIn() {
+        let nonce = randomNonceString()
+        currentNonce = nonce
+        
+        let provider = ASAuthorizationAppleIDProvider()
+        let request = provider.createRequest()
+        // request full name and email from the user's Apple ID
+        request.requestedScopes = [.fullName, .email]
+        request.nonce = sha256(nonce)
+        
+        // pass the request to the initializer of the controller
+        let authController = ASAuthorizationController(authorizationRequests: [request])
+        
+        // similar to delegate, this will ask the view controller
+        // which window to present the ASAuthorizationController
+        authController.presentationContextProvider = self
+        
+        // delegate functions will be called when user data is
+        // successfully retrieved or error occured
+        authController.delegate = self
+        
+        // show the Sign-in with Apple dialog
+        authController.performRequests()
+    }
+    
+    private func randomNonceString(length: Int = 32) -> String {
+        precondition(length > 0)
+        let charset: Array<Character> =
+            Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+        var result = ""
+        var remainingLength = length
+        
+        while remainingLength > 0 {
+            let randoms: [UInt8] = (0 ..< 16).map { _ in
+                var random: UInt8 = 0
+                let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
+                if errorCode != errSecSuccess {
+                    fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
+                }
+                return random
+            }
+            
+            randoms.forEach { random in
+                if remainingLength == 0 {
+                    return
+                }
+                
+                if random < charset.count {
+                    result.append(charset[Int(random)])
+                    remainingLength -= 1
+                }
+            }
+        }
+        
+        return result
+    }
+    
+    private func sha256(_ input: String) -> String {
+        let inputData = Data(input.utf8)
+        let hashedData = SHA256.hash(data: inputData)
+        let hashString = hashedData.compactMap {
+            return String(format: "%02x", $0)
+        }.joined()
+        
+        return hashString
+    }
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            guard let nonce = currentNonce else {
+                fatalError("Invalid state: A login callback was received, but no login request was sent.")
+            }
+            guard let appleIDToken = appleIDCredential.identityToken else {
+                print("Unable to fetch identity token")
+                return
+            }
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+                return
+            }
+            
+            
+            // Initialize a Firebase credential.
+            let credential = OAuthProvider.credential(withProviderID: "apple.com",
+                                                      idToken: idTokenString,
+                                                      rawNonce: nonce)
+            // Sign in with Firebase.
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if let error = error {
+                    // Error. If error.code == .MissingOrInvalidNonce, make sure
+                    // you're sending the SHA256-hashed nonce as a hex string with
+                    // your request to Apple.
+                    let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(okayAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    print(error.localizedDescription)
+                    return
+                }
+                // User is signed in to Firebase with Apple.
+                // ...
+                print("sucess!")
+                UserDefaults.standard.setIsLoggedIn(value: true)
+                AppDelegate.shared.rootViewController.switchToMainScreen()
+                
+            }
+        }
+    }
+    
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("authorization error")
+        guard let error = error as? ASAuthorizationError else {
+            return
+        }
+        
+        switch error.code {
+        case .canceled:
+            // user press "cancel" during the login prompt
+            print("Canceled")
+        case .unknown:
+            // user didn't login their Apple ID on the device
+            print("Unknown")
+        case .invalidResponse:
+            // invalid response received from the login
+            print("Invalid Respone")
+        case .notHandled:
+            // authorization request not handled, maybe internet failure during login
+            print("Not handled")
+        case .failed:
+            // authorization failed
+            print("Failed")
+        @unknown default:
+            print("Default")
+        }
     }
 }

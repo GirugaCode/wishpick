@@ -1,6 +1,6 @@
 CONFIGURATION_BUILD_DIR = ${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth
 GCC_C_LANGUAGE_STANDARD = c99
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 FIRAuth_VERSION=6.5.0 FIRAuth_MINOR_VERSION=6.5
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 FIRAuth_VERSION=6.5.1 FIRAuth_MINOR_VERSION=6.5
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/FirebaseAuth" "${PODS_ROOT}/Headers/Public"
 OTHER_CFLAGS = $(inherited) -fmodule-map-file="${PODS_ROOT}/Headers/Public/FirebaseCore/FirebaseCore.modulemap" -fmodule-map-file="${PODS_ROOT}/Headers/Public/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.modulemap" -fmodule-map-file="${PODS_ROOT}/Headers/Public/GTMSessionFetcher/GTMSessionFetcher.modulemap" -fmodule-map-file="${PODS_ROOT}/Headers/Public/GoogleDataTransport/GoogleDataTransport.modulemap" -fmodule-map-file="${PODS_ROOT}/Headers/Public/GoogleDataTransportCCTSupport/GoogleDataTransportCCTSupport.modulemap" -fmodule-map-file="${PODS_ROOT}/Headers/Public/GoogleUtilities/GoogleUtilities.modulemap" -fmodule-map-file="${PODS_ROOT}/Headers/Public/nanopb/nanopb.modulemap"
 PODS_BUILD_DIR = ${BUILD_DIR}

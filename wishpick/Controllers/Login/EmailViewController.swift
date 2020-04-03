@@ -365,6 +365,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
     fileprivate func setupUI() {
         // Set up background gradient
         view.setGradientBackground(colorOne: #colorLiteral(red: 0.5019607843, green: 0.3647058824, blue: 0.1725490196, alpha: 1), colorTwo: #colorLiteral(red: 1, green: 0.6561305523, blue: 0.171354413, alpha: 1))
+        self.hideKeyboardWhenTappedAround()
     }
     
     /// Picker Controller function to allow user to choose and set image as profile

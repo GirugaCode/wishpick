@@ -10,6 +10,7 @@
 		2806B4632418DFCC009408D4 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806B4622418DFCC009408D4 /* CameraController.swift */; };
 		2809512E231F00B9001BD2DF /* SpacerView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2809512D231F00B9001BD2DF /* SpacerView+Extension.swift */; };
 		280AACF523C9137100E42543 /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 280AACF423C9137100E42543 /* HomeKit.framework */; };
+		28128B0C243405FD003B7434 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28128B0B243405FD003B7434 /* UIViewController+Extension.swift */; };
 		281609B422C32D340045D352 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281609B322C32D340045D352 /* AppDelegate.swift */; };
 		281609B622C32D340045D352 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281609B522C32D340045D352 /* EmailViewController.swift */; };
 		281609BB22C32D350045D352 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 281609BA22C32D350045D352 /* Assets.xcassets */; };
@@ -29,10 +30,11 @@
 		28259FF122C82CD100A6E4D2 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28259FF022C82CD100A6E4D2 /* MainTabViewController.swift */; };
 		28259FF322C82DE600A6E4D2 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28259FF222C82DE600A6E4D2 /* UserProfileController.swift */; };
 		28259FF522C87ED400A6E4D2 /* UserProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28259FF422C87ED400A6E4D2 /* UserProfileHeaderView.swift */; };
-		2829067422C81D7800D9AB0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2829067322C81D7700D9AB0E /* GoogleService-Info.plist */; };
 		28445DC82307FA82008CED37 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28445DC72307FA82008CED37 /* RootViewController.swift */; };
 		28460AB323DADE87006F8F5D /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28460AB223DADE87006F8F5D /* Date+Extension.swift */; };
 		284DF6BC232B340500E651F5 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284DF6BB232B340500E651F5 /* UIButton+Extension.swift */; };
+		286FFE8724369CF6002E49EA /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FFE8624369CF6002E49EA /* FirebaseService.swift */; };
+		286FFE8B2436FC9E002E49EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 286FFE8A2436FC9E002E49EA /* GoogleService-Info.plist */; };
 		287ECD9622FAC19600D2CB7A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287ECD9522FAC19600D2CB7A /* LoginViewController.swift */; };
 		287ECD9822FAC2C600D2CB7A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287ECD9722FAC2C600D2CB7A /* UIView+Extension.swift */; };
 		287FA3FE23C5D99B00AEAF35 /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA3FD23C5D99B00AEAF35 /* SharePhotoController.swift */; };
@@ -90,6 +92,7 @@
 		2809512D231F00B9001BD2DF /* SpacerView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpacerView+Extension.swift"; sourceTree = "<group>"; };
 		280AACF323C9119F00E42543 /* wishpick.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wishpick.entitlements; sourceTree = "<group>"; };
 		280AACF423C9137100E42543 /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
+		28128B0B243405FD003B7434 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		281609B022C32D340045D352 /* wishpick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wishpick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		281609B322C32D340045D352 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		281609B522C32D340045D352 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
@@ -117,10 +120,11 @@
 		28259FF022C82CD100A6E4D2 /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		28259FF222C82DE600A6E4D2 /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		28259FF422C87ED400A6E4D2 /* UserProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderView.swift; sourceTree = "<group>"; };
-		2829067322C81D7700D9AB0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28445DC72307FA82008CED37 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		28460AB223DADE87006F8F5D /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		284DF6BB232B340500E651F5 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		286FFE8624369CF6002E49EA /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		286FFE8A2436FC9E002E49EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		287ECD9522FAC19600D2CB7A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		287ECD9722FAC2C600D2CB7A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		287FA3FD23C5D99B00AEAF35 /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
@@ -319,6 +323,8 @@
 				287FA40D23C87FEB00AEAF35 /* Database+Extension.swift */,
 				28460AB223DADE87006F8F5D /* Date+Extension.swift */,
 				28D900F0242A0EF800B8D2AE /* UserDefaults+Extension.swift */,
+				28128B0B243405FD003B7434 /* UIViewController+Extension.swift */,
+				286FFE8624369CF6002E49EA /* FirebaseService.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -407,7 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				281609B322C32D340045D352 /* AppDelegate.swift */,
-				2829067322C81D7700D9AB0E /* GoogleService-Info.plist */,
+				286FFE8A2436FC9E002E49EA /* GoogleService-Info.plist */,
 				281609E222C341FD0045D352 /* Fonts */,
 			);
 			path = "Supporting Files";
@@ -565,11 +571,11 @@
 				281609F122C344800045D352 /* Proxima Nova Alt Light.otf in Resources */,
 				281609EF22C344800045D352 /* ProximaNova-Regular.otf in Resources */,
 				281609BE22C32D350045D352 /* LaunchScreen.storyboard in Resources */,
-				2829067422C81D7800D9AB0E /* GoogleService-Info.plist in Resources */,
 				281609EC22C344800045D352 /* Proxima Nova Extrabold.otf in Resources */,
 				281609BB22C32D350045D352 /* Assets.xcassets in Resources */,
 				281609EE22C344800045D352 /* Proxima Nova Black.otf in Resources */,
 				281609EB22C344800045D352 /* Proxima Nova Thin.otf in Resources */,
+				286FFE8B2436FC9E002E49EA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,7 +712,9 @@
 				281609B422C32D340045D352 /* AppDelegate.swift in Sources */,
 				28FFC87E23C5C8A600046C1A /* PhotoSelectorHeader.swift in Sources */,
 				28259FF322C82DE600A6E4D2 /* UserProfileController.swift in Sources */,
+				286FFE8724369CF6002E49EA /* FirebaseService.swift in Sources */,
 				28AF8B682422DF0D0081250B /* CustomAnimationPresentor.swift in Sources */,
+				28128B0C243405FD003B7434 /* UIViewController+Extension.swift in Sources */,
 				281609F422C345D20045D352 /* Constants.swift in Sources */,
 				288B0804235A57990028F07C /* PhotoSelectorCell.swift in Sources */,
 				2806B4632418DFCC009408D4 /* CameraController.swift in Sources */,
@@ -888,13 +896,13 @@
 				CODE_SIGN_ENTITLEMENTS = wishpick/wishpick.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FBPU586293;
+				DEVELOPMENT_TEAM = F5JXR2F7P3;
 				INFOPLIST_FILE = wishpick/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.RyanNguyen.wishpick;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ryan.wishpick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -910,13 +918,13 @@
 				CODE_SIGN_ENTITLEMENTS = wishpick/wishpick.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FBPU586293;
+				DEVELOPMENT_TEAM = F5JXR2F7P3;
 				INFOPLIST_FILE = wishpick/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.RyanNguyen.wishpick;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ryan.wishpick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

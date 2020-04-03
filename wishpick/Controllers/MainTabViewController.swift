@@ -14,7 +14,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
     //MARK: OVERRIDE FUNCTIONS
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkAuthUser()
+//        checkAuthUser()
         setupViewControllers()
     }
     

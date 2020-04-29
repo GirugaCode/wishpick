@@ -12,10 +12,14 @@ struct User {
     let uid: String
     let username: String
     let profileImageUrl: String
+    let blockedUsers: String
+    let blockedBy: String
     
     init(uid: String, dictionary: [String: Any]) {
         self.uid = uid
         self.username = dictionary["username"] as? String ?? ""
         self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
+        self.blockedUsers = dictionary["blockedUsers"] as? String ?? ""
+        self.blockedBy = dictionary["blockedBy"] as? String ?? ""
     }
 }

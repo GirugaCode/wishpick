@@ -263,8 +263,8 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
                     print("Sucessfully uploaded image to DB", profileImageUrl)
                     
                     guard let userID = Auth.auth().currentUser?.uid else { return }
-                    let dictionaryValues = ["username":username, "profileImageUrl": profileImageUrl]
-                     let values = [userID:dictionaryValues]
+                    let dictionaryValues = ["username":username, "profileImageUrl": profileImageUrl, "blockedUsers": []] as [String : Any]
+                    let values = [userID:dictionaryValues]
 
                      Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
                          if let err = err {

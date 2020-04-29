@@ -21,7 +21,7 @@ class UserProfileHeaderView: UICollectionViewCell {
     
     //MARK: UI COMPONENTS
     lazy var profileStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [profileImageView, usernameLabel, userBioDescription, editProfileFollowButton, userStatStackView])
+        let stackView = UIStackView(arrangedSubviews: [profileImageView, usernameLabel, userBioDescription, editProfileFollowButton, blockButton, userStatStackView])
         stackView.distribution = .fill
         stackView.axis = .vertical
         stackView.alignment = .center
@@ -161,7 +161,15 @@ class UserProfileHeaderView: UICollectionViewCell {
         return label
     }()
     
-    
+    lazy var blockButton: UIButton = {
+        let button = UIButton()
+        button.isHidden = true
+        button.setTitle("Block User", for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1), for: .normal)
+        button.addTarget(self, action: #selector(handleBlock), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -214,6 +222,7 @@ class UserProfileHeaderView: UICollectionViewCell {
         
         if currentUser == userId {
             // edit profile
+            self.blockButton.isHidden = true
         } else {
             // Check if user is following
             Database.database().reference().child("following").child(currentUser).child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -265,6 +274,31 @@ class UserProfileHeaderView: UICollectionViewCell {
         }
     }
     
+    @objc func handleBlock() {
+        print("BLOCKED")
+        guard let currentUser = Auth.auth().currentUser?.uid else { return }
+        
+        guard let userId = user?.uid else { return }
+        let blockedValues = [userId:ServerValue.timestamp()]
+        Database.database().reference().child("users").child(currentUser).child("blockedUsers").updateChildValues(blockedValues) { (err, ref) in
+            if let err = err {
+                print("Failed to block user: ", err)
+                return
+            }
+            return
+        }
+        
+        let blockedByValues = [currentUser: ServerValue.timestamp()]
+        Database.database().reference().child("users").child(userId).child("blockedBy").updateChildValues(blockedByValues) { (err, ref) in
+            if let err = err {
+                print("Failed to block user: ", err)
+                return
+            }
+            return
+        }
+        
+    }
+    
     /**
      Style changes for setting up the follow style button
      */
@@ -273,6 +307,7 @@ class UserProfileHeaderView: UICollectionViewCell {
         self.editProfileFollowButton.backgroundColor = #colorLiteral(red: 0.9960784314, green: 0.7254901961, blue: 0.3411764706, alpha: 1)
         self.editProfileFollowButton.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
         self.editProfileFollowButton.titleLabel?.font = UIFont(name: Fonts.proximaAltBold, size: 14)
+        self.blockButton.isHidden = false
     }
     /**
      Style changes for setting up the unfollow style button

@@ -68,8 +68,10 @@ class RootViewController: UIViewController {
         animateDismissTransition(to: logoutScreen)
     }
     
-    func switchToUserSetup() {
-        let userSetupViewController = UserSetupViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [:])
+    func switchToUserOnBoarding() {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let userSetupViewController = UserOnBoardingViewController(collectionViewLayout: layout)
         let userSetupScreen = UINavigationController(rootViewController: userSetupViewController)
         animateDismissTransition(to: userSetupScreen)
     }

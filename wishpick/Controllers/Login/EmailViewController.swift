@@ -281,7 +281,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
             }
         }
         UserDefaults.standard.setIsLoggedIn(value: true)
-        AppDelegate.shared.rootViewController.switchToMainScreen()
+        AppDelegate.shared.rootViewController.switchToUserOnBoarding()
     }
     
     @objc func handleShowSignIn() {

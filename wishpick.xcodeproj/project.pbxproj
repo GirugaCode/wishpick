@@ -49,9 +49,6 @@
 		287FA41323C88A7F00AEAF35 /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FA41223C88A7F00AEAF35 /* UserSearchCell.swift */; };
 		287FA41623C90BBF00AEAF35 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287FA41523C90BBF00AEAF35 /* HealthKit.framework */; };
 		287FA41823C90BF200AEAF35 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287FA41723C90BF200AEAF35 /* MapKit.framework */; };
-		288B07FC2359812D0028F07C /* UserSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FB2359812D0028F07C /* UserSetupViewController.swift */; };
-		288B07FE235982290028F07C /* UserSetupPg2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FD235982290028F07C /* UserSetupPg2VC.swift */; };
-		288B08002359823F0028F07C /* UserSetupPg3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */; };
 		288B0802235A49230028F07C /* PhotoSelctorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B0801235A49230028F07C /* PhotoSelctorController.swift */; };
 		288B0804235A57990028F07C /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B0803235A57990028F07C /* PhotoSelectorCell.swift */; };
 		28AF8B682422DF0D0081250B /* CustomAnimationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF8B672422DF0D0081250B /* CustomAnimationPresentor.swift */; };
@@ -59,9 +56,11 @@
 		28AF8B6C242336950081250B /* CommentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF8B6B242336950081250B /* CommentsController.swift */; };
 		28BC35402425912000FAF59A /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC353F2425912000FAF59A /* CommentCell.swift */; };
 		28BC3542242593CD00FAF59A /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC3541242593CD00FAF59A /* Comment.swift */; };
+		28D2FB8524590D7F0048375B /* UserOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D2FB8424590D7F0048375B /* UserOnBoardingViewController.swift */; };
+		28D2FB8724590F720048375B /* UserOnBoardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D2FB8624590F720048375B /* UserOnBoardingCell.swift */; };
+		28D2FB8924590FA80048375B /* UserOnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D2FB8824590FA80048375B /* UserOnBoarding.swift */; };
 		28D900EF2429876600B8D2AE /* EmailLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D900EE2429876600B8D2AE /* EmailLoginController.swift */; };
 		28D900F1242A0EF800B8D2AE /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D900F0242A0EF800B8D2AE /* UserDefaults+Extension.swift */; };
-		28F2CBE72316677500D67525 /* UserSetupPg1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2CBE62316677500D67525 /* UserSetupPg1VC.swift */; };
 		28FFC87E23C5C8A600046C1A /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FFC87D23C5C8A600046C1A /* PhotoSelectorHeader.swift */; };
 		3574BBA8D156A3259E4113C9 /* libPods-wishpick.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF146E3439636337E890D51E /* libPods-wishpick.a */; };
 		4FCEF23A37E9A3D2E0B3F67B /* libPods-wishpickUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA58E7B9383FD77DB4F91A1E /* libPods-wishpickUITests.a */; };
@@ -139,9 +138,6 @@
 		287FA41223C88A7F00AEAF35 /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
 		287FA41523C90BBF00AEAF35 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		287FA41723C90BF200AEAF35 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		288B07FB2359812D0028F07C /* UserSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupViewController.swift; sourceTree = "<group>"; };
-		288B07FD235982290028F07C /* UserSetupPg2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg2VC.swift; sourceTree = "<group>"; };
-		288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg3VC.swift; sourceTree = "<group>"; };
 		288B0801235A49230028F07C /* PhotoSelctorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelctorController.swift; sourceTree = "<group>"; };
 		288B0803235A57990028F07C /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
 		28AF8B672422DF0D0081250B /* CustomAnimationPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationPresentor.swift; sourceTree = "<group>"; };
@@ -149,9 +145,11 @@
 		28AF8B6B242336950081250B /* CommentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsController.swift; sourceTree = "<group>"; };
 		28BC353F2425912000FAF59A /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		28BC3541242593CD00FAF59A /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		28D2FB8424590D7F0048375B /* UserOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnBoardingViewController.swift; sourceTree = "<group>"; };
+		28D2FB8624590F720048375B /* UserOnBoardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnBoardingCell.swift; sourceTree = "<group>"; };
+		28D2FB8824590FA80048375B /* UserOnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnBoarding.swift; sourceTree = "<group>"; };
 		28D900EE2429876600B8D2AE /* EmailLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginController.swift; sourceTree = "<group>"; };
 		28D900F0242A0EF800B8D2AE /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
-		28F2CBE62316677500D67525 /* UserSetupPg1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetupPg1VC.swift; sourceTree = "<group>"; };
 		28FFC87D23C5C8A600046C1A /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
 		4EA3AA1BBC503D5ED68DC158 /* libPods-wishpickTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wishpickTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B74F70AB765165683C9AABA /* Pods-wishpickTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpickTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wishpickTests/Pods-wishpickTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -305,7 +303,7 @@
 				28BC353C24258D9400FAF59A /* SharePhoto */,
 				28BC353B24258D4300FAF59A /* Profile */,
 				2824FD362421EEF1002C0EAD /* Camera */,
-				288B07FA2359804B0028F07C /* User Setup */,
+				288B07FA2359804B0028F07C /* UserOnBoarding */,
 				28445DC72307FA82008CED37 /* RootViewController.swift */,
 				28259FF022C82CD100A6E4D2 /* MainTabViewController.swift */,
 			);
@@ -347,15 +345,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		288B07FA2359804B0028F07C /* User Setup */ = {
+		288B07FA2359804B0028F07C /* UserOnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				288B07FB2359812D0028F07C /* UserSetupViewController.swift */,
-				28F2CBE62316677500D67525 /* UserSetupPg1VC.swift */,
-				288B07FD235982290028F07C /* UserSetupPg2VC.swift */,
-				288B07FF2359823F0028F07C /* UserSetupPg3VC.swift */,
+				28D2FB8424590D7F0048375B /* UserOnBoardingViewController.swift */,
+				28D2FB8624590F720048375B /* UserOnBoardingCell.swift */,
+				28D2FB8824590FA80048375B /* UserOnBoarding.swift */,
 			);
-			path = "User Setup";
+			path = UserOnBoarding;
 			sourceTree = "<group>";
 		};
 		28BC353924258CDA00FAF59A /* HomeViews */ = {
@@ -697,19 +694,20 @@
 				281609B622C32D340045D352 /* EmailViewController.swift in Sources */,
 				28445DC82307FA82008CED37 /* RootViewController.swift in Sources */,
 				287FA41123C8826400AEAF35 /* UserSearchController.swift in Sources */,
+				28D2FB8524590D7F0048375B /* UserOnBoardingViewController.swift in Sources */,
 				28AF8B6C242336950081250B /* CommentsController.swift in Sources */,
+				28D2FB8724590F720048375B /* UserOnBoardingCell.swift in Sources */,
 				287ECD9822FAC2C600D2CB7A /* UIView+Extension.swift in Sources */,
 				287FA40423C692ED00AEAF35 /* CustomImageView.swift in Sources */,
 				287FA40023C677FB00AEAF35 /* Posts.swift in Sources */,
-				288B08002359823F0028F07C /* UserSetupPg3VC.swift in Sources */,
 				287FA41323C88A7F00AEAF35 /* UserSearchCell.swift in Sources */,
 				284DF6BC232B340500E651F5 /* UIButton+Extension.swift in Sources */,
-				288B07FC2359812D0028F07C /* UserSetupViewController.swift in Sources */,
 				287FA40223C67AA400AEAF35 /* UserProfilePhotoCell.swift in Sources */,
 				28460AB323DADE87006F8F5D /* Date+Extension.swift in Sources */,
 				28259FF522C87ED400A6E4D2 /* UserProfileHeaderView.swift in Sources */,
 				28259FF122C82CD100A6E4D2 /* MainTabViewController.swift in Sources */,
 				281609B422C32D340045D352 /* AppDelegate.swift in Sources */,
+				28D2FB8924590FA80048375B /* UserOnBoarding.swift in Sources */,
 				28FFC87E23C5C8A600046C1A /* PhotoSelectorHeader.swift in Sources */,
 				28259FF322C82DE600A6E4D2 /* UserProfileController.swift in Sources */,
 				286FFE8724369CF6002E49EA /* FirebaseService.swift in Sources */,
@@ -724,8 +722,6 @@
 				287FA40E23C87FEB00AEAF35 /* Database+Extension.swift in Sources */,
 				287FA40723C6E12A00AEAF35 /* HomeController.swift in Sources */,
 				2824FD382421EF45002C0EAD /* PreviewPhotoContainerView.swift in Sources */,
-				28F2CBE72316677500D67525 /* UserSetupPg1VC.swift in Sources */,
-				288B07FE235982290028F07C /* UserSetupPg2VC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,20 +11,15 @@ import UIKit
 class UserOnBoardingCell: UICollectionViewCell {
     
     // MARK: PROPERTIES
-    var page: UserOnBoarding? {
+    /// View Model for the user onboarding cells
+    var UserOnBoardingCellViewModel: UserOnBoardingCellViewModel? {
         didSet {
-            guard let unwrappedPage = page else { return }
-            onboardingImageView.image = unwrappedPage.imageName
-            
-            let attributedText = NSMutableAttributedString(string: unwrappedPage.headerText, attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 35)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 0.7294117647, blue: 0.3450980392, alpha: 1)])
-            
-            attributedText.append(NSAttributedString(string: "\n\n\(unwrappedPage.bodyText)", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 20)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.2117647059, green: 0.1529411765, blue: 0.1725490196, alpha: 1)]))
-            
-            descriptionTextView.attributedText = attributedText
-            descriptionTextView.textAlignment = .center
-
+            setOnBoardingCell()
         }
     }
+    
+    /// Public String Identifier for the reusable cell
+    static var identifier: String = "cellId"
     
     // MARK: UI COMPONENTS
     /// Top Container to hold Image View
@@ -85,6 +80,18 @@ class UserOnBoardingCell: UICollectionViewCell {
             descriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
             
             ])
+    }
+    
+    private func setOnBoardingCell() {
+        guard let unwrappedPage = UserOnBoardingCellViewModel else { return }
+        onboardingImageView.image = unwrappedPage.imageName
+        
+        let attributedText = NSMutableAttributedString(string: unwrappedPage.headerText, attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 35)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 0.7294117647, blue: 0.3450980392, alpha: 1)])
+        
+        attributedText.append(NSAttributedString(string: "\n\n\(unwrappedPage.bodyText)", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 20)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.2117647059, green: 0.1529411765, blue: 0.1725490196, alpha: 1)]))
+        
+        descriptionTextView.attributedText = attributedText
+        descriptionTextView.textAlignment = .center
     }
     
     required init?(coder aDecoder: NSCoder) {

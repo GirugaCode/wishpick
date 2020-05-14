@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 struct UserOnBoarding {
-    let imageName: UIImage
-    let headerText: String
-    let bodyText: String
+    let image: UIImage
+    let header: String
+    let body: String
 }

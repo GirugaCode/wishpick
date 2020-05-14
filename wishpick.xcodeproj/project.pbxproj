@@ -61,6 +61,8 @@
 		28D2FB8924590FA80048375B /* UserOnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D2FB8824590FA80048375B /* UserOnBoarding.swift */; };
 		28D900EF2429876600B8D2AE /* EmailLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D900EE2429876600B8D2AE /* EmailLoginController.swift */; };
 		28D900F1242A0EF800B8D2AE /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D900F0242A0EF800B8D2AE /* UserDefaults+Extension.swift */; };
+		28F412AE246CFE79003CEE78 /* UserOnBoardingCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F412AD246CFE79003CEE78 /* UserOnBoardingCollectionViewModel.swift */; };
+		28F412B0246CFF39003CEE78 /* UserOnBoardingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F412AF246CFF39003CEE78 /* UserOnBoardingCellViewModel.swift */; };
 		28FFC87E23C5C8A600046C1A /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FFC87D23C5C8A600046C1A /* PhotoSelectorHeader.swift */; };
 		3574BBA8D156A3259E4113C9 /* libPods-wishpick.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF146E3439636337E890D51E /* libPods-wishpick.a */; };
 		4FCEF23A37E9A3D2E0B3F67B /* libPods-wishpickUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA58E7B9383FD77DB4F91A1E /* libPods-wishpickUITests.a */; };
@@ -150,6 +152,8 @@
 		28D2FB8824590FA80048375B /* UserOnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnBoarding.swift; sourceTree = "<group>"; };
 		28D900EE2429876600B8D2AE /* EmailLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginController.swift; sourceTree = "<group>"; };
 		28D900F0242A0EF800B8D2AE /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		28F412AD246CFE79003CEE78 /* UserOnBoardingCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnBoardingCollectionViewModel.swift; sourceTree = "<group>"; };
+		28F412AF246CFF39003CEE78 /* UserOnBoardingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnBoardingCellViewModel.swift; sourceTree = "<group>"; };
 		28FFC87D23C5C8A600046C1A /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
 		4EA3AA1BBC503D5ED68DC158 /* libPods-wishpickTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-wishpickTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B74F70AB765165683C9AABA /* Pods-wishpickTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wishpickTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-wishpickTests/Pods-wishpickTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 		281609B222C32D340045D352 /* wishpick */ = {
 			isa = PBXGroup;
 			children = (
+				28F412AC246CFDD7003CEE78 /* ViewModel */,
 				280AACF323C9119F00E42543 /* wishpick.entitlements */,
 				28314FEA22FB0B300091F5A1 /* Model */,
 				28314FEB22FB0B3F0091F5A1 /* View */,
@@ -279,6 +284,7 @@
 				287FA40B23C8415600AEAF35 /* User.swift */,
 				287FA3FF23C677FB00AEAF35 /* Posts.swift */,
 				28BC3541242593CD00FAF59A /* Comment.swift */,
+				28D2FB8824590FA80048375B /* UserOnBoarding.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,6 +292,7 @@
 		28314FEB22FB0B3F0091F5A1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				28F412B2246D1FA2003CEE78 /* OnBoardingViews */,
 				28BC353924258CDA00FAF59A /* HomeViews */,
 				28BC353A24258D0700FAF59A /* SearchViews */,
 				28BC353E24258E8F00FAF59A /* SharePhotoViews */,
@@ -349,8 +356,6 @@
 			isa = PBXGroup;
 			children = (
 				28D2FB8424590D7F0048375B /* UserOnBoardingViewController.swift */,
-				28D2FB8624590F720048375B /* UserOnBoardingCell.swift */,
-				28D2FB8824590FA80048375B /* UserOnBoarding.swift */,
 			);
 			path = UserOnBoarding;
 			sourceTree = "<group>";
@@ -424,6 +429,31 @@
 				28D900EE2429876600B8D2AE /* EmailLoginController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		28F412AC246CFDD7003CEE78 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				28F412B1246D1F7F003CEE78 /* UserOnBoarding */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		28F412B1246D1F7F003CEE78 /* UserOnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				28F412AD246CFE79003CEE78 /* UserOnBoardingCollectionViewModel.swift */,
+				28F412AF246CFF39003CEE78 /* UserOnBoardingCellViewModel.swift */,
+			);
+			path = UserOnBoarding;
+			sourceTree = "<group>";
+		};
+		28F412B2246D1FA2003CEE78 /* OnBoardingViews */ = {
+			isa = PBXGroup;
+			children = (
+				28D2FB8624590F720048375B /* UserOnBoardingCell.swift */,
+			);
+			path = OnBoardingViews;
 			sourceTree = "<group>";
 		};
 		967644F5EE5350087E25D6A7 /* Pods */ = {
@@ -697,6 +727,7 @@
 				28D2FB8524590D7F0048375B /* UserOnBoardingViewController.swift in Sources */,
 				28AF8B6C242336950081250B /* CommentsController.swift in Sources */,
 				28D2FB8724590F720048375B /* UserOnBoardingCell.swift in Sources */,
+				28F412AE246CFE79003CEE78 /* UserOnBoardingCollectionViewModel.swift in Sources */,
 				287ECD9822FAC2C600D2CB7A /* UIView+Extension.swift in Sources */,
 				287FA40423C692ED00AEAF35 /* CustomImageView.swift in Sources */,
 				287FA40023C677FB00AEAF35 /* Posts.swift in Sources */,
@@ -715,6 +746,7 @@
 				28128B0C243405FD003B7434 /* UIViewController+Extension.swift in Sources */,
 				281609F422C345D20045D352 /* Constants.swift in Sources */,
 				288B0804235A57990028F07C /* PhotoSelectorCell.swift in Sources */,
+				28F412B0246CFF39003CEE78 /* UserOnBoardingCellViewModel.swift in Sources */,
 				2806B4632418DFCC009408D4 /* CameraController.swift in Sources */,
 				28D900F1242A0EF800B8D2AE /* UserDefaults+Extension.swift in Sources */,
 				287FA40923C6E46800AEAF35 /* HomePostCell.swift in Sources */,

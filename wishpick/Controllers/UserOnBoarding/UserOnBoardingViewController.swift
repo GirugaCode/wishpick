@@ -140,7 +140,7 @@ class UserOnBoardingViewController: UICollectionViewController, UICollectionView
     }
 }
 
-
+// MARK: COLLECTION VIEW PROTOCOLS
 extension UserOnBoardingViewController {
     
     override func collectionView(_ collectionView: UICollectionView,

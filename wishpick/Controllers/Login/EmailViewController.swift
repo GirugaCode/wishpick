@@ -12,6 +12,7 @@ import UIKit
 class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //MARK: UI COMPONENTS
+    /// Label to create an account
     let createAccLabel: UILabel = {
         let label = UILabel()
         label.text = "Create an account"
@@ -20,6 +21,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return label
     }()
     
+    /// Stack view to hold the text fields
     lazy var mainStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [emailStackView, usernameStackView, passwordStackView])
         stackView.distribution = .fillEqually
@@ -29,6 +31,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return stackView
     }()
     
+    /// Stack view for the email fields
     lazy var emailStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [emailLabel, emailTextField])
         stackView.distribution = .fillEqually
@@ -38,6 +41,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return stackView
     }()
     
+    /// Email label
     let emailLabel: UILabel = {
         let label = UILabel()
         label.text = "Email"
@@ -47,6 +51,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return label
     }()
     
+    /// Email text field
     let emailTextField: UITextField = {
         let textField = UITextField()
         let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
@@ -65,6 +70,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return textField
     }()
     
+    /// Stack view for username fields
     lazy var usernameStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [usernameLabel, usernameTextField])
         stackView.distribution = .fillEqually
@@ -74,6 +80,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return stackView
     }()
     
+    /// Username label
     let usernameLabel: UILabel = {
         let label = UILabel()
         label.text = "Username"
@@ -83,6 +90,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return label
     }()
     
+    /// User name text field
     let usernameTextField: UITextField = {
         let textField = UITextField()
         let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
@@ -101,6 +109,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return textField
     }()
     
+    /// Stack view for password fields
     lazy var passwordStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField])
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -110,6 +119,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return stackView
     }()
     
+    /// Password label
     let passwordLabel: UILabel = {
         let label = UILabel()
         label.text = "Password"
@@ -119,6 +129,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return label
     }()
     
+    /// Password text field
     let passwordTextField: UITextField = {
         let textField = UITextField()
         let paddingView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
@@ -138,6 +149,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return textField
     }()
     
+    /// Sign up button
     let signupButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign up", for: .normal)
@@ -158,6 +170,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return button
     }()
     
+    /// Add photo button
     let addPhotoButton: UIButton = {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "add-photo"), for: .normal)
@@ -168,6 +181,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return button
     }()
     
+    /// Handles fetching a photo for a user profile
     @objc func handleAddPhoto() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -176,6 +190,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         present(imagePickerController, animated: true, completion: nil)
     }
     
+    /// Button to help navigate to sign in for an exsisting user
     let exisitingAccLabel: UIButton = {
         let button = UIButton()
         let attributedText = NSMutableAttributedString(string: "Already have an account? ", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 18) as Any])
@@ -186,6 +201,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         return button
     }()
     
+    /// Back button to pop view controllers
     let backButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Back", for: .normal)
@@ -205,11 +221,13 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }()
     
     //MARK: SEGUES
+    /// Pop to the login view controller
     @objc func backTransition() {
         AppDelegate.shared.rootViewController.switchToLogin()
     }
     
     //MARK: TEXT VALIDATIONS
+    /// Handles text input in the email and passwords text fields to allow and entry
     @objc func handleTextInput() {
         let isFormValid = emailTextField.text?.count ?? 0 > 0 && usernameTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
         
@@ -223,6 +241,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     //MARK: AUTH
+    /// Handles authentication with the sign up with email process
     @objc func handleSignUp() {
         guard let email = emailTextField.text else { return }
         guard let username = usernameTextField.text else { return }
@@ -284,6 +303,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
         AppDelegate.shared.rootViewController.switchToUserOnBoarding()
     }
     
+    /// Push the VC to sign in with email
     @objc func handleShowSignIn() {
         AppDelegate.shared.rootViewController.switchToSignInWithEmail()
     }
@@ -362,6 +382,7 @@ class EmailViewController: UIViewController, UIImagePickerControllerDelegate, UI
             ])
     }
     
+    /// Sets up the UI for the color of the view controller
     fileprivate func setupUI() {
         // Set up background gradient
         view.setGradientBackground(colorOne: #colorLiteral(red: 0.5019607843, green: 0.3647058824, blue: 0.1725490196, alpha: 1), colorTwo: #colorLiteral(red: 1, green: 0.6561305523, blue: 0.171354413, alpha: 1))

@@ -53,13 +53,13 @@
 		288B0804235A57990028F07C /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B0803235A57990028F07C /* PhotoSelectorCell.swift */; };
 		28A5A59A246D48BC000DF343 /* UserOnBoardingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5A598246D48BC000DF343 /* UserOnBoardingCellViewModel.swift */; };
 		28A5A59B246D48BC000DF343 /* UserOnBoardingCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5A599246D48BC000DF343 /* UserOnBoardingCollectionViewModel.swift */; };
+		28A5A59D246D5EA8000DF343 /* UserOnBoardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A5A59C246D5EA8000DF343 /* UserOnBoardingCell.swift */; };
 		28AF8B682422DF0D0081250B /* CustomAnimationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF8B672422DF0D0081250B /* CustomAnimationPresentor.swift */; };
 		28AF8B6A2423004E0081250B /* CustomAnimationDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF8B692423004E0081250B /* CustomAnimationDismisser.swift */; };
 		28AF8B6C242336950081250B /* CommentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF8B6B242336950081250B /* CommentsController.swift */; };
 		28BC35402425912000FAF59A /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC353F2425912000FAF59A /* CommentCell.swift */; };
 		28BC3542242593CD00FAF59A /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC3541242593CD00FAF59A /* Comment.swift */; };
 		28D2FB8524590D7F0048375B /* UserOnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D2FB8424590D7F0048375B /* UserOnBoardingViewController.swift */; };
-		28D2FB8724590F720048375B /* UserOnBoardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D2FB8624590F720048375B /* UserOnBoardingCell.swift */; };
 		28D2FB8924590FA80048375B /* UserOnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D2FB8824590FA80048375B /* UserOnBoarding.swift */; };
 		28D900EF2429876600B8D2AE /* EmailLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D900EE2429876600B8D2AE /* EmailLoginController.swift */; };
 		28D900F1242A0EF800B8D2AE /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D900F0242A0EF800B8D2AE /* UserDefaults+Extension.swift */; };
@@ -144,13 +144,13 @@
 		288B0803235A57990028F07C /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
 		28A5A598246D48BC000DF343 /* UserOnBoardingCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserOnBoardingCellViewModel.swift; path = wishpick/ViewModel/UserOnBoardingViewModel/UserOnBoardingCellViewModel.swift; sourceTree = SOURCE_ROOT; };
 		28A5A599246D48BC000DF343 /* UserOnBoardingCollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserOnBoardingCollectionViewModel.swift; path = wishpick/ViewModel/UserOnBoardingViewModel/UserOnBoardingCollectionViewModel.swift; sourceTree = SOURCE_ROOT; };
+		28A5A59C246D5EA8000DF343 /* UserOnBoardingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserOnBoardingCell.swift; path = wishpick/View/UserOnBoardingViews/UserOnBoardingCell.swift; sourceTree = SOURCE_ROOT; };
 		28AF8B672422DF0D0081250B /* CustomAnimationPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationPresentor.swift; sourceTree = "<group>"; };
 		28AF8B692423004E0081250B /* CustomAnimationDismisser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationDismisser.swift; sourceTree = "<group>"; };
 		28AF8B6B242336950081250B /* CommentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsController.swift; sourceTree = "<group>"; };
 		28BC353F2425912000FAF59A /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		28BC3541242593CD00FAF59A /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		28D2FB8424590D7F0048375B /* UserOnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnBoardingViewController.swift; sourceTree = "<group>"; };
-		28D2FB8624590F720048375B /* UserOnBoardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnBoardingCell.swift; sourceTree = "<group>"; };
 		28D2FB8824590FA80048375B /* UserOnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOnBoarding.swift; sourceTree = "<group>"; };
 		28D900EE2429876600B8D2AE /* EmailLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginController.swift; sourceTree = "<group>"; };
 		28D900F0242A0EF800B8D2AE /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
@@ -451,7 +451,7 @@
 		28F412B2246D1FA2003CEE78 /* OnBoardingViews */ = {
 			isa = PBXGroup;
 			children = (
-				28D2FB8624590F720048375B /* UserOnBoardingCell.swift */,
+				28A5A59C246D5EA8000DF343 /* UserOnBoardingCell.swift */,
 			);
 			path = OnBoardingViews;
 			sourceTree = "<group>";
@@ -726,7 +726,6 @@
 				287FA41123C8826400AEAF35 /* UserSearchController.swift in Sources */,
 				28D2FB8524590D7F0048375B /* UserOnBoardingViewController.swift in Sources */,
 				28AF8B6C242336950081250B /* CommentsController.swift in Sources */,
-				28D2FB8724590F720048375B /* UserOnBoardingCell.swift in Sources */,
 				287ECD9822FAC2C600D2CB7A /* UIView+Extension.swift in Sources */,
 				287FA40423C692ED00AEAF35 /* CustomImageView.swift in Sources */,
 				287FA40023C677FB00AEAF35 /* Posts.swift in Sources */,
@@ -735,6 +734,7 @@
 				287FA40223C67AA400AEAF35 /* UserProfilePhotoCell.swift in Sources */,
 				28460AB323DADE87006F8F5D /* Date+Extension.swift in Sources */,
 				28259FF522C87ED400A6E4D2 /* UserProfileHeaderView.swift in Sources */,
+				28A5A59D246D5EA8000DF343 /* UserOnBoardingCell.swift in Sources */,
 				28259FF122C82CD100A6E4D2 /* MainTabViewController.swift in Sources */,
 				281609B422C32D340045D352 /* AppDelegate.swift in Sources */,
 				28D2FB8924590FA80048375B /* UserOnBoarding.swift in Sources */,

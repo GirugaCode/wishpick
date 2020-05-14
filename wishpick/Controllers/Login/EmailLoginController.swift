@@ -93,7 +93,7 @@ class EmailLoginController: UIViewController {
      Switches the rootViewController back to sign up
      */
     @objc func handleShowSignUp() {
-        AppDelegate.shared.rootViewController.switchToLoginWithEmail()
+        AppDelegate.shared.rootViewController.switchToSignUpWithEmail()
     }
     
     /**

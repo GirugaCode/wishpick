@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
     fileprivate var currentNonce: String?
     
     //MARK: UI COMPONENTS
+    /// Stack View to hold the uppper login logo
     lazy var topStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [wishpickIcon, wishpickLabel, wishpickSubLabel])
         stackView.distribution = .fillProportionally
@@ -29,6 +30,7 @@ class LoginViewController: UIViewController {
         return stackView
     }()
     
+    /// Wishpick Icon Image
     let wishpickIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "wishpick_icon")
@@ -37,6 +39,7 @@ class LoginViewController: UIViewController {
         return imageView
     }()
     
+    /// Wishpick login label
     let wishpickLabel: UILabel = {
         let label = UILabel()
         label.text = "wishpick"
@@ -46,6 +49,7 @@ class LoginViewController: UIViewController {
         return label
     }()
     
+    /// Wishpick login sub label
     let wishpickSubLabel: UILabel = {
         let label = UILabel()
         label.text = "want & share"
@@ -55,6 +59,7 @@ class LoginViewController: UIViewController {
         return label
     }()
     
+    /// Stack view to hold login buttons
     lazy var bottomStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [facebookLoginButton, emailLoginButton, tosButton])
         stackView.distribution = .fillProportionally
@@ -65,6 +70,7 @@ class LoginViewController: UIViewController {
         return stackView
     }()
     
+    /// Login with Facebook Button
     let facebookLoginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Connect with Facebook", for: .normal)
@@ -78,6 +84,7 @@ class LoginViewController: UIViewController {
         return button
     }()
     
+    /// Login with Email Button
     let emailLoginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign up with E-mail", for: .normal)
@@ -93,6 +100,7 @@ class LoginViewController: UIViewController {
         return button
     }()
     
+    /// Terms of service button
     let tosButton: UIButton = {
         let button = UIButton()
         let attributedText = NSMutableAttributedString(string: "By signing up, you agree to our ", attributes: [NSAttributedString.Key.font: UIFont(name: Fonts.proximaRegular, size: 18) as Any])
@@ -108,6 +116,27 @@ class LoginViewController: UIViewController {
     }()
     
     //MARK: OVERRIDE FUNCTIONS
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+        if #available(iOS 13.0, *) {
+            appleSignIn()
+        } else {
+            // Fallback on earlier versions
+            return
+        }
+    }
+    
+    override func loadView() {
+        super.loadView()
+        setupLoginView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setButtonCornerRadius()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -122,29 +151,10 @@ class LoginViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setButtonCornerRadius()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-        if #available(iOS 13.0, *) {
-            appleSignIn()
-        } else {
-            // Fallback on earlier versions
-            return
-        }
-    }
-    
-    override func loadView() {
-        super.loadView()
-        
-        setupLoginView()
-    }
-    
     //MARK: AUTH
+    /**
+     Handles the facebook sign in authentication
+     */
     @objc func facebookSignIn() {
         let loginManager = LoginManager()
         loginManager.logIn(permissions: ["public_profile", "email"], from: self) { (result, error) in
@@ -190,8 +200,9 @@ class LoginViewController: UIViewController {
         }
     }
     
+    /// Transitions into sign up with email
     @objc func emailSignIn() {
-        AppDelegate.shared.rootViewController.switchToLoginWithEmail()
+        AppDelegate.shared.rootViewController.switchToSignUpWithEmail()
     }
     
     //MARK: UI SETUP
@@ -224,11 +235,13 @@ class LoginViewController: UIViewController {
         ])
     }
     
+    /// Sets the gradient background 
     fileprivate func setupUI() {
         // Set up background gradient
         view.setGradientBackground(colorOne: #colorLiteral(red: 0.5019607843, green: 0.3647058824, blue: 0.1725490196, alpha: 1), colorTwo: #colorLiteral(red: 1, green: 0.6561305523, blue: 0.171354413, alpha: 1))
     }
     
+    /// Sets the button corner radius
     fileprivate func setButtonCornerRadius() {
         facebookLoginButton.roundedButton(button: facebookLoginButton)
         emailLoginButton.roundedButton(button: emailLoginButton)
